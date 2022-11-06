@@ -1,0 +1,17 @@
+.primary-color{
+    -fx-background-color: #383838;
+    -fx-text-fill: #ffffff;
+}
+.secondary-color{
+    -fx-background-color: #202020;
+    -fx-text-fill: #ffffff;
+}
+.round-border{
+    -fx-background-radius: 100;
+}
+.exit-btn{
+    -fx-background-color: #C5291B;
+}
+.exit-btn:hover{
+    -fx-background-color: #C5291B;
+}
