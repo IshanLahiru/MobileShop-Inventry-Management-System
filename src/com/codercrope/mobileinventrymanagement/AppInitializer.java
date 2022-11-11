@@ -1,7 +1,9 @@
 package com.codercrope.mobileinventrymanagement;
 
+import com.codercrope.mobileinventrymanagement.controler.LoginViewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -16,10 +18,12 @@ public class AppInitializer extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("view/MainView.fxml"))));
-        primaryStage.setTitle("");
-        //primaryStage.initStyle(StageStyle.TRANSPARENT);
-        primaryStage.show();
-
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("view/LoginView.fxml"));
+            Parent root = (Parent)loader.load();
+            LoginViewController controller = (LoginViewController) loader.getController();
+            primaryStage.setScene(new Scene(root));
+            primaryStage.setTitle("");
+            primaryStage.show();
+            controller.getStage(primaryStage);
     }
 }

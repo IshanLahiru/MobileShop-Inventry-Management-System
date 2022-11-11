@@ -1,29 +1,25 @@
 package com.codercrope.mobileinventrymanagement.controler;
 
-import com.codercrope.mobileinventrymanagement.model.TabModel;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import com.codercrope.mobileinventrymanagement.util.StyleController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.util.ArrayList;
-import java.util.Optional;
+import java.io.IOException;
+import java.net.URL;
 
 public class MainViewController {
-    @FXML
-    public TableView tblReceptionMain;
-
-    @FXML
-    public TableColumn txtId;
 
     @FXML
     private BorderPane parent;
@@ -56,12 +52,155 @@ public class MainViewController {
     private ImageView btnClsImg;
 
     @FXML
-    private Button btnLast;
+    private VBox mainViewSideBar;
 
     @FXML
-    private Label labelMode;
+    private GridPane sideBarBtn01;
 
-    private boolean isLightMode = true;
+    @FXML
+    private GridPane sideBarBtn02;
+
+    @FXML
+    private GridPane sideBarBtn03;
+
+    @FXML
+    private GridPane sideBarBtn04;
+
+    @FXML
+    private GridPane sideBarBtn05;
+
+    @FXML
+    private GridPane sideBarBtn06;
+
+    @FXML
+    private GridPane grid;
+
+    private Stage stage;
+
+    public void getStage(Stage primaryStage){
+        this.stage = primaryStage;
+    }
+
+
+    public void initialize() throws IOException {
+        //stage.close();
+        //mainViewSideBar.getChildren().add(new Button("kamnal"));
+        setUi(grid ,"/com/codercrope/mobileinventrymanagement/view/BillingView.fxml");
+        setBtn(sideBarBtn01 ,grid, "/com/codercrope/mobileinventrymanagement/view/btn/buttonDBSideVB.fxml","DB");
+        setBtn(sideBarBtn02 , grid, "/com/codercrope/mobileinventrymanagement/view/btn/buttonOrderSideVB.fxml","order");
+        setBtn(sideBarBtn03 , grid, "/com/codercrope/mobileinventrymanagement/view/btn/buttonItemSideVB.fxml","item");
+        setBtn(sideBarBtn04 , grid, "/com/codercrope/mobileinventrymanagement/view/btn/buttonRepairSideVB.fxml","repair");
+        setBtn(sideBarBtn05 , grid, "/com/codercrope/mobileinventrymanagement/view/btn/buttonWorkerSideVB.fxml","worker");
+        setBtn(sideBarBtn06 , grid, "/com/codercrope/mobileinventrymanagement/view/btn/buttonReportSideVB.fxml","report");
+        modChangerTTD.setShowDelay(Duration.seconds(2));
+    }
+
+    public void setUi(GridPane pane ,String event){
+        try {
+            URL resourse = getClass().getResource(event);
+            FXMLLoader fxmlLoader = new FXMLLoader(resourse);
+            Parent load = (Parent) fxmlLoader.load();
+            pane.getChildren().clear();
+            pane.getChildren().add(load);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    public void setBtn(GridPane pane , GridPane grid, String event, String type){
+        switch(type){
+            case "DB":
+                try {
+                    URL resourse = getClass().getResource(event);
+                    FXMLLoader fxmlLoader = new FXMLLoader(resourse);
+                    //System.out.println(fxmlLoader);
+                    Parent load = (Parent) fxmlLoader.load();
+                    ((ButtonDBSideVBController)fxmlLoader.getController()).getPane(this.grid);
+                    pane.getChildren().clear();
+                    pane.getChildren().add(load);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+                break;
+            case "order":
+                try {
+                    URL resourse = getClass().getResource(event);
+                    FXMLLoader fxmlLoader = new FXMLLoader(resourse);
+                    //System.out.println(fxmlLoader);
+                    Parent load = (Parent) fxmlLoader.load();
+                    ((ButtonOrderSideVBController)fxmlLoader.getController()).getPane(this.grid);
+                    pane.getChildren().clear();
+                    pane.getChildren().add(load);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+                break;
+            case "item":
+                try {
+                    URL resourse = getClass().getResource(event);
+                    FXMLLoader fxmlLoader = new FXMLLoader(resourse);
+                    //System.out.println(fxmlLoader);
+                    Parent load = (Parent) fxmlLoader.load();
+                    ((ButtonItemSideVBController)fxmlLoader.getController()).getPane(this.grid);
+                    pane.getChildren().clear();
+                    pane.getChildren().add(load);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+                break;
+            case "repair":
+                try {
+                    URL resourse = getClass().getResource(event);
+                    FXMLLoader fxmlLoader = new FXMLLoader(resourse);
+                    //System.out.println(fxmlLoader);
+                    Parent load = (Parent) fxmlLoader.load();
+                    ((ButtonRepairSideVBController)fxmlLoader.getController()).getPane(this.grid);
+                    pane.getChildren().clear();
+                    pane.getChildren().add(load);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+                break;
+            case "worker":
+                try {
+                    URL resourse = getClass().getResource(event);
+                    FXMLLoader fxmlLoader = new FXMLLoader(resourse);
+                    //System.out.println(fxmlLoader);
+                    Parent load = (Parent) fxmlLoader.load();
+                    ((ButtonWorkerSideVBController)fxmlLoader.getController()).getPane(this.grid);
+                    pane.getChildren().clear();
+                    pane.getChildren().add(load);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+                break;
+            case "report":
+                try {
+                    URL resourse = getClass().getResource(event);
+                    FXMLLoader fxmlLoader = new FXMLLoader(resourse);
+                    //System.out.println(fxmlLoader);
+                    Parent load = (Parent) fxmlLoader.load();
+                    ((ButtonReportSideVBController)fxmlLoader.getController()).getPane(this.grid);
+                    pane.getChildren().clear();
+                    pane.getChildren().add(load);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+                break;
+            default:
+                try {
+                    URL resourse = getClass().getResource(event);
+                    FXMLLoader fxmlLoader = new FXMLLoader(resourse);
+                    //System.out.println(fxmlLoader);
+                    Parent load = (Parent) fxmlLoader.load();
+                    ((ButtonOrderSideVBController)fxmlLoader.getController()).getPane(this.grid);
+                    pane.getChildren().clear();
+                    pane.getChildren().add(load);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }break;
+        }
+
+    }
 
     public void setImgToBtn(String name, ImageView img){
         Image image = new Image("com/codercrope/mobileinventrymanagement/assets/"+name);
@@ -70,71 +209,38 @@ public class MainViewController {
 
 
     private void setLightMode(){
-        parent.getStylesheets().remove("com/codercrope/mobileinventrymanagement/assets/Styles/DarkMode.css");
-        parent.getStylesheets().add("com/codercrope/mobileinventrymanagement/assets/Styles/lightMode.css");
-        labelMode.setText("Light Mode");
-        modChangerTTD.setShowDelay(Duration.seconds(2));
+        StyleController.setDark(parent);
         setImgToBtn("nightmode.png",modeSelector);
         setImgToBtn("restore-down-b.png",btnMaxImg);
         setImgToBtn("subtract-b.png",btnMinImg);
         setImgToBtn("close-b.png",btnClsImg);
     }
     private void setDarkMode(){
-        parent.getStylesheets().remove("com/codercrope/mobileinventrymanagement/assats/Styles/lightMode.css");
-        parent.getStylesheets().add("com/codercrope/mobileinventrymanagement/assets/Styles/DarkMode.css");
-        modChangerTTD.setShowDelay(Duration.seconds(2));
+        StyleController.setLight(parent);
         setImgToBtn("lightmode.png",modeSelector);
         setImgToBtn("restore-down-w.png",btnMaxImg);
         setImgToBtn("subtract-w.png",btnMinImg);
         setImgToBtn("close-w.png",btnClsImg);
     }
+    @FXML
+    void btnClsClickEvt(MouseEvent event) {
+        System.exit(1);
 
-    public void btnModeControllerOnAction(ActionEvent actionEvent) {
-        isLightMode = !isLightMode;
-        if (isLightMode){
-            setLightMode();
-        }else{
-            setDarkMode();
-        }
     }
 
     @FXML
-    void btnLastClickEvent(ActionEvent event) {
-        TabModel tab = new TabModel(btnLast.getText());
-        tab.setText(btnLast.getText());
-        tab.setContent(new Rectangle(200,200, Color.LIGHTSTEELBLUE));
-        //mainTabPane.getTabs().add(tab);
-    }
-
-    public void btnClsOnAction(ActionEvent actionEvent) {
+    void btnExitOnMouseEnterEvt(MouseEvent event) {
 
     }
 
-    public void btnClsClickEvt(MouseEvent mouseEvent) {
-        System.exit(1);
-    }
-
-    public void btnExitOnMouseEnterEvt(MouseEvent mouseEvent) {
-
-    }
-    public void initialize() {
-        txtId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        setData();
-        //  tblCustomer.getSelectionModel().selectedItemProperty().addListener();
-    }
-    public static ArrayList<recMainTblViewCm>
-            table=new ArrayList<recMainTblViewCm>();
-    static {
-        table.add(new recMainTblViewCm());
-    }
-
-    private void setData(){
-        ObservableList tmList= FXCollections.observableArrayList();
-        for (recMainTblViewCm c:table){
-            recMainTblViewCm comp= new recMainTblViewCm();
-            tmList.add(comp);
+    @FXML
+    void btnModeControllerOnAction(ActionEvent event) {
+        StyleController.isEnadled = !StyleController.isEnadled;
+        if (StyleController.isEnadled){
+            setDarkMode();
+        }else{
+            setLightMode();
         }
-        tblReceptionMain.setItems(tmList);
     }
 
 }
