@@ -22,3 +22,11 @@
 .exit-btn:hover{
     -fx-background-color: #C5291B;
 }
+
+.myButton {
+    -fx-background-color:transparent;
+}
+
+.myButton:hover {
+    -fx-background-color: rgba(197, 197, 197, 0.25);
+}

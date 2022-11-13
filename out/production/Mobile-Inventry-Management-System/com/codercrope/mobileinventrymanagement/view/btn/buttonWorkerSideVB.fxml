@@ -30,7 +30,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Label fx:id="imgTxt" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="79.0" stylesheets="@../../assets/Styles/lightMode.css" text="Users" textAlignment="CENTER" GridPane.rowIndex="1">
+      <Label fx:id="imgTxt" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="79.0" styleClass="text" stylesheets="@../../assets/Styles/lightMode.css" text="Users" textAlignment="CENTER" GridPane.rowIndex="1">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
