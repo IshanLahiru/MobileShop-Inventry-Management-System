@@ -19,19 +19,21 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Button mnemonicParsing="false" onMouseClicked="#btnClickEvent" styleClass="secondary-color" stylesheets="@../../assets/Styles/lightMode.css">
+      <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#btnClickEvent" prefHeight="50.0" prefWidth="75.0" styleClass="myButton" stylesheets="@../../assets/Styles/lightMode.css">
          <tooltip>
             <Tooltip text="Order" />
-         </tooltip></Button>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="79.0" text="Orders" textAlignment="CENTER" GridPane.rowIndex="1">
+         </tooltip>
+         <graphic>
+            <ImageView fx:id="img" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../assets/buttons/shopping-cart-b.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Label fx:id="imgTxt" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="79.0" text="Orders" textAlignment="CENTER" GridPane.rowIndex="1">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <ImageView fx:id="img" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../assets/buttons/shopping-cart-b.png" />
-         </image>
-      </ImageView>
    </children>
 </GridPane>
