@@ -15,7 +15,6 @@ public class AppInitializer extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-//pakaya
     @Override
     public void start(Stage primaryStage) throws IOException {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("view/LoginView.fxml"));
