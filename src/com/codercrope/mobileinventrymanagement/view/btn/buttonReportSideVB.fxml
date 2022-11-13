@@ -21,7 +21,7 @@
             <Tooltip text="Report" />
          </tooltip>
          <graphic>
-            <ImageView fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="img" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../assets/buttons/reports-b.png" />
                </image>

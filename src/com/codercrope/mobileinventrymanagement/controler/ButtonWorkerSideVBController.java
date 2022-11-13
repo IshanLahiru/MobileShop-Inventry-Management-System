@@ -3,12 +3,14 @@ package com.codercrope.mobileinventrymanagement.controler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
 import java.net.URL;
 
 public class ButtonWorkerSideVBController {
+    public ImageView img;
     private GridPane pane;
     @FXML
     void btnClickEvent(MouseEvent event) {
@@ -31,5 +33,8 @@ public class ButtonWorkerSideVBController {
 
     public void getPane(GridPane pane) {
         this.pane = pane;
+    }
+    public ImageView getImage() {
+        return this.img;
     }
 }

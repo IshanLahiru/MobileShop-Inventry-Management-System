@@ -18,6 +18,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 
 public class MainViewController {
 
@@ -75,6 +76,8 @@ public class MainViewController {
     @FXML
     private GridPane grid;
 
+    HashMap<String,ImageView> navIco = new HashMap<>();
+
     private Stage stage;
 
     public void getStage(Stage primaryStage){
@@ -114,7 +117,10 @@ public class MainViewController {
                     FXMLLoader fxmlLoader = new FXMLLoader(resourse);
                     //System.out.println(fxmlLoader);
                     Parent load = (Parent) fxmlLoader.load();
-                    ((ButtonDBSideVBController)fxmlLoader.getController()).getPane(this.grid);
+                    ButtonDBSideVBController controller = ((ButtonDBSideVBController)fxmlLoader.getController());
+                    controller.getPane(this.grid);
+                    ImageView img = controller.getImage();
+                    navIco.put("db",img);
                     pane.getChildren().clear();
                     pane.getChildren().add(load);
                 }catch(Exception e){
@@ -127,7 +133,10 @@ public class MainViewController {
                     FXMLLoader fxmlLoader = new FXMLLoader(resourse);
                     //System.out.println(fxmlLoader);
                     Parent load = (Parent) fxmlLoader.load();
-                    ((ButtonOrderSideVBController)fxmlLoader.getController()).getPane(this.grid);
+                    ButtonOrderSideVBController controller = ((ButtonOrderSideVBController)fxmlLoader.getController());
+                    controller.getPane(this.grid);
+                    ImageView img = controller.getImage();
+                    navIco.put("order",img);
                     pane.getChildren().clear();
                     pane.getChildren().add(load);
                 }catch(Exception e){
@@ -140,7 +149,10 @@ public class MainViewController {
                     FXMLLoader fxmlLoader = new FXMLLoader(resourse);
                     //System.out.println(fxmlLoader);
                     Parent load = (Parent) fxmlLoader.load();
-                    ((ButtonItemSideVBController)fxmlLoader.getController()).getPane(this.grid);
+                    ButtonItemSideVBController controller = ((ButtonItemSideVBController)fxmlLoader.getController());
+                    controller.getPane(this.grid);
+                    ImageView img = controller.getImage();
+                    navIco.put("item",img);
                     pane.getChildren().clear();
                     pane.getChildren().add(load);
                 }catch(Exception e){
@@ -153,7 +165,10 @@ public class MainViewController {
                     FXMLLoader fxmlLoader = new FXMLLoader(resourse);
                     //System.out.println(fxmlLoader);
                     Parent load = (Parent) fxmlLoader.load();
-                    ((ButtonRepairSideVBController)fxmlLoader.getController()).getPane(this.grid);
+                    ButtonRepairSideVBController controller = ((ButtonRepairSideVBController)fxmlLoader.getController());
+                    controller.getPane(this.grid);
+                    ImageView img = controller.getImage();
+                    navIco.put("repair",img);
                     pane.getChildren().clear();
                     pane.getChildren().add(load);
                 }catch(Exception e){
@@ -166,7 +181,10 @@ public class MainViewController {
                     FXMLLoader fxmlLoader = new FXMLLoader(resourse);
                     //System.out.println(fxmlLoader);
                     Parent load = (Parent) fxmlLoader.load();
-                    ((ButtonWorkerSideVBController)fxmlLoader.getController()).getPane(this.grid);
+                    ButtonWorkerSideVBController controller = ((ButtonWorkerSideVBController)fxmlLoader.getController());
+                    controller.getPane(this.grid);
+                    ImageView img = controller.getImage();
+                    navIco.put("worker",img);
                     pane.getChildren().clear();
                     pane.getChildren().add(load);
                 }catch(Exception e){
@@ -179,7 +197,10 @@ public class MainViewController {
                     FXMLLoader fxmlLoader = new FXMLLoader(resourse);
                     //System.out.println(fxmlLoader);
                     Parent load = (Parent) fxmlLoader.load();
-                    ((ButtonReportSideVBController)fxmlLoader.getController()).getPane(this.grid);
+                    ButtonReportSideVBController controller = ((ButtonReportSideVBController)fxmlLoader.getController());
+                    controller.getPane(this.grid);
+                    ImageView img = controller.getImage();
+                    navIco.put("report",img);
                     pane.getChildren().clear();
                     pane.getChildren().add(load);
                 }catch(Exception e){
@@ -193,6 +214,10 @@ public class MainViewController {
                     //System.out.println(fxmlLoader);
                     Parent load = (Parent) fxmlLoader.load();
                     ((ButtonOrderSideVBController)fxmlLoader.getController()).getPane(this.grid);
+                    ButtonOrderSideVBController controller = ((ButtonOrderSideVBController)fxmlLoader.getController());
+                    controller.getPane(this.grid);
+                    ImageView img = controller.getImage();
+                    navIco.put("order",img);
                     pane.getChildren().clear();
                     pane.getChildren().add(load);
                 }catch(Exception e){
@@ -214,13 +239,33 @@ public class MainViewController {
         setImgToBtn("restore-down-b.png",btnMaxImg);
         setImgToBtn("subtract-b.png",btnMinImg);
         setImgToBtn("close-b.png",btnClsImg);
+        setnavImgToBtn("dashboard-layout-b.png",navIco.get("db"));
+        setnavImgToBtn("shopping-cart-b.png",navIco.get("order"));
+        setnavImgToBtn("product-b.png",navIco.get("item"));
+        setnavImgToBtn("repair-b.png",navIco.get("repair"));
+        setnavImgToBtn("change-user-b.png",navIco.get("worker"));
+        setnavImgToBtn("reports-b.png",navIco.get("report"));
+        setnavImgToBtn("shopping-cart-b.png",navIco.get("order"));
     }
+
+    private void setnavImgToBtn(String name, ImageView img) {
+        Image image = new Image("com/codercrope/mobileinventrymanagement/assets/buttons/"+name);
+        img.setImage(image);
+    }
+
     private void setDarkMode(){
         StyleController.setLight(parent);
         setImgToBtn("lightmode.png",modeSelector);
         setImgToBtn("restore-down-w.png",btnMaxImg);
         setImgToBtn("subtract-w.png",btnMinImg);
         setImgToBtn("close-w.png",btnClsImg);
+        setnavImgToBtn("dashboard-layout-w.png", navIco.get("db"));
+        setnavImgToBtn("shopping-cart-w.png",navIco.get("order"));
+        setnavImgToBtn("product-w.png",navIco.get("item"));
+        setnavImgToBtn("repair-w.png",navIco.get("repair"));
+        setnavImgToBtn("change-user-w.png",navIco.get("worker"));
+        setnavImgToBtn("reports-w.png",navIco.get("report"));
+        setnavImgToBtn("shopping-cart-w.png",navIco.get("order"));
     }
     @FXML
     void btnClsClickEvt(MouseEvent event) {

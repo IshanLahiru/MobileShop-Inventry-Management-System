@@ -24,9 +24,9 @@
             <Tooltip text="Dash Board" />
          </tooltip>
          <graphic>
-            <ImageView fitWidth="40.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="img" fitWidth="40.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../assets/buttons/dshboard-layout-b.png" />
+                  <Image url="@../../assets/buttons/dashboard-layout-b.png" />
                </image>
             </ImageView>
          </graphic>
