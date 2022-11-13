@@ -78,6 +78,8 @@ public class MainViewController {
 
     HashMap<String,ImageView> navIco = new HashMap<>();
 
+    HashMap<String,SideBarController> navIcoController = new HashMap<>();
+
     private Stage stage;
 
     public void getStage(Stage primaryStage){
@@ -118,6 +120,7 @@ public class MainViewController {
                     //System.out.println(fxmlLoader);
                     Parent load = (Parent) fxmlLoader.load();
                     ButtonDBSideVBController controller = ((ButtonDBSideVBController)fxmlLoader.getController());
+                    navIcoController.put("db",controller);
                     controller.getPane(this.grid);
                     ImageView img = controller.getImage();
                     navIco.put("db",img);
@@ -134,6 +137,7 @@ public class MainViewController {
                     //System.out.println(fxmlLoader);
                     Parent load = (Parent) fxmlLoader.load();
                     ButtonOrderSideVBController controller = ((ButtonOrderSideVBController)fxmlLoader.getController());
+                    navIcoController.put("order",controller);
                     controller.getPane(this.grid);
                     ImageView img = controller.getImage();
                     navIco.put("order",img);
@@ -150,6 +154,7 @@ public class MainViewController {
                     //System.out.println(fxmlLoader);
                     Parent load = (Parent) fxmlLoader.load();
                     ButtonItemSideVBController controller = ((ButtonItemSideVBController)fxmlLoader.getController());
+                    navIcoController.put("item",controller);
                     controller.getPane(this.grid);
                     ImageView img = controller.getImage();
                     navIco.put("item",img);
@@ -166,6 +171,7 @@ public class MainViewController {
                     //System.out.println(fxmlLoader);
                     Parent load = (Parent) fxmlLoader.load();
                     ButtonRepairSideVBController controller = ((ButtonRepairSideVBController)fxmlLoader.getController());
+                    navIcoController.put("repair",controller);
                     controller.getPane(this.grid);
                     ImageView img = controller.getImage();
                     navIco.put("repair",img);
@@ -182,6 +188,7 @@ public class MainViewController {
                     //System.out.println(fxmlLoader);
                     Parent load = (Parent) fxmlLoader.load();
                     ButtonWorkerSideVBController controller = ((ButtonWorkerSideVBController)fxmlLoader.getController());
+                    navIcoController.put("worker",controller);
                     controller.getPane(this.grid);
                     ImageView img = controller.getImage();
                     navIco.put("worker",img);
@@ -198,6 +205,7 @@ public class MainViewController {
                     //System.out.println(fxmlLoader);
                     Parent load = (Parent) fxmlLoader.load();
                     ButtonReportSideVBController controller = ((ButtonReportSideVBController)fxmlLoader.getController());
+                    navIcoController.put("report",controller);
                     controller.getPane(this.grid);
                     ImageView img = controller.getImage();
                     navIco.put("report",img);
@@ -215,6 +223,7 @@ public class MainViewController {
                     Parent load = (Parent) fxmlLoader.load();
                     ((ButtonOrderSideVBController)fxmlLoader.getController()).getPane(this.grid);
                     ButtonOrderSideVBController controller = ((ButtonOrderSideVBController)fxmlLoader.getController());
+                    navIcoController.put("orders",controller);
                     controller.getPane(this.grid);
                     ImageView img = controller.getImage();
                     navIco.put("order",img);

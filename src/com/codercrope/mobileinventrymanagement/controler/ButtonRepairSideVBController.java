@@ -9,7 +9,7 @@ import javafx.scene.layout.GridPane;
 
 import java.net.URL;
 
-public class ButtonRepairSideVBController {
+public class ButtonRepairSideVBController implements SideBarController {
     public ImageView img;
     private GridPane pane;
     @FXML
@@ -31,10 +31,12 @@ public class ButtonRepairSideVBController {
         }
     }
 
+    @Override
     public void getPane(GridPane pane) {
         this.pane = pane;
     }
 
+    @Override
     public ImageView getImage() {
         return this.img;
     }
