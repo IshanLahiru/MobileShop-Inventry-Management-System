@@ -20,6 +20,7 @@ public class AppInitializer extends Application {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("view/LoginView.fxml"));
             Parent root = (Parent)loader.load();
             LoginViewController controller = (LoginViewController) loader.getController();
+            primaryStage.setResizable(false);
             primaryStage.setScene(new Scene(root));
             primaryStage.setTitle("");
             primaryStage.show();

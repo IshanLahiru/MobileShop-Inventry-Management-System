@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS mobile_shop_SMS.administrative_dtl (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS mobile_shop_SMS.employee (
     employee_id VARCHAR(20) NOT NULL,
-    administrative_dtl_administrative_dtl_id VARCHAR(20) NOT NULL,
+    administrative_dtl_id VARCHAR(20) NOT NULL,
     full_name VARCHAR(45) NOT NULL,
     birthday DATE NOT NULL,
     address VARCHAR(45) NOT NULL,
@@ -42,9 +42,7 @@ CREATE TABLE IF NOT EXISTS mobile_shop_SMS.employee (
     email VARCHAR(45) NOT NULL,
     employee_dtl JSON NULL,
     PRIMARY KEY (employee_id),
-    INDEX fk_employee_administrative_dtl1_idx (administrative_dtl_administrative_dtl_id ASC) VISIBLE,
-    CONSTRAINT fk_employee_administrative_dtl1
-    FOREIGN KEY (administrative_dtl_administrative_dtl_id)
+    CONSTRAINT FOREIGN KEY (administrative_dtl_id)
     REFERENCES mobile_shop_SMS.administrative_dtl (administrative_dtl_id)
     ON DELETE CASCADE
     ON UPDATE CASCADE
