@@ -1,5 +1,6 @@
-package com.codercrope.mobileinventrymanagement.controler;
+package com.codercrope.mobileinventrymanagement.controler.btncontrollers;
 
+import com.codercrope.mobileinventrymanagement.controler.SideBarController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,13 +10,13 @@ import javafx.scene.layout.GridPane;
 
 import java.net.URL;
 
-public class ButtonReportSideVBController implements SideBarController{
+public class ButtonItemSideVBController implements SideBarController {
     public ImageView img;
     private GridPane pane;
     @FXML
     void btnClickEvent(MouseEvent event) {
         System.out.println("btn clicked");
-        setUi(pane ,"/com/codercrope/mobileinventrymanagement/view/ReportView.fxml");
+        setUi(pane ,"/com/codercrope/mobileinventrymanagement/view/ItemView.fxml");
 
     }
 

@@ -5,17 +5,12 @@ package com.codercrope.mobileinventrymanagement.util;
     @created 10/21/22 - 1:53 PM   
 */
 
-import com.codercrope.mobileinventrymanagement.controler.ButtonDBSideVBController;
-import com.codercrope.mobileinventrymanagement.controler.ButtonOrderSideVBController;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 
 public class Navigation {
     private static AnchorPane pane;
@@ -73,6 +68,9 @@ public class Navigation {
                 window.setTitle("Item Manage");
                 initUI("ItemForm.fxml");
                 break;
+            case WORKER:
+                window.setTitle("Dashboard");
+                initUI("DashboardForm.fxml");
             default:
                 new Alert(Alert.AlertType.ERROR, "UI Not Found!").show();
         }
