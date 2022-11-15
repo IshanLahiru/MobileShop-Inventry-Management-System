@@ -18,7 +18,7 @@ CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
 USE `mydb` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`batch`
+-- Table `mydb`.`Batch`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`batch` (
     `batch-id` VARCHAR(20) NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`administrative-dtl` (
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`employee`
+-- Table `mydb`.`Employee`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`employee` (
     `employee-id` VARCHAR(20) NOT NULL,
@@ -160,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`item` (
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`batch_has_item`
+-- Table `mydb`.`BatchHasItem`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`batch_has_item` (
     `batch_batch-id` VARCHAR(20) NOT NULL,

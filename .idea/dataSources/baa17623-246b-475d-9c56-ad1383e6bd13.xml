@@ -1511,7 +1511,7 @@ item_id</ColNames>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="395" parent="306" name="warrenty_warranty">
+    <column id="395" parent="306" name="warrenty_id">
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
@@ -1541,7 +1541,7 @@ item_id</ColNames>
       <Position>7</Position>
     </column>
     <foreign-key id="401" parent="306" name="fk_item_warrenty1">
-      <ColNames>warrenty_warranty</ColNames>
+      <ColNames>warrenty_id</ColNames>
       <OnDelete>cascade</OnDelete>
       <OnUpdate>cascade</OnUpdate>
       <RefColNames>warranty_id</RefColNames>
@@ -1553,7 +1553,7 @@ item_id</ColNames>
       <Unique>1</Unique>
     </index>
     <index id="403" parent="306" name="fk_item_warrenty1_idx">
-      <ColNames>warrenty_warranty</ColNames>
+      <ColNames>warrenty_id</ColNames>
       <Type>btree</Type>
     </index>
     <key id="404" parent="306" name="PRIMARY">

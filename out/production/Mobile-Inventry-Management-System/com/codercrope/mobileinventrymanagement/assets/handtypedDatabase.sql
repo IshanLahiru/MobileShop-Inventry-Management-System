@@ -9,7 +9,7 @@ CREATE SCHEMA IF NOT EXISTS mobile_shop_SMS DEFAULT CHARACTER SET utf8 ;
 USE mobile_shop_SMS ;
 
 -- -----------------------------------------------------
--- Table mobile_shop_SMS.batch
+-- Table mobile_shop_SMS.Batch
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS mobile_shop_SMS.batch (
     batch_id VARCHAR(20) NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS mobile_shop_SMS.administrative_dtl (
 
 
 -- -----------------------------------------------------
--- Table mobile_shop_SMS.employee
+-- Table mobile_shop_SMS.Employee
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS mobile_shop_SMS.employee (
     employee_id VARCHAR(20) NOT NULL,
@@ -149,7 +149,7 @@ CREATE TABLE IF NOT EXISTS mobile_shop_SMS.item (
 
 
 -- -----------------------------------------------------
--- Table mobile_shop_SMS.batch_has_item
+-- Table mobile_shop_SMS.BatchHasItem
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS mobile_shop_SMS.batch_has_item (
     batch_batch_id VARCHAR(20) NOT NULL,

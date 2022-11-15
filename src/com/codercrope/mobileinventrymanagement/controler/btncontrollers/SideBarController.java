@@ -1,4 +1,4 @@
-package com.codercrope.mobileinventrymanagement.controler;
+package com.codercrope.mobileinventrymanagement.controler.btncontrollers;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
