@@ -16,122 +16,161 @@
 
 <GridPane fx:id="pane1" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
-    <ColumnConstraints maxWidth="19.0" minWidth="19.0" prefWidth="19.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="19.0" minWidth="19.0" prefWidth="19.0" />
   </columnConstraints>
   <rowConstraints>
-      <RowConstraints maxHeight="19.0" minHeight="19.0" prefHeight="19.0" vgrow="SOMETIMES" />
     <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="19.0" minHeight="19.0" prefHeight="19.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="483.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="19.0" minHeight="19.0" prefHeight="19.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <GridPane GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="2" />
+      <GridPane>
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="729.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="0.0" prefWidth="27.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="115.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="19.0" minWidth="19.0" prefWidth="19.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="19.0" minWidth="19.0" prefWidth="19.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="550.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="19.0" minHeight="19.0" prefHeight="19.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="223.0" minHeight="10.0" prefHeight="152.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="223.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="569.0" minHeight="0.0" prefHeight="544.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="19.0" minHeight="19.0" prefHeight="19.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TableView prefHeight="483.0" prefWidth="699.0">
-              <columns>
-                <TableColumn maxWidth="5.0" minWidth="0.0" prefWidth="0.0" text="C1" />
-                <TableColumn prefWidth="365.0" text="C2" />
-                  <TableColumn prefWidth="195.0" text="C2" />
-                  <TableColumn prefWidth="505.0" text="C2" />
-              </columns>
-            </TableView>
-            <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="1" />
-            <GridPane GridPane.columnIndex="2">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints maxHeight="284.0" minHeight="10.0" prefHeight="284.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="0.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="199.0" minHeight="10.0" prefHeight="189.0" vgrow="SOMETIMES" />
-              </rowConstraints>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="1" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <GridPane prefHeight="190.0" prefWidth="890.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="453.0" minWidth="10.0" prefWidth="386.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="681.0" minWidth="10.0" prefWidth="656.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="138.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="138.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="105.0" minHeight="0.0" prefHeight="11.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="131.0" minHeight="10.0" prefHeight="131.0" vgrow="SOMETIMES" />
+               </rowConstraints>
                <children>
-                  <ListView />
-                  <AnchorPane GridPane.rowIndex="2">
+                  <HBox GridPane.rowIndex="1">
                      <children>
-                        <Label layoutX="14.0" layoutY="14.0" text="Sub Total" AnchorPane.leftAnchor="14.0">
+                        <Label prefHeight="21.0" prefWidth="62.0" />
+                        <TextField prefHeight="41.0" prefWidth="388.0" promptText="Search...">
                            <font>
-                              <Font name="System Bold" size="18.0" />
+                              <Font size="18.0" />
                            </font>
-                        </Label>
-                        <Label layoutX="20.0" layoutY="39.0" prefHeight="21.0" prefWidth="44.0" text="Total" />
-                        <Label layoutX="20.0" layoutY="60.0" prefHeight="21.0" prefWidth="70.0" text="Discounts" />
-                        <Separator layoutX="13.0" layoutY="120.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0" />
-                        <Label layoutX="13.0" layoutY="124.0" text="Total">
-                           <font>
-                              <Font name="System Bold" size="26.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="75.0" layoutY="152.0" text="00000" AnchorPane.rightAnchor="15.0" />
-                        <Label layoutX="136.0" layoutY="60.0" text="0000" AnchorPane.rightAnchor="15.0" />
-                        <Label layoutX="137.0" layoutY="39.0" text="0000" AnchorPane.rightAnchor="15.0" />
+                        </TextField>
                      </children>
-                  </AnchorPane>
-                  <AnchorPane prefHeight="17.0" prefWidth="130.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="1">
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
-                        <Separator AnchorPane.bottomAnchor="3.5" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="3.5" />
+                        <Label prefHeight="51.0" prefWidth="16.0" />
+                        <TextField prefHeight="41.0" prefWidth="144.0" promptText="Qty...">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                        <Label prefHeight="51.0" prefWidth="16.0" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="113.0" text="Add-&gt;(Enter)" />
+                        <Label prefHeight="51.0" prefWidth="16.0" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="113.0" text="Cancel-&gt;(Esc)" />
+                     </children>
+                  </HBox>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+                     <children>
+                        <Label layoutX="44.0" layoutY="14.0" text="Item name" />
+                        <Label layoutX="44.0" layoutY="42.0" text="Qty on hand" />
+                        <Label layoutX="289.0" layoutY="14.0" text="Item name" />
+                        <Label layoutX="289.0" layoutY="53.0" text="Item name" />
+                        <Label layoutX="272.0" layoutY="86.0" text="Item name" />
+                        <Label layoutX="142.0" layoutY="75.0" text="Item name" />
                      </children>
                   </AnchorPane>
                </children>
             </GridPane>
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="3">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="729.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="550.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <TableView prefHeight="474.0" prefWidth="725.0">
+                    <columns>
+                      <TableColumn maxWidth="5.0" minWidth="0.0" prefWidth="0.0" text="C1" />
+                      <TableColumn prefWidth="365.0" text="C2" />
+                        <TableColumn prefWidth="195.0" text="C2" />
+                        <TableColumn prefWidth="505.0" text="C2" />
+                    </columns>
+                  </TableView>
+               </children>
+            </GridPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="2" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="1" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="2" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="3" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="4" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="2" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="1" />
-      <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="3" />
-      <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="2" />
-      <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-      <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-      <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-      <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-      <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="4" />
-      <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-      <GridPane prefHeight="199.0" prefWidth="974.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <GridPane GridPane.columnIndex="1">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="453.0" minWidth="10.0" prefWidth="453.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="681.0" minWidth="10.0" prefWidth="589.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints maxHeight="138.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="138.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="105.0" minHeight="0.0" prefHeight="11.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="131.0" minHeight="10.0" prefHeight="131.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="19.0" minHeight="19.0" prefHeight="19.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="539.0" minHeight="10.0" prefHeight="369.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="19.0" minHeight="19.0" prefHeight="19.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="280.0" minHeight="10.0" prefHeight="261.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="199.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="19.0" minHeight="19.0" prefHeight="19.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <HBox GridPane.rowIndex="1">
+            <ListView prefHeight="364.0" prefWidth="169.0" GridPane.rowIndex="1" />
+            <AnchorPane GridPane.rowIndex="3">
                <children>
-                  <Label prefHeight="21.0" prefWidth="62.0" />
-                  <TextField prefHeight="41.0" prefWidth="328.0" text="Search..." />
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <children>
-                  <TextField prefHeight="41.0" prefWidth="144.0" promptText="Qty..." />
-                  <Label prefHeight="21.0" prefWidth="120.0" />
-                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="113.0" text="Add-&gt;(Enter)" />
-               </children>
-            </HBox>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
-               <children>
-                  <Label layoutX="44.0" layoutY="14.0" text="Item name" />
-                  <Label layoutX="44.0" layoutY="42.0" text="Qty on hand" />
+                  <Label layoutX="12.0" layoutY="3.0" text="Sub Total" AnchorPane.leftAnchor="12.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="20.0" layoutY="27.0" prefHeight="21.0" prefWidth="44.0" text="Total" />
+                  <Label layoutX="20.0" layoutY="48.0" prefHeight="21.0" prefWidth="70.0" text="Discounts" />
+                  <Separator layoutX="13.0" layoutY="78.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0" />
+                  <Label layoutX="13.0" layoutY="77.0" text="Total">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="106.0" layoutY="105.0" text="Rs. 00000" AnchorPane.rightAnchor="15.0">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="118.0" layoutY="48.0" text="Rs. 0000" AnchorPane.rightAnchor="15.0" />
+                  <Label layoutX="118.0" layoutY="27.0" text="Rs. 0000" AnchorPane.rightAnchor="15.0" />
                </children>
             </AnchorPane>
+            <AnchorPane prefHeight="17.0" prefWidth="130.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="2">
+               <children>
+                  <Separator AnchorPane.bottomAnchor="3.5" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="3.5" />
+               </children>
+            </AnchorPane>
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="46.0" prefWidth="116.0" text="Pay" GridPane.rowIndex="4">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" />
+            <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="5" />
          </children>
       </GridPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" />
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="1" />
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="2" />
    </children>
 </GridPane>
