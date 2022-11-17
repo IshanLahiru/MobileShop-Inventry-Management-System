@@ -1,10 +1,8 @@
 package com.codercrope.mobileinventrymanagement.controler;
 
 import com.codercrope.mobileinventrymanagement.controler.btncontrollers.*;
-import com.codercrope.mobileinventrymanagement.util.NavBtn;
 import com.codercrope.mobileinventrymanagement.util.SetNavBtn;
 import com.codercrope.mobileinventrymanagement.util.StyleController;
-import com.codercrope.mobileinventrymanagement.util.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -84,7 +82,7 @@ public class MainViewController {
     @FXML
     private GridPane grid;
 
-    HashMap<String,ImageView> navIco = new HashMap<>();
+
 
     HashMap<String,SideBarController> navIcoController = new HashMap<>();
 
@@ -258,13 +256,13 @@ public class MainViewController {
         setImgToBtn("restore-down-b.png",btnMaxImg);
         setImgToBtn("subtract-b.png",btnMinImg);
         setImgToBtn("close-b.png",btnClsImg);
-        setnavImgToBtn("dashboard-layout-b.png",navIco.get("db"));
-        setnavImgToBtn("shopping-cart-b.png",navIco.get("order"));
-        setnavImgToBtn("product-b.png",navIco.get("item"));
-        setnavImgToBtn("repair-b.png",navIco.get("repair"));
-        setnavImgToBtn("change-user-b.png",navIco.get("worker"));
-        setnavImgToBtn("reports-b.png",navIco.get("report"));
-        setnavImgToBtn("shopping-cart-b.png",navIco.get("order"));
+        setnavImgToBtn("dashboard-layout-b.png",SetNavBtn.navIco.get("db"));
+        setnavImgToBtn("shopping-cart-b.png",SetNavBtn.navIco.get("order"));
+        setnavImgToBtn("product-b.png",SetNavBtn.navIco.get("item"));
+        setnavImgToBtn("repair-b.png",SetNavBtn.navIco.get("repair"));
+        setnavImgToBtn("change-user-b.png",SetNavBtn.navIco.get("worker"));
+        setnavImgToBtn("reports-b.png",SetNavBtn.navIco.get("report"));
+        setnavImgToBtn("shopping-cart-b.png",SetNavBtn.navIco.get("order"));
     }
 
     private void setnavImgToBtn(String name, ImageView img) {
@@ -278,13 +276,13 @@ public class MainViewController {
         setImgToBtn("restore-down-w.png",btnMaxImg);
         setImgToBtn("subtract-w.png",btnMinImg);
         setImgToBtn("close-w.png",btnClsImg);
-        setnavImgToBtn("dashboard-layout-w.png", navIco.get("db"));
-        setnavImgToBtn("shopping-cart-w.png",navIco.get("order"));
-        setnavImgToBtn("product-w.png",navIco.get("item"));
-        setnavImgToBtn("repair-w.png",navIco.get("repair"));
-        setnavImgToBtn("change-user-w.png",navIco.get("worker"));
-        setnavImgToBtn("reports-w.png",navIco.get("report"));
-        setnavImgToBtn("shopping-cart-w.png",navIco.get("order"));
+        setnavImgToBtn("dashboard-layout-w.png", SetNavBtn.navIco.get("db"));
+        setnavImgToBtn("shopping-cart-w.png",SetNavBtn.navIco.get("order"));
+        setnavImgToBtn("product-w.png",SetNavBtn.navIco.get("item"));
+        setnavImgToBtn("repair-w.png",SetNavBtn.navIco.get("repair"));
+        setnavImgToBtn("change-user-w.png",SetNavBtn.navIco.get("worker"));
+        setnavImgToBtn("reports-w.png",SetNavBtn.navIco.get("report"));
+        setnavImgToBtn("shopping-cart-w.png",SetNavBtn.navIco.get("order"));
     }
     @FXML
     void btnClsClickEvt(MouseEvent event) {
@@ -308,7 +306,7 @@ public class MainViewController {
     }
 
     public void btnLogOutOnAction(ActionEvent actionEvent) {
-        User.logout();
+       // User.logout();
         StageController.stage.hide();
         StageController.login.show();
     }

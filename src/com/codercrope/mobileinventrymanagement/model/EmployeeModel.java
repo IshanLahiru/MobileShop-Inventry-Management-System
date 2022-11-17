@@ -1,5 +1,6 @@
 package com.codercrope.mobileinventrymanagement.model;
 
+import com.codercrope.mobileinventrymanagement.to.AdministrativeDtl;
 import com.codercrope.mobileinventrymanagement.to.Employee;
 import com.codercrope.mobileinventrymanagement.to.UserEPVal;
 import com.codercrope.mobileinventrymanagement.util.CrudUtil;
@@ -7,6 +8,7 @@ import com.codercrope.mobileinventrymanagement.util.CrudUtil;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLOutput;
+import java.util.Objects;
 
 public class EmployeeModel {
 
@@ -26,14 +28,13 @@ public class EmployeeModel {
     }
 
 
-
     public static UserEPVal getPwd(String email) throws SQLException, ClassNotFoundException {
         String sql = "SELECT email,pwd FROM employee WHERE email = ?";
         ResultSet result = CrudUtil.execute(sql, email);
 
         if (result.next()) {
             //System.out.println(result.getString(1));
-           // System.out.println(result.getString(2));
+            // System.out.println(result.getString(2));
             return new UserEPVal(
                     result.getString(1),
                     result.getString(2)
@@ -44,12 +45,14 @@ public class EmployeeModel {
 
     public static Employee getUser(String email, String pwd) throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM employee WHERE email = ? AND pwd = ?";
-        ResultSet result = CrudUtil.execute(sql, email , pwd);
+        ResultSet result = CrudUtil.execute(sql, email, pwd);
 
         if (result.next()) {
+            System.out.println(result.getString(2));
+            String admin = AdministrativeDtlModel.getModel(result.getString(2)).getAdministrativeStats();
             return new Employee(
                     result.getString(1),
-                    result.getString(2),
+                    admin,
                     result.getString(3),
                     result.getString(4),
                     result.getString(5),

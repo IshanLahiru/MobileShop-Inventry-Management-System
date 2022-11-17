@@ -10,7 +10,9 @@ public class Employee {
     private String email;
     private String employeeDtl;
 
-    public Employee(Employee emp){}
+    public Employee(Employee emp){
+
+    }
     public Employee(String employeeId, String administrativeDtlId, String fullName, String birthday, String address, String pwd, String email, String employeeDtl) {
         this.employeeId = employeeId;
         this.administrativeDtlId = administrativeDtlId;
@@ -31,7 +33,7 @@ public class Employee {
     }
 
     public String getAdministrativeDtlId() {
-        return administrativeDtlId;
+        return this.administrativeDtlId;
     }
 
     public void setAdministrativeDtlId(String administrativeDtlId) {
