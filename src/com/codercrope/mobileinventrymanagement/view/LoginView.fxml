@@ -21,9 +21,9 @@
           <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField promptText="Email...." />
-            <TextField promptText="Password...." GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="31.0" prefWidth="517.0" text="Log in" GridPane.rowIndex="4" />
+            <TextField fx:id="btnEmail" onAction="#btnEmailOnAction" promptText="Email...." />
+            <TextField fx:id="btnPwd" onAction="#btnPwdOnAction" promptText="Password...." GridPane.rowIndex="2" />
+            <Button fx:id="btnLogIn" mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="31.0" prefWidth="517.0" text="Log in" GridPane.rowIndex="4" />
          </children>
       </GridPane>
    </children>

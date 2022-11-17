@@ -17,7 +17,7 @@
     -fx-background-radius: 100;
 }
 .exit-btn{
-    -fx-background-color: #C5291B;
+    -fx-background-color: transparent;
 }
 .exit-btn:hover{
     -fx-background-color: #C5291B;

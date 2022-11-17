@@ -1,6 +1,7 @@
 package com.codercrope.mobileinventrymanagement;
 
 import com.codercrope.mobileinventrymanagement.controler.LoginViewController;
+import com.codercrope.mobileinventrymanagement.controler.StageController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,6 +24,7 @@ public class AppInitializer extends Application {
             primaryStage.setResizable(false);
             primaryStage.setScene(new Scene(root));
             primaryStage.setTitle("");
+            StageController.login=primaryStage;
             primaryStage.show();
             controller.getStage(primaryStage);
     }

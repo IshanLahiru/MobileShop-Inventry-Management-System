@@ -1,7 +1,10 @@
 package com.codercrope.mobileinventrymanagement.controler;
 
 import com.codercrope.mobileinventrymanagement.controler.btncontrollers.*;
+import com.codercrope.mobileinventrymanagement.util.NavBtn;
+import com.codercrope.mobileinventrymanagement.util.SetNavBtn;
 import com.codercrope.mobileinventrymanagement.util.StyleController;
+import com.codercrope.mobileinventrymanagement.util.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,8 +24,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 
+import static com.codercrope.mobileinventrymanagement.util.NavBtn.*;
+
 public class MainViewController {
 
+    public Button btnLogOut;
+    public Tooltip modChazngerTTD1;
     @FXML
     private BorderPane parent;
 
@@ -89,15 +96,17 @@ public class MainViewController {
 
 
     public void initialize() throws IOException {
+        //SetNavBtn.setGrid(grid);
         //stage.close();
         //mainViewSideBar.getChildren().add(new Button("kamnal"));
         setUi(grid ,"/com/codercrope/mobileinventrymanagement/view/BillingView.fxml");
-        setBtn(sideBarBtn01 ,grid, "/com/codercrope/mobileinventrymanagement/view/btn/buttonDBSideVB.fxml","DB");
-        setBtn(sideBarBtn02 , grid, "/com/codercrope/mobileinventrymanagement/view/btn/buttonOrderSideVB.fxml","order");
-        setBtn(sideBarBtn03 , grid, "/com/codercrope/mobileinventrymanagement/view/btn/buttonItemSideVB.fxml","item");
-        setBtn(sideBarBtn04 , grid, "/com/codercrope/mobileinventrymanagement/view/btn/buttonRepairSideVB.fxml","repair");
-        setBtn(sideBarBtn05 , grid, "/com/codercrope/mobileinventrymanagement/view/btn/buttonWorkerSideVB.fxml","worker");
-        setBtn(sideBarBtn06 , grid, "/com/codercrope/mobileinventrymanagement/view/btn/buttonReportSideVB.fxml","report");
+        SetNavBtn.grid = grid;
+        SetNavBtn.setBtn(sideBarBtn01 , "/com/codercrope/mobileinventrymanagement/view/btn/buttonDBSideVB.fxml",DB);
+        SetNavBtn.setBtn(sideBarBtn02 , "/com/codercrope/mobileinventrymanagement/view/btn/buttonOrderSideVB.fxml",ORDER);
+        SetNavBtn.setBtn(sideBarBtn03 , "/com/codercrope/mobileinventrymanagement/view/btn/buttonItemSideVB.fxml",ITEM);
+        SetNavBtn.setBtn(sideBarBtn04 , "/com/codercrope/mobileinventrymanagement/view/btn/buttonRepairSideVB.fxml",REPAIR);
+        SetNavBtn.setBtn(sideBarBtn05 , "/com/codercrope/mobileinventrymanagement/view/btn/buttonWorkerSideVB.fxml",WORKER);
+        SetNavBtn.setBtn(sideBarBtn06 , "/com/codercrope/mobileinventrymanagement/view/btn/buttonReportSideVB.fxml",REPORT);
         modChangerTTD.setShowDelay(Duration.seconds(2));
     }
 
@@ -112,7 +121,7 @@ public class MainViewController {
             e.printStackTrace();
         }
     }
-    public void setBtn(GridPane pane , GridPane grid, String event, String type){
+    /*public void setBtn(GridPane pane , GridPane grid, String event, String type){
         switch(type){
             case "DB":
                 try {
@@ -235,7 +244,7 @@ public class MainViewController {
                 }break;
         }
 
-    }
+    }*/
 
     public void setImgToBtn(String name, ImageView img){
         Image image = new Image("com/codercrope/mobileinventrymanagement/assets/"+name);
@@ -298,4 +307,9 @@ public class MainViewController {
         }
     }
 
+    public void btnLogOutOnAction(ActionEvent actionEvent) {
+        User.logout();
+        StageController.stage.hide();
+        StageController.login.show();
+    }
 }
