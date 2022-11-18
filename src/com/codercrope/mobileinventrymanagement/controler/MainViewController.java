@@ -284,6 +284,7 @@ public class MainViewController {
         setImgToBtn("subtract-b.png",btnMinImg);
         setImgToBtn("close-b.png",btnClsImg);
         setnavImgToBtn("dashboard-layout-b.png",SetNavBtn.navIco.get("db"));
+        setnavImgToBtn("add-shopping-cart-b.png",SetNavBtn.navIco.get("billing"));
         setnavImgToBtn("shopping-cart-b.png",SetNavBtn.navIco.get("order"));
         setnavImgToBtn("product-b.png",SetNavBtn.navIco.get("item"));
         setnavImgToBtn("repair-b.png",SetNavBtn.navIco.get("repair"));
@@ -304,6 +305,7 @@ public class MainViewController {
         setImgToBtn("subtract-w.png",btnMinImg);
         setImgToBtn("close-w.png",btnClsImg);
         setnavImgToBtn("dashboard-layout-w.png", SetNavBtn.navIco.get("db"));
+        setnavImgToBtn("add-shopping-cart-w.png",SetNavBtn.navIco.get("billing"));
         setnavImgToBtn("shopping-cart-w.png",SetNavBtn.navIco.get("order"));
         setnavImgToBtn("product-w.png",SetNavBtn.navIco.get("item"));
         setnavImgToBtn("repair-w.png",SetNavBtn.navIco.get("repair"));

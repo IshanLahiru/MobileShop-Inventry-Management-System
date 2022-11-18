@@ -1,5 +1,6 @@
 package com.codercrope.mobileinventrymanagement.controler;
 
+import com.codercrope.mobileinventrymanagement.util.user.User;
 import com.codercrope.mobileinventrymanagement.util.user.validation.UserValidation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;

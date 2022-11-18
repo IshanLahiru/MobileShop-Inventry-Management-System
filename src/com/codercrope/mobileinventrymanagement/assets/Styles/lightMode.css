@@ -21,13 +21,15 @@
     -fx-background-color: #C5291B;
 }
 
+.regxBtn-wrong{
+    -fx-border-color: #C5291B;
+}
+
 .table-view{
     -fx-background-color: transparent;
 }
 
-.regxBtn-wrong{
-    -fx-border-color: #C5291B;
-}
+
 
 .table-view:focused{
     -fx-background-color: transparent;
