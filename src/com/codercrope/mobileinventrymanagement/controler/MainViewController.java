@@ -3,6 +3,7 @@ package com.codercrope.mobileinventrymanagement.controler;
 import com.codercrope.mobileinventrymanagement.controler.btncontrollers.*;
 import com.codercrope.mobileinventrymanagement.util.SetNavBtn;
 import com.codercrope.mobileinventrymanagement.util.StyleController;
+import com.codercrope.mobileinventrymanagement.util.user.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -97,14 +98,40 @@ public class MainViewController {
         //SetNavBtn.setGrid(grid);
         //stage.close();
         //mainViewSideBar.getChildren().add(new Button("kamnal"));
-        setUi(grid ,"/com/codercrope/mobileinventrymanagement/view/BillingView.fxml");
+        switch(User.user){
+            case "admin":
+                setUi(grid ,"/com/codercrope/mobileinventrymanagement/view/ReportView.fxml");
+                break;
+            case "worker":
+                setUi(grid ,"/com/codercrope/mobileinventrymanagement/view/BillingView.fxml");
+                break;
+            case "technician":
+                setUi(grid ,"/com/codercrope/mobileinventrymanagement/view/RepairView.fxml");
+
+        }
+        //setUi(grid ,"/com/codercrope/mobileinventrymanagement/view/BillingView.fxml");
         SetNavBtn.grid = grid;
-        SetNavBtn.setBtn(sideBarBtn01 , "/com/codercrope/mobileinventrymanagement/view/btn/buttonDBSideVB.fxml",DB);
-        SetNavBtn.setBtn(sideBarBtn02 , "/com/codercrope/mobileinventrymanagement/view/btn/buttonOrderSideVB.fxml",ORDER);
-        SetNavBtn.setBtn(sideBarBtn03 , "/com/codercrope/mobileinventrymanagement/view/btn/buttonItemSideVB.fxml",ITEM);
-        SetNavBtn.setBtn(sideBarBtn04 , "/com/codercrope/mobileinventrymanagement/view/btn/buttonRepairSideVB.fxml",REPAIR);
-        SetNavBtn.setBtn(sideBarBtn05 , "/com/codercrope/mobileinventrymanagement/view/btn/buttonWorkerSideVB.fxml",WORKER);
-        SetNavBtn.setBtn(sideBarBtn06 , "/com/codercrope/mobileinventrymanagement/view/btn/buttonReportSideVB.fxml",REPORT);
+        switch(User.user){
+            case "admin":
+                SetNavBtn.setBtn(sideBarBtn01 , "/com/codercrope/mobileinventrymanagement/view/btn/buttonDBSideVB.fxml",DB);
+                SetNavBtn.setBtn(sideBarBtn02 , "/com/codercrope/mobileinventrymanagement/view/btn/buttonBillingSideVB.fxml",BILLING);
+                SetNavBtn.setBtn(sideBarBtn03 , "/com/codercrope/mobileinventrymanagement/view/btn/buttonOrderSideVB.fxml",ORDER);
+                SetNavBtn.setBtn(sideBarBtn04 , "/com/codercrope/mobileinventrymanagement/view/btn/buttonItemSideVB.fxml",ITEM);
+                SetNavBtn.setBtn(sideBarBtn05 , "/com/codercrope/mobileinventrymanagement/view/btn/buttonRepairSideVB.fxml",REPAIR);
+                SetNavBtn.setBtn(sideBarBtn06 , "/com/codercrope/mobileinventrymanagement/view/btn/buttonWorkerSideVB.fxml",WORKER);
+                break;
+            case "worker":
+                SetNavBtn.setBtn(sideBarBtn01 , "/com/codercrope/mobileinventrymanagement/view/btn/buttonDBSideVB.fxml",DB);
+                SetNavBtn.setBtn(sideBarBtn02 , "/com/codercrope/mobileinventrymanagement/view/btn/buttonOrderSideVB.fxml",ORDER);
+                SetNavBtn.setBtn(sideBarBtn03 , "/com/codercrope/mobileinventrymanagement/view/btn/buttonItemSideVB.fxml",ITEM);
+                SetNavBtn.setBtn(sideBarBtn04 , "/com/codercrope/mobileinventrymanagement/view/btn/buttonRepairSideVB.fxml",REPAIR);
+                SetNavBtn.setBtn(sideBarBtn05 , "/com/codercrope/mobileinventrymanagement/view/btn/buttonReportSideVB.fxml",REPORT);
+                break;
+            case "technician":
+                SetNavBtn.setBtn(sideBarBtn01 , "/com/codercrope/mobileinventrymanagement/view/btn/buttonDBSideVB.fxml",DB);
+                break;
+        }
+
         modChangerTTD.setShowDelay(Duration.seconds(2));
     }
 
