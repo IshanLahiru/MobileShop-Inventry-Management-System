@@ -13,6 +13,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -34,11 +35,11 @@ public class BillingViewController {
     private ListView listViewBilling;
 
     public void initialize() throws SQLException, ClassNotFoundException {
-        tblItemId.setCellValueFactory(new PropertyValueFactory<MainBillingItemTM, String>("custId"));
-        tblItemName.setCellValueFactory(new PropertyValueFactory<MainBillingItemTM, String>("custName"));
-        tblMorInfo.setCellValueFactory(new PropertyValueFactory<MainBillingItemTM, String>("custAddress"));
-        tblOnStock.setCellValueFactory(new PropertyValueFactory<MainBillingItemTM, Double>("salary"));
-        tblMoreDtl.setCellValueFactory(new PropertyValueFactory<MainBillingItemTM, Button>("btn"));
+        tblItemId.setCellValueFactory(new PropertyValueFactory<MainBillingItemTM, String>("itemId"));
+        tblItemName.setCellValueFactory(new PropertyValueFactory<MainBillingItemTM, String>("itemName"));
+        tblMorInfo.setCellValueFactory(new PropertyValueFactory<MainBillingItemTM, String>("hahah"));
+        tblOnStock.setCellValueFactory(new PropertyValueFactory<MainBillingItemTM, Double>("itemPriceStock"));
+        tblMoreDtl.setCellValueFactory(new PropertyValueFactory<MainBillingItemTM, Button>("tem"));
 
         setData();
     }
@@ -56,17 +57,11 @@ public class BillingViewController {
         ObservableList<MainBillingItemTM> cust = FXCollections.observableArrayList();
         ArrayList<Item> items = ItemModel.getItems();
         for (Item ob : items) {
-            Button tem = new Button("Delete");
+            Button tem = new Button("  More Details  ");
             MainBillingItemTM temp = new MainBillingItemTM(ob.getItemId(), ob.getItemName(), "hahah", ob.getItemPriceStock(), tem);
             tem.setOnAction(e -> {
-                items.remove(ob);
-                try {
-                    setData();
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                } catch (ClassNotFoundException ex) {
-                    ex.printStackTrace();
-                }
+                Stage stage = new Stage();
+                stage.show();
             });
             cust.add(temp);
         }

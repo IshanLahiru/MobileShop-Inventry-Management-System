@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <GridPane fx:id="pane1" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.codercrope.mobileinventrymanagement.controler.orderViewController">
   <columnConstraints>
@@ -35,13 +38,25 @@
             <TableView prefHeight="483.0" prefWidth="699.0">
               <columns>
                 <TableColumn maxWidth="5.0" minWidth="0.0" prefWidth="0.0" text="C1" />
-                <TableColumn prefWidth="365.0" text="C2" />
-                  <TableColumn prefWidth="130.0" text="C2" />
-                  <TableColumn prefWidth="233.0" text="C2" />
+                <TableColumn prefWidth="148.0" text="Order Id" />
+                  <TableColumn prefWidth="107.0" text="PaymentType" />
+                  <TableColumn minWidth="0.0" prefWidth="128.0" text="Employee Id" />
+                  <TableColumn prefWidth="107.0" text="Date,Time" />
+                  <TableColumn prefWidth="107.0" text="payment Stats" />
+                  <TableColumn prefWidth="107.0" text="More Details" />
               </columns>
             </TableView>
-            <AnchorPane prefHeight="483.0" prefWidth="169.0" GridPane.columnIndex="2" />
             <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="1" />
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
+               <children>
+                  <Label contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="27.0" prefWidth="582.0" text="  Items" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ListView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="467.0" prefWidth="115.0" />
+               </children>
+            </VBox>
          </children>
       </GridPane>
       <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -54,9 +69,15 @@
       <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="1" GridPane.rowIndex="4" />
       <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="4" />
       <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-      <Label text="order View" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="1" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="2" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="primary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <children>
+            <Label layoutX="48.0" layoutY="43.0" text="Label" />
+            <Label layoutX="48.0" layoutY="79.0" text="Label" />
+            <Label layoutX="48.0" layoutY="115.0" text="Label" />
+         </children>
+      </AnchorPane>
    </children>
 </GridPane>

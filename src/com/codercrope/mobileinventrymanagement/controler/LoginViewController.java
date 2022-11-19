@@ -1,5 +1,6 @@
 package com.codercrope.mobileinventrymanagement.controler;
 
+import com.codercrope.mobileinventrymanagement.model.EmployeeModel;
 import com.codercrope.mobileinventrymanagement.util.user.User;
 import com.codercrope.mobileinventrymanagement.util.user.validation.UserValidation;
 import javafx.event.ActionEvent;
@@ -23,7 +24,8 @@ public class LoginViewController {
         this.stage = primaryStage;
     }
     public void initialize(){
-        btnEmail.setStyle("-fx-border-color:#C5291B;");
+        btnEmail.setStyle("-fx-border-color:#C5291B;"
+        );
     }
    /* public void setUi() throws IOException {
         Stage stag = new Stage();
@@ -43,7 +45,9 @@ public class LoginViewController {
         //User.initUser(UserValidation.getUser(btnEmail.getText(),btnPwd.getText()));
         //System.out.println(User.getUser().getAdministrativeDtlId());
         //System.out.println(val);
+
         if (val){
+            User.initUser(EmployeeModel.getUser(btnEmail.getText(),btnPwd.getText()));
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/MainView.fxml"));
                     Parent root1 = (Parent) fxmlLoader.load();

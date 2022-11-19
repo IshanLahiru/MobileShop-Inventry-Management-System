@@ -2,7 +2,7 @@ package com.codercrope.mobileinventrymanagement.to;
 
 public class Employee {
     private String employeeId;
-    private String administrativeDtlId;
+    private AdministrativeDtl administrativeDtlId;
     private String fullName;
     private String birthday;
     private String address;
@@ -13,7 +13,7 @@ public class Employee {
     public Employee(Employee emp){
 
     }
-    public Employee(String employeeId, String administrativeDtlId, String fullName, String birthday, String address, String pwd, String email, String employeeDtl) {
+    public Employee(String employeeId, AdministrativeDtl administrativeDtlId, String fullName, String birthday, String address, String pwd, String email, String employeeDtl) {
         this.employeeId = employeeId;
         this.administrativeDtlId = administrativeDtlId;
         this.fullName = fullName;
@@ -32,11 +32,11 @@ public class Employee {
         this.employeeId = employeeId;
     }
 
-    public String getAdministrativeDtlId() {
+    public AdministrativeDtl getAdministrativeDtlId() {
         return this.administrativeDtlId;
     }
 
-    public void setAdministrativeDtlId(String administrativeDtlId) {
+    public void setAdministrativeDtlId(AdministrativeDtl administrativeDtlId) {
         this.administrativeDtlId = administrativeDtlId;
     }
 

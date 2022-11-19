@@ -3,10 +3,10 @@ package com.codercrope.mobileinventrymanagement.util.user;
 import com.codercrope.mobileinventrymanagement.to.Employee;
 
 public class User {
-    public static String user="admin";
+    public static String user;
 
     public static void initUser(Employee usr) {
-        String u = usr.getAdministrativeDtlId();
+        String u = usr.getAdministrativeDtlId().getAdministrativeDtlId();
         switch (u){
             case"D001":
                 user = "admin";

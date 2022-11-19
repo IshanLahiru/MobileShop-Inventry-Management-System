@@ -1,6 +1,7 @@
 package com.codercrope.mobileinventrymanagement.to;
 
 public class BatchHasItem {
-    private String batchId;
-    private String itemId;
+    private Batch batchId;
+    private Item itemId;
+    private int itemqty;
 }

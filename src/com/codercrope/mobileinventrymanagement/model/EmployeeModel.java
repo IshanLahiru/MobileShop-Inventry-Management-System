@@ -46,13 +46,12 @@ public class EmployeeModel {
     public static Employee getUser(String email, String pwd) throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM employee WHERE email = ? AND pwd = ?";
         ResultSet result = CrudUtil.execute(sql, email, pwd);
-
+        Employee admin = null;
         if (result.next()) {
             System.out.println(result.getString(2));
-            String admin = AdministrativeDtlModel.getModel(result.getString(2)).getAdministrativeStats();
-            return new Employee(
+            admin = new Employee(
                     result.getString(1),
-                    admin,
+                    new AdministrativeDtl(AdministrativeDtlModel.getModel(result.getString(2))),
                     result.getString(3),
                     result.getString(4),
                     result.getString(5),
@@ -61,6 +60,6 @@ public class EmployeeModel {
                     result.getString(8)
             );
         }
-        return null;
+        return admin;
     }
 }

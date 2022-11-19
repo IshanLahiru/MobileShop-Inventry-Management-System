@@ -23,13 +23,14 @@ public class AdministrativeDtlModel {
     public static AdministrativeDtl getModel(String string) throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM administrative_dtl WHERE administrative_dtl_id = ? ";
         ResultSet result = CrudUtil.execute(sql, string);
+        AdministrativeDtl admin = null;
 
         if (result.next()) {
-            return new AdministrativeDtl(
+            admin = new AdministrativeDtl(
                     result.getString(1),
                     result.getString(2)
             );
         }
-        return null;
+        return admin;
     }
 }
