@@ -5,12 +5,11 @@ import com.codercrope.mobileinventrymanagement.model.ItemModel;
 import com.codercrope.mobileinventrymanagement.to.Item;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -25,6 +24,7 @@ public class BillingViewController {
     public TableColumn tblMorInfo;
     public TableColumn tblOnStock;
     public TableColumn tblMoreDtl;
+    public TextField txtSearch;
     @FXML
     private GridPane pane1;
 
@@ -33,6 +33,8 @@ public class BillingViewController {
 
     @FXML
     private ListView listViewBilling;
+
+    ObservableList<MainBillingItemTM> cust = FXCollections.observableArrayList();
 
     public void initialize() throws SQLException, ClassNotFoundException {
         tblItemId.setCellValueFactory(new PropertyValueFactory<MainBillingItemTM, String>("itemId"));
@@ -51,14 +53,32 @@ public class BillingViewController {
 
     @FXML
     void tblBillingViewMouseClickEvent(MouseEvent event) {
-
+        if(tblBillingView.getSelectionModel().getSelectedItem()!=null) {
+            MainBillingItemTM temp = (MainBillingItemTM) tblBillingView.getSelectionModel().getSelectedItem();
+            /*txtCustId.setText(temp.getCustId());
+            txtCustName.setText(temp.getCustName());
+            txtCustAddress.setText(temp.getCustAddress());
+            txtCustSallery.setText(String.valueOf(temp.getSalary()));*/
+        }
     }
     public void setData() throws SQLException, ClassNotFoundException {
-        ObservableList<MainBillingItemTM> cust = FXCollections.observableArrayList();
         ArrayList<Item> items = ItemModel.getItems();
         for (Item ob : items) {
             Button tem = new Button("  More Details  ");
-            MainBillingItemTM temp = new MainBillingItemTM(ob.getItemId(), ob.getItemName(), "hahah", ob.getItemPriceStock(), tem);
+            MainBillingItemTM temp = new MainBillingItemTM(ob,ob.getItemId(), ob.getItemName(), "hahah", ob.getItemPriceStock(), tem);
+            tem.setOnAction(e -> {
+                Stage stage = new Stage();
+                stage.show();
+            });
+            cust.add(temp);
+        }
+        tblBillingView.setItems(cust);
+    }
+    public void setTxtSearchData(ArrayList<Item> item) throws SQLException, ClassNotFoundException {
+        //ObservableList<MainBillingItemTM> cust = FXCollections.observableArrayList();
+        for (Item ob : item) {
+            Button tem = new Button("  More Details  ");
+            MainBillingItemTM temp = new MainBillingItemTM(ob, ob.getItemId(), ob.getItemName(), "hahah", ob.getItemPriceStock(), tem);
             tem.setOnAction(e -> {
                 Stage stage = new Stage();
                 stage.show();
@@ -68,4 +88,11 @@ public class BillingViewController {
         tblBillingView.setItems(cust);
     }
 
+    public void txtSearchOnAction(ActionEvent actionEvent) {
+    }
+
+    public void txtSearchKeyPressedOnAction(KeyEvent keyEvent) throws SQLException, ClassNotFoundException {
+        ArrayList<Item> items = ItemModel.getSearchedItems((txtSearch.getText()+"%"));
+        setTxtSearchData(items);
+    }
 }

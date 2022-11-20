@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class Item {
     private String itemId;
-    private String warrentyId;
+    private Warranty warrentyId;
     private String itemName;
     private String itemAddedDateTime;
     private double itemPriceStock;
@@ -12,7 +12,7 @@ public class Item {
     private String itemDtl;
 
 
-    public Item(String itemId, String warrentyId,
+    public Item(String itemId, Warranty warrentyId,
                 String itemName, String itemAddedDateTime,
                 double itemPriceStock , int profitPercentage, String itemDtl) {
         this.itemId = itemId;
@@ -32,11 +32,11 @@ public class Item {
         this.itemId = itemId;
     }
 
-    public String getWarrentyId() {
+    public Warranty getWarrentyId() {
         return warrentyId;
     }
 
-    public void setWarrentyId(String warrentyId) {
+    public void setWarrentyId(Warranty warrentyId) {
         this.warrentyId = warrentyId;
     }
 

@@ -1,20 +1,31 @@
 package com.codercrope.mobileinventrymanagement.controler.tmlist;
 
+import com.codercrope.mobileinventrymanagement.to.Item;
 import javafx.scene.control.Button;
 
 public class MainBillingItemTM {
+    private Item ob;
     private String itemId;
     private String itemName;
     private String hahah;
     private double itemPriceStock;
     private Button tem;
 
-    public MainBillingItemTM(String itemId, String itemName, String hahah, double itemPriceStock, Button tem) {
+    public MainBillingItemTM(Item ob, String itemId, String itemName, String hahah, double itemPriceStock, Button tem) {
+        this.ob = ob;
         this.itemId = itemId;
         this.itemName = itemName;
         this.hahah = hahah;
         this.itemPriceStock = itemPriceStock;
         this.tem = tem;
+    }
+
+    public Item getOb() {
+        return ob;
+    }
+
+    public void setOb(Item ob) {
+        this.ob = ob;
     }
 
     public String getItemId() {
