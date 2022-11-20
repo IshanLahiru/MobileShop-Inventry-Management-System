@@ -31,12 +31,16 @@
           <RowConstraints minHeight="10.0" prefHeight="550.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TableView prefHeight="483.0" prefWidth="699.0">
+            <TableView fx:id="tblEmployee" prefHeight="483.0" prefWidth="699.0">
               <columns>
                 <TableColumn maxWidth="5.0" minWidth="0.0" prefWidth="0.0" text="C1" />
-                <TableColumn prefWidth="365.0" text="C2" />
-                  <TableColumn prefWidth="130.0" text="C2" />
-                  <TableColumn prefWidth="233.0" text="C2" />
+                <TableColumn fx:id="tblEmployeeId" prefWidth="122.0" text="Employee ID" />
+                  <TableColumn fx:id="tblEmployeePost" prefWidth="98.0" text="Post" />
+                  <TableColumn fx:id="tblEmployeeFName" prefWidth="122.0" text="Full name" />
+                  <TableColumn fx:id="tblEmployeeBDay" prefWidth="122.0" text="Birthday" />
+                  <TableColumn fx:id="tblEmployeeAddress" prefWidth="86.0" text="Address" />
+                  <TableColumn fx:id="tblEmployeeEmail" prefWidth="114.0" text="Email" />
+                  <TableColumn fx:id="tblEmployeeMoreDtl" prefWidth="114.0" text="More Details" />
               </columns>
             </TableView>
             <AnchorPane prefHeight="483.0" prefWidth="169.0" GridPane.columnIndex="2" />
