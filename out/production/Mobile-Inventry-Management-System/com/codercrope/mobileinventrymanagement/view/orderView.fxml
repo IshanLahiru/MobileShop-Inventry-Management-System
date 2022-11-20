@@ -35,15 +35,15 @@
           <RowConstraints minHeight="10.0" prefHeight="550.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TableView prefHeight="483.0" prefWidth="699.0">
+            <TableView fx:id="tblItem" prefHeight="483.0" prefWidth="699.0">
               <columns>
                 <TableColumn maxWidth="5.0" minWidth="0.0" prefWidth="0.0" text="C1" />
-                <TableColumn prefWidth="148.0" text="Order Id" />
-                  <TableColumn prefWidth="107.0" text="PaymentType" />
-                  <TableColumn minWidth="0.0" prefWidth="128.0" text="Employee Id" />
-                  <TableColumn prefWidth="107.0" text="Date,Time" />
-                  <TableColumn prefWidth="107.0" text="payment Stats" />
-                  <TableColumn prefWidth="107.0" text="More Details" />
+                <TableColumn fx:id="tblOrderId" prefWidth="148.0" text="Order Id" />
+                  <TableColumn fx:id="tblPaymentType" prefWidth="107.0" text="PaymentType" />
+                  <TableColumn fx:id="tblEmployeeId" minWidth="0.0" prefWidth="128.0" text="Employee Id" />
+                  <TableColumn fx:id="tblDateTime" prefWidth="107.0" text="Date,Time" />
+                  <TableColumn fx:id="tblPaymentStats" prefWidth="107.0" text="payment Stats" />
+                  <TableColumn fx:id="tblMoreDtl" prefWidth="107.0" text="More Details" />
               </columns>
             </TableView>
             <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="1" />

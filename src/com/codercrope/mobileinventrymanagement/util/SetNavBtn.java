@@ -21,7 +21,7 @@ public class SetNavBtn {
     public static HashMap<String, SideBarController> navIcoController = new HashMap<>();
 
     public static FXMLLoader initBtn(String event, GridPane pane) throws IOException {
-        URL resourse = SetNavBtn.class.getResource(event);
+        URL resourse = SetNavBtn.class.getResource("/com/codercrope/mobileinventrymanagement/view/btn/"+event);
         FXMLLoader fxmlLoader = new FXMLLoader(resourse);
         //System.out.println(fxmlLoader);
         Parent load = (Parent) fxmlLoader.load();

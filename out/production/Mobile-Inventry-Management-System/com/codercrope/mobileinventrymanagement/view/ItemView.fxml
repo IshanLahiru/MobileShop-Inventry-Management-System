@@ -30,15 +30,15 @@
           <RowConstraints minHeight="10.0" prefHeight="550.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TableView prefHeight="483.0" prefWidth="699.0">
+            <TableView fx:id="tblItemView" prefHeight="483.0" prefWidth="699.0">
               <columns>
                 <TableColumn maxWidth="5.0" minWidth="0.0" prefWidth="0.0" text="C1" />
-                <TableColumn prefWidth="156.0" text="Item Id" />
-                  <TableColumn prefWidth="140.99996948242188" text="Warrenty ID" />
-                  <TableColumn prefWidth="164.0" text="ItemName" />
-                  <TableColumn prefWidth="164.0" text="Added Date-Time" />
-                  <TableColumn prefWidth="164.0" text="Stock Price" />
-                  <TableColumn prefWidth="164.0" text="More Details" />
+                <TableColumn fx:id="tblItemId" prefWidth="156.0" text="Item Id" />
+                  <TableColumn fx:id="tblWorrantyId" prefWidth="140.99996948242188" text="Warrenty ID" />
+                  <TableColumn fx:id="tblItemName" prefWidth="164.0" text="ItemName" />
+                  <TableColumn fx:id="tblAddedDateTime" prefWidth="164.0" text="Added Date-Time" />
+                  <TableColumn fx:id="tblStockPrice" prefWidth="164.0" text="Stock Price" />
+                  <TableColumn fx:id="tblMoreDtl" prefWidth="164.0" text="More Details" />
               </columns>
             </TableView>
          </children>

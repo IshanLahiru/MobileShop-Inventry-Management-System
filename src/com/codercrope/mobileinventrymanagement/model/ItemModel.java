@@ -16,7 +16,7 @@ public class ItemModel {
         System.out.println("result set size is = "+result.getFetchSize());
         ArrayList<Item> items = new ArrayList<>();
 
-        if (result.next()) {
+        while (result.next()) {
              items.add(new Item(
                      result.getString(1),
                      WarrantyModel.getWarranty(result.getString(2)),
@@ -38,7 +38,7 @@ public class ItemModel {
         System.out.println("result set size is = "+result.getFetchSize());
         System.out.println(User.emp.getAdministrativeDtlId().getAdministrativeStats());
 
-        if (result.next()) {
+        while (result.next()) {
             items.add(new Item(
                     result.getString(1),
                     WarrantyModel.getWarranty(result.getString(2)),
