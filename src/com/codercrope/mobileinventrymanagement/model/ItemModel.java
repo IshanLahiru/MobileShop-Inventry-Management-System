@@ -13,7 +13,7 @@ public class ItemModel {
     public static ArrayList<Item> getItems() throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM item";
         ResultSet result = CrudUtil.execute(sql);
-        System.out.println("result set size is = "+result.getFetchSize());
+        //System.out.println("result set size is = "+result.getFetchSize());
         ArrayList<Item> items = new ArrayList<>();
 
         while (result.next()) {
@@ -27,7 +27,7 @@ public class ItemModel {
                      result.getString(7)
              ));
         }
-        System.out.println(items.size());
+        //System.out.println(items.size());
         return items;
     }
 
@@ -35,8 +35,8 @@ public class ItemModel {
         String sql = "SELECT * FROM item where item_name like ? or item_id like ?";
         ResultSet result = CrudUtil.execute(sql,text,text);
         ArrayList<Item> items = new ArrayList<>();
-        System.out.println("result set size is = "+result.getFetchSize());
-        System.out.println(User.emp.getAdministrativeDtlId().getAdministrativeStats());
+        //System.out.println("result set size is = "+result.getFetchSize());
+        //System.out.println(User.emp.getAdministrativeDtlId().getAdministrativeStats());
 
         while (result.next()) {
             items.add(new Item(
@@ -49,7 +49,7 @@ public class ItemModel {
                     result.getString(7)
             ));
         }
-        System.out.println(items.size());
+        //System.out.println(items.size());
         return items;
     }
 }

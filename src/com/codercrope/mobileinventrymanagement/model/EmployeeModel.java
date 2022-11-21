@@ -17,8 +17,8 @@ public class EmployeeModel {
         ResultSet result = CrudUtil.execute(sql, email);
 
         if (result.next()) {
-            System.out.println(result.getString(1));
-            System.out.println(result.getString(2));
+            //System.out.println(result.getString(1));
+            //System.out.println(result.getString(2));
             return new UserEPVal(
                     result.getString(1),
                     result.getString(2)
@@ -48,7 +48,7 @@ public class EmployeeModel {
         ResultSet result = CrudUtil.execute(sql, email, pwd);
         Employee admin = null;
         if (result.next()) {
-            System.out.println(result.getString(2));
+            //System.out.println(result.getString(2));
             admin = new Employee(
                     result.getString(1),
                     new AdministrativeDtl(AdministrativeDtlModel.getModel(result.getString(2))),

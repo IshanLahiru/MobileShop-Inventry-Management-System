@@ -13,7 +13,7 @@ public class WarrantyModel {
         String sql = "SELECT * FROM warranty where warranty_id = ?";
         ResultSet result = CrudUtil.execute(sql , warrantyId);
         Warranty warranty = null;
-        System.out.println(result.getFetchSize());
+        //System.out.println(result.getFetchSize());
 
         if (result.next()) {
             warranty = new Warranty(

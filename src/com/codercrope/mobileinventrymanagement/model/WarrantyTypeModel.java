@@ -13,7 +13,7 @@ public class WarrantyTypeModel {
     public static WarrantyType getWarrantyType(String warrantyTypeId) throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM warranty where warranty_id = ?";
         ResultSet result = CrudUtil.execute(sql,warrantyTypeId);
-        System.out.println(result.getFetchSize());
+        //System.out.println(result.getFetchSize());
         WarrantyType warrantyType = null;
 
         if (result.next()) {

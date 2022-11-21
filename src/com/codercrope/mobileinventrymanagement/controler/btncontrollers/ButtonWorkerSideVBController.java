@@ -14,7 +14,7 @@ public class ButtonWorkerSideVBController implements SideBarController {
     private GridPane pane;
     @FXML
     void btnClickEvent(MouseEvent event) {
-        System.out.println("btn clicked");
+        //System.out.println("btn clicked");
         setUi(pane ,"/com/codercrope/mobileinventrymanagement/view/WorkerView.fxml");
 
     }

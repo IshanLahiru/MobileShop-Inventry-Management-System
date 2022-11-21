@@ -13,7 +13,7 @@ public class CustOrderModel {
     public static ArrayList<CustOrder> getItems() throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM cust_order";
         ResultSet result = CrudUtil.execute(sql);
-        System.out.println("result set size is = "+result.getFetchSize());
+       // System.out.println("result set size is = "+result.getFetchSize());
         ArrayList<CustOrder> orders = new ArrayList<>();
 
         while (result.next()) {
@@ -26,7 +26,7 @@ public class CustOrderModel {
                     result.getString(6)
             ));
         }
-        System.out.println(orders.size());
+        //System.out.println(orders.size());
         return orders;
     }
 }
