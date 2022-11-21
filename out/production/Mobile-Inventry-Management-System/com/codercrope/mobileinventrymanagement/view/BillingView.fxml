@@ -219,13 +219,13 @@
                                     <Image url="@../assets/buttons/search-b.png" />
                                  </image>
                               </ImageView>
-                              <TextField fx:id="txtSearch" onAction="#txtSearchOnAction" onKeyReleased="#txtSearchKeyPressedOnAction" prefHeight="41.0" prefWidth="569.0" promptText="Search...">
+                              <TextField fx:id="txtSearch" onAction="#txtSearchOnAction" onKeyPressed="#txtSearchKeyPressedOnAction" onKeyReleased="#txtSearchKeyRelesedOnAction" prefHeight="41.0" prefWidth="569.0" promptText="Search...">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </TextField>
                               <Label prefHeight="21.0" prefWidth="166.0" />
-                              <TextField prefHeight="41.0" prefWidth="203.0" promptText="Qty...">
+                              <TextField fx:id="txtQty" onAction="#lblQtyOnAction" prefHeight="41.0" prefWidth="203.0" promptText="Qty...">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -244,7 +244,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="550.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TableView fx:id="tblBillingView" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#tblBillingViewMouseClickEvent" prefHeight="550.0" prefWidth="1000.0">
+                  <TableView fx:id="tblBillingView" maxHeight="-Infinity" maxWidth="-Infinity" onKeyPressed="#tblViewOnKeyPressedEvt" onMouseClicked="#tblBillingViewMouseClickEvent" prefHeight="550.0" prefWidth="1000.0">
                     <columns>
                       <TableColumn maxWidth="5.0" minWidth="0.0" prefWidth="0.0" text="C1" />
                       <TableColumn fx:id="tblItemId" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="119.0" text="Item ID" />
