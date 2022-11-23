@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1242.0" styleClass="primary-color" stylesheets="@../assets/Styles/lightMode.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.codercrope.mobileinventrymanagement.controler.MainViewController">
+<BorderPane fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1442.0" styleClass="primary-color" stylesheets="@../assets/Styles/lightMode.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.codercrope.mobileinventrymanagement.controler.MainViewController">
     <top>
         <HBox alignment="CENTER_RIGHT" prefHeight="14.0" prefWidth="1242.0" styleClass="mainSidebar" stylesheets="@../assets/Styles/lightMode.css" BorderPane.alignment="CENTER">
             <children>
@@ -39,7 +39,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btnMin" mnemonicParsing="false" prefHeight="31.0" prefWidth="50.0" style="-fx-background-color: transparent;">
+            <Button fx:id="btnMin" mnemonicParsing="false" onAction="#btnMinOnAction" prefHeight="31.0" prefWidth="50.0" style="-fx-background-color: transparent;">
                <graphic>
                   <ImageView fx:id="btnMinImg" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -47,7 +47,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="btnMax" mnemonicParsing="false" prefHeight="31.0" prefWidth="50.0" style="-fx-background-color: transparent;">
+            <Button fx:id="btnMax" mnemonicParsing="false" onAction="#btnMaxOnAction" prefHeight="31.0" prefWidth="50.0" style="-fx-background-color: transparent;">
                <graphic>
                   <ImageView fx:id="btnMaxImg" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -127,7 +127,7 @@
       </VBox>
    </left>
    <center>
-      <GridPane fx:id="grid" prefHeight="767.0" prefWidth="1161.0" BorderPane.alignment="CENTER">
+      <GridPane fx:id="grid" prefHeight="790.0" prefWidth="1161.0" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>

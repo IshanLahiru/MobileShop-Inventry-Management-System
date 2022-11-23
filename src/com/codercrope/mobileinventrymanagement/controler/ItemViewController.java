@@ -5,6 +5,7 @@ import com.codercrope.mobileinventrymanagement.model.ItemModel;
 import com.codercrope.mobileinventrymanagement.to.Item;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 
 public class ItemViewController {
 
+    public Button btnAddOrder;
     @FXML
     private GridPane pane1;
 
@@ -67,4 +69,7 @@ public class ItemViewController {
         tblItemView.setItems(cust);
     }
 
+    public void btnAddOrderOnAction(ActionEvent actionEvent) {
+
+    }
 }

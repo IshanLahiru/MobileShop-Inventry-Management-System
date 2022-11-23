@@ -3,29 +3,21 @@ package com.codercrope.mobileinventrymanagement.controler.tmlist;
 import com.codercrope.mobileinventrymanagement.to.Item;
 import javafx.scene.control.Button;
 
-public class MainBillingItemTM {
+public class MainBillingListViewTm {
     private Item ob;
     private String itemId;
     private String itemName;
     private int itemQty;
     private double itemPriceStock;
-    private Button tem;
+    private int index;
 
-    public int getItemQty() {
-        return itemQty;
-    }
-
-    public void setItemQty(int itemQty) {
-        this.itemQty = itemQty;
-    }
-
-    public MainBillingItemTM(Item ob, String itemId, String itemName, int itemQty, double itemPriceStock, Button tem) {
+    public MainBillingListViewTm(Item ob, String itemId, String itemName, int itemQty, double itemPriceStock, int index) {
         this.ob = ob;
         this.itemId = itemId;
         this.itemName = itemName;
         this.itemQty = itemQty;
         this.itemPriceStock = itemPriceStock;
-        this.tem = tem;
+        this.index = index;
     }
 
     public Item getOb() {
@@ -52,6 +44,14 @@ public class MainBillingItemTM {
         this.itemName = itemName;
     }
 
+    public int getItemQty() {
+        return itemQty;
+    }
+
+    public void setItemQty(int itemQty) {
+        this.itemQty = itemQty;
+    }
+
     public double getItemPriceStock() {
         return itemPriceStock;
     }
@@ -60,11 +60,11 @@ public class MainBillingItemTM {
         this.itemPriceStock = itemPriceStock;
     }
 
-    public Button getTem() {
-        return tem;
+    public int getIndex() {
+        return index;
     }
 
-    public void setTem(Button tem) {
-        this.tem = tem;
+    public void setIndex(int index) {
+        this.index = index;
     }
 }

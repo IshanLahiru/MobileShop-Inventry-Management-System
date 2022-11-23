@@ -1,9 +1,7 @@
 package com.codercrope.mobileinventrymanagement.model;
 
 import com.codercrope.mobileinventrymanagement.to.Item;
-import com.codercrope.mobileinventrymanagement.to.UserEPVal;
 import com.codercrope.mobileinventrymanagement.util.CrudUtil;
-import com.codercrope.mobileinventrymanagement.util.user.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,8 +22,8 @@ public class ItemModel {
                      result.getString(4),
                      Double.parseDouble(result.getString(5)),
                      Integer.parseInt(result.getString(6)),
-                     result.getString(7)
-             ));
+                     result.getString(7),
+                     BatchHasItemModel.getItemCount(result.getString(1))));
         }
         //System.out.println(items.size());
         return items;
@@ -46,8 +44,8 @@ public class ItemModel {
                     result.getString(4),
                     Double.parseDouble(result.getString(5)),
                     Integer.parseInt(result.getString(6)),
-                    result.getString(7)
-            ));
+                    result.getString(7),
+                    BatchHasItemModel.getItemCount(result.getString(1))));
         }
         //System.out.println(items.size());
         return items;

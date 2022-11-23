@@ -1,9 +1,11 @@
 package com.codercrope.mobileinventrymanagement.controler;
 
+import com.codercrope.mobileinventrymanagement.controler.listview.BillingViewListComponentController;
+import com.codercrope.mobileinventrymanagement.controler.subwindows.ItemMoreDetailViewController;
 import com.codercrope.mobileinventrymanagement.controler.tmlist.MainBillingItemTM;
+import com.codercrope.mobileinventrymanagement.controler.tmlist.MainBillingListViewTm;
 import com.codercrope.mobileinventrymanagement.model.ItemModel;
 import com.codercrope.mobileinventrymanagement.to.Item;
-import com.codercrope.mobileinventrymanagement.view.subwindows.ItemMoreDetailViewController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,25 +28,7 @@ import java.util.ArrayList;
 public class BillingViewController {
 
     @FXML
-    public TableColumn tblItemId;
-
-    @FXML
-    public TableColumn tblItemName;
-
-    @FXML
-    public TableColumn tblMorInfo;
-
-    @FXML
-    public TableColumn tblOnStock;
-
-    @FXML
-    public TableColumn tblMoreDtl;
-
-    @FXML
-    public TextField txtSearch;
-
-    @FXML
-    public TextField txtQty;
+    private GridPane pane1;
 
     @FXML
     private Label lblItemId;
@@ -56,32 +40,133 @@ public class BillingViewController {
     private Label lblItemName;
 
     @FXML
-    private Label lblMoreInfo;
+    private Label lblItemPrice;
 
     @FXML
     private Label lblOnStock;
 
     @FXML
-    private GridPane pane1;
+    private Button btnAdd;
 
     @FXML
-    private TableView tblBillingView;
+    private TextField txtSearch;
 
     @FXML
-    private ListView listViewBilling;
+    private TextField txtQty;
 
-    ObservableList<MainBillingItemTM> cust = FXCollections.observableArrayList();
+    @FXML
+    private TableView<MainBillingItemTM> tblBillingView;
 
-    private ArrayList<Object> items = new ArrayList<>();
+    @FXML
+    private TableColumn<MainBillingItemTM, String> tblItemId;
+
+    @FXML
+    private TableColumn<MainBillingItemTM, String> tblItemName;
+
+    @FXML
+    private TableColumn<MainBillingItemTM, String> tblItemPrice;
+
+    @FXML
+    private TableColumn<MainBillingItemTM, Double> tblOnStock;
+
+    @FXML
+    private TableColumn<MainBillingItemTM, Button> tblMoreDtl;
+
+    @FXML
+    private ListView<?> listViewBilling;
+
+    @FXML
+    private Button btnPay;
+
+
+    private ObservableList<MainBillingItemTM> cust = FXCollections.observableArrayList();
+    private ArrayList items = new ArrayList<>();
+    private ArrayList<Item> item;
+    private MainBillingItemTM selectedItem;
+
+    public void initLabels(){
+        lblItemId.setText(item.get(0).getItemId());
+        lblItemName.setText(item.get(0).getItemName());
+        lblOnStock.setText(String.valueOf(item.get(0).getStock()));
+        lblItemPrice.setText(String.valueOf(item.get(0).getItemPriceStock()));
+        btnMoreDetails.setOnMouseClicked(e -> {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/subwindows/ItemMoreDetailView.fxml"));
+                Parent root1 = (Parent) fxmlLoader.load();
+                ((ItemMoreDetailViewController) fxmlLoader.getController()).getObject(item.get(0));
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root1));
+                stage.show();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+    }
+    public void initLabels(Item item){
+        lblItemId.setText(item.getItemId());
+        lblItemName.setText(item.getItemName());
+        lblOnStock.setText(String.valueOf(item.getStock()));
+        lblItemPrice.setText(String.valueOf(item.getItemPriceStock()));
+        btnMoreDetails.setOnMouseClicked(e -> {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/subwindows/ItemMoreDetailView.fxml"));
+                Parent root1 = (Parent) fxmlLoader.load();
+                ((ItemMoreDetailViewController) fxmlLoader.getController()).getObject(item);
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root1));
+                stage.show();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+    }
+    public void initLabels(MainBillingItemTM item){
+        lblItemId.setText(item.getItemId());
+        lblItemName.setText(item.getItemName());
+        lblOnStock.setText(String.valueOf(item.getItemQty()));
+        lblItemPrice.setText(String.valueOf(item.getItemPriceStock()));
+        btnMoreDetails.setOnMouseClicked(e -> {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/subwindows/ItemMoreDetailView.fxml"));
+                Parent root1 = (Parent) fxmlLoader.load();
+                ((ItemMoreDetailViewController) fxmlLoader.getController()).getObject(item.getOb());
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root1));
+                stage.show();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+    }
+
+
 
     public void initialize() throws SQLException, ClassNotFoundException {
         tblItemId.setCellValueFactory(new PropertyValueFactory<MainBillingItemTM, String>("itemId"));
         tblItemName.setCellValueFactory(new PropertyValueFactory<MainBillingItemTM, String>("itemName"));
-        tblMorInfo.setCellValueFactory(new PropertyValueFactory<MainBillingItemTM, String>("hahah"));
-        tblOnStock.setCellValueFactory(new PropertyValueFactory<MainBillingItemTM, Double>("itemPriceStock"));
+        tblItemPrice.setCellValueFactory(new PropertyValueFactory<MainBillingItemTM, String>("itemPriceStock"));
+        tblOnStock.setCellValueFactory(new PropertyValueFactory<MainBillingItemTM, Double>("itemQty"));
         tblMoreDtl.setCellValueFactory(new PropertyValueFactory<MainBillingItemTM, Button>("tem"));
 
+        item = ItemModel.getItems();
         setData();
+        initLabels();
+        /*lblItemId.setText(item.get(0).getItemId());
+        lblItemName.setText(item.get(0).getItemName());
+        lblOnStock.setText(String.valueOf(item.get(0).getStock()));
+        lblItemPrice.setText(String.valueOf(item.get(0).getItemPriceStock()));
+        btnMoreDetails.setOnMouseClicked(e -> {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/subwindows/ItemMoreDetailView.fxml"));
+                Parent root1 = (Parent) fxmlLoader.load();
+                ((ItemMoreDetailViewController) fxmlLoader.getController()).getObject(item.get(0));
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root1));
+                stage.show();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });*/
     }
 
     @FXML
@@ -94,10 +179,12 @@ public class BillingViewController {
         if (event.getButton() == MouseButton.PRIMARY) {
             if(tblBillingView.getSelectionModel().getSelectedItem()!=null) {
                 MainBillingItemTM temp = (MainBillingItemTM) tblBillingView.getSelectionModel().getSelectedItem();
-                lblItemId.setText(temp.getItemId());
+                this.selectedItem = temp;
+                initLabels(temp);
+                /*lblItemId.setText(temp.getItemId());
                 lblItemName.setText(temp.getItemName());
-                lblMoreInfo.setText(temp.getHahah());
-                lblOnStock.setText(String.valueOf(temp.getItemPriceStock()));
+                lblItemPrice.setText(String.valueOf(temp.getItemPriceStock()));
+                lblOnStock.setText(String.valueOf(temp.getQty()));
                 btnMoreDetails.setOnMouseClicked(e -> {
                     try {
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/subwindows/ItemMoreDetailView.fxml"));
@@ -109,7 +196,7 @@ public class BillingViewController {
                     } catch (IOException ex) {
                         ex.printStackTrace();
                     }
-                });
+                });*/
 
 
             /*txtCustId.setText(temp.getCustId());
@@ -122,42 +209,31 @@ public class BillingViewController {
         }
 
     }
+    public void setRow(Item item){
+        Button tem = new Button("  More Details  ");
+        MainBillingItemTM temp = new MainBillingItemTM(item,item.getItemId(), item.getItemName(),item.getStock(), item.getItemPriceStock(), tem);
+        tem.setOnAction(e -> {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/subwindows/ItemMoreDetailView.fxml"));
+                Parent root1 = (Parent) fxmlLoader.load();
+                ((ItemMoreDetailViewController) fxmlLoader.getController()).getObject(item);
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root1));
+                stage.show();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+        cust.add(temp);
+    }
     public void setData() throws SQLException, ClassNotFoundException {
         tblBillingView.getItems().clear();
-        ArrayList<Item> items = ItemModel.getItems();
-        for (Item ob : items) {
-            Button tem = new Button("  More Details  ");
-            MainBillingItemTM temp = new MainBillingItemTM(ob,ob.getItemId(), ob.getItemName(), "hahah", ob.getItemPriceStock(), tem);
-            tem.setOnAction(e -> {
-                try {
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/subwindows/ItemMoreDetailView.fxml"));
-                    Parent root1 = (Parent) fxmlLoader.load();
-                    ((ItemMoreDetailViewController) fxmlLoader.getController()).getObject(ob);
-                    Stage stage = new Stage();
-                    stage.setScene(new Scene(root1));
-                    stage.show();
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-            });
-            cust.add(temp);
-            lblItemId.setText(items.get(0).getItemId());
-            lblItemName.setText(items.get(0).getItemName());
-            lblMoreInfo.setText(items.get(0).getItemDtl());
-            lblOnStock.setText(String.valueOf(items.get(0).getItemPriceStock()));
-            btnMoreDetails.setOnMouseClicked(e -> {
-                try {
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/subwindows/ItemMoreDetailView.fxml"));
-                    Parent root1 = (Parent) fxmlLoader.load();
-                    ((ItemMoreDetailViewController) fxmlLoader.getController()).getObject(temp.getOb());
-                    Stage stage = new Stage();
-                    stage.setScene(new Scene(root1));
-                    stage.show();
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-            });
+        cust.clear();
+        //ArrayList<Item> items = ItemModel.getItems();
+        for (Item ob : item) {
+            setRow(ob);
         }
+        this.selectedItem = cust.get(0);
         tblBillingView.setItems(cust);
 
     }
@@ -166,7 +242,7 @@ public class BillingViewController {
         tblBillingView.getItems().clear();
         for (Item ob : item) {
             Button tem = new Button("  More Details  ");
-            MainBillingItemTM temp = new MainBillingItemTM(ob, ob.getItemId(), ob.getItemName(), "hahah", ob.getItemPriceStock(), tem);
+            MainBillingItemTM temp = new MainBillingItemTM(ob, ob.getItemId(), ob.getItemName(), ob.getStock(), ob.getItemPriceStock(), tem);
             tem.setOnMouseClicked(e -> {
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/subwindows/ItemMoreDetailView.fxml"));
@@ -180,7 +256,9 @@ public class BillingViewController {
                 }
             });
             cust.add(temp);
-            lblItemId.setText(item.get(0).getItemId());
+            this.selectedItem = temp;
+            initLabels();
+            /*lblItemId.setText(item.get(0).getItemId());
             lblItemName.setText(item.get(0).getItemName());
             lblMoreInfo.setText(item.get(0).getItemDtl());
             lblOnStock.setText(String.valueOf(item.get(0).getItemPriceStock()));
@@ -195,9 +273,9 @@ public class BillingViewController {
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
-            });
-
+            });*/
         }
+        this.selectedItem = cust.get(0);
         tblBillingView.setItems(cust);
     }
 
@@ -206,8 +284,22 @@ public class BillingViewController {
 
     public void txtSearchKeyRelesedOnAction(KeyEvent keyEvent) throws SQLException, ClassNotFoundException {
             tblBillingView.getItems().clear();
-            ArrayList<Item> items = ItemModel.getSearchedItems(("%" + txtSearch.getText() + "%"));
-            setTxtSearchData(items);
+            /*//ArrayList<Item> items = ItemModel.getSearchedItems(("%" + txtSearch.getText() + "%"));
+            ArrayList<Item> items = new ArrayList();
+            for(int i=0; i<item.size(); i++){
+                if (item.get(i).getItemName().contains(txtSearch.getText()) | item.get(i).getItemId().contains(txtSearch.getText())){
+                    items.add(item.get(i));
+                }
+            }
+            setTxtSearchData(items);*/
+        cust.clear();
+        for (Item ob : item) {
+            if (ob.getItemName().contains(txtSearch.getText()) || ob.getItemId().contains(txtSearch.getText())){
+                setRow(ob);
+            }
+        }
+        this.selectedItem = cust.get(0);
+        tblBillingView.setItems(cust);
     }
 
     public void txtSearchKeyPressedOnAction(KeyEvent keyEvent) {
@@ -216,6 +308,8 @@ public class BillingViewController {
             tblBillingView.requestFocus();
             tblBillingView.getSelectionModel().select(0);
             tblBillingView.getFocusModel().focus(0);
+        }else if(keyEvent.getCode().isWhitespaceKey()){
+            txtQty.requestFocus();
         }
     }
 
@@ -223,7 +317,9 @@ public class BillingViewController {
         if (keyEvent.getCode().isWhitespaceKey()) {
             if(tblBillingView.getSelectionModel().getSelectedItem()!=null) {
                 MainBillingItemTM temp = (MainBillingItemTM) tblBillingView.getSelectionModel().getSelectedItem();
-                lblItemId.setText(temp.getItemId());
+                this.selectedItem = temp;
+                initLabels(temp);
+                /*lblItemId.setText(temp.getItemId());
                 lblItemName.setText(temp.getItemName());
                 lblMoreInfo.setText(temp.getHahah());
                 lblOnStock.setText(String.valueOf(temp.getItemPriceStock()));
@@ -238,7 +334,7 @@ public class BillingViewController {
                     } catch (IOException ex) {
                         ex.printStackTrace();
                     }
-                });
+                });*/
                 txtQty.requestFocus();
 
 
@@ -253,9 +349,32 @@ public class BillingViewController {
         }*/
     }
 
-    public void lblQtyOnAction(ActionEvent actionEvent) {
-        listViewBilling.getItems().addAll();
+    public void lblQtyOnAction(ActionEvent actionEvent) throws IOException, SQLException, ClassNotFoundException {
+        this.selectedItem.setItemQty(Integer.parseInt(txtQty.getText()));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/listview/BillingViewListComponent.fxml"));
+        Button root1 = (Button) fxmlLoader.load();
+        ((BillingViewListComponentController) fxmlLoader.getController()).addItem(this.selectedItem, this);
+        items.add(root1);
+        setData();
+        listViewBilling.getItems().removeAll(items);
+        listViewBilling.getItems().addAll(items);
+        txtQty.setText("");
         txtSearch.requestFocus();
 
+    }
+
+    public void btnAddOnAction(ActionEvent actionEvent) throws IOException, SQLException, ClassNotFoundException {
+        this.selectedItem.setItemQty(Integer.parseInt(txtQty.getText()));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/listview/BillingViewListComponent.fxml"));
+        Button root1 = (Button) fxmlLoader.load();
+        new MainBillingListViewTm(this.selectedItem.getOb(),this.selectedItem.getItemId(),
+                this.selectedItem.getItemName(),this.selectedItem.getItemQty(),
+                this.selectedItem.getItemPriceStock(),items.size());
+        ((BillingViewListComponentController) fxmlLoader.getController()).addItem(this.selectedItem,this);
+        setData();
+        items.add(root1);
+        listViewBilling.getItems().removeAll(items);
+        listViewBilling.getItems().addAll(items);
+        txtSearch.requestFocus();
     }
 }

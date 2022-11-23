@@ -1,24 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3ac29e38-b840-4148-a209-6848ca51c18b" name="Changes" comment="sub menu order window completed, and miner bug fixes">
+    <list default="true" id="3ac29e38-b840-4148-a209-6848ca51c18b" name="Changes" comment="making som ux audjesments and bug fixes">
+      <change afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/assets/buttons/add-b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/assets/buttons/add-w.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/assets/buttons/minus-b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/assets/buttons/minus-w.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/listview/BillingViewListComponentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/subwindows/ItemMoreDetailViewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/tmlist/MainBillingListViewTm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/subwindows/AddOnlineOrderView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/assets/Styles/lightMode.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/assets/Styles/lightMode.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/controler/BillingViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/controler/BillingViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/controler/LoginViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/controler/LoginViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/controler/MainViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/controler/MainViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/controler/tmlist/MainBillingItemTM.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/controler/tmlist/MainBillingItemTM.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/model/BatchHasItemModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/model/BatchHasItemModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/model/ItemModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/model/ItemModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/to/Item.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/to/Item.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/view/BillingView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/view/BillingView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/view/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/view/MainView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/view/listview/BillingViewListComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/view/listview/BillingViewListComponent.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/view/listview/BillingViewListComponentController.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/view/subwindows/ItemMoreDetailView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/view/subwindows/ItemMoreDetailView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/view/subwindows/ItemMoreDetailViewController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/assets/Styles/lightMode.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/assets/Styles/lightMode.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/BillingViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/BillingViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/btncontrollers/ButtonBillingSideVBController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/btncontrollers/ButtonBillingSideVBController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/btncontrollers/ButtonDBSideVBController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/btncontrollers/ButtonDBSideVBController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/btncontrollers/ButtonItemSideVBController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/btncontrollers/ButtonItemSideVBController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/btncontrollers/ButtonOrderSideVBController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/btncontrollers/ButtonOrderSideVBController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/btncontrollers/ButtonRepairSideVBController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/btncontrollers/ButtonRepairSideVBController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/btncontrollers/ButtonReportSideVBController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/btncontrollers/ButtonReportSideVBController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/btncontrollers/ButtonWorkerSideVBController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/btncontrollers/ButtonWorkerSideVBController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/CustOrderModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/CustOrderModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/EmployeeModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/EmployeeModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/ItemViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/ItemViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/LoginViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/LoginViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/MainViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/tmlist/MainBillingItemTM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/tmlist/MainBillingItemTM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/BatchHasItemModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/BatchHasItemModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/ItemModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/ItemModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/WarrantyModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/WarrantyModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/WarrantyTypeModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/WarrantyTypeModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/to/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/to/Item.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/BillingView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/BillingView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/ItemView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/ItemView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/MainView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/listview/BillingViewListComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/listview/BillingViewListComponent.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/listview/BillingViewListComponentController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/subwindows/ItemMoreDetailView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/subwindows/ItemMoreDetailView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/subwindows/ItemMoreDetailViewController.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,8 +53,8 @@
         <option value="Interface" />
         <option value="Enum" />
         <option value="CSS File" />
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -154,7 +176,14 @@
       <workItem from="1668945969563" duration="474000" />
       <workItem from="1668946639835" duration="1397000" />
       <workItem from="1668952634595" duration="2412000" />
-      <workItem from="1668984171991" duration="9442000" />
+      <workItem from="1668984171991" duration="9772000" />
+      <workItem from="1669008408381" duration="3516000" />
+      <workItem from="1669038606249" duration="1765000" />
+      <workItem from="1669069187914" duration="2065000" />
+      <workItem from="1669093968625" duration="980000" />
+      <workItem from="1669095153591" duration="41000" />
+      <workItem from="1669155623111" duration="8115000" />
+      <workItem from="1669198508548" duration="18138000" />
     </task>
     <task id="LOCAL-00001" summary="btn order construction, sidebar">
       <created>1668335038843</created>
@@ -366,7 +395,21 @@
       <option name="project" value="LOCAL" />
       <updated>1668944261667</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="making som ux audjesments and bug fixes">
+      <created>1669003977914</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1669003977915</updated>
+    </task>
+    <task id="LOCAL-00032" summary="making som ux audjesments and bug fixes">
+      <created>1669004009353</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1669004009353</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -394,6 +437,7 @@
     <MESSAGE value="login bug fix" />
     <MESSAGE value="bug fix" />
     <MESSAGE value="sub menu order window completed, and miner bug fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="sub menu order window completed, and miner bug fixes" />
+    <MESSAGE value="making som ux audjesments and bug fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="making som ux audjesments and bug fixes" />
   </component>
 </project>

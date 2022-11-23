@@ -339,4 +339,18 @@ public class MainViewController {
         StageController.stage.hide();
         StageController.login.show();
     }
+
+    public void btnMinOnAction(ActionEvent actionEvent) {
+        stage.setIconified(true);
+    }
+
+    public void btnMaxOnAction(ActionEvent actionEvent) {
+        if (stage.isMaximized()){
+            stage.setMaximized(false);
+            stage.setResizable(false);
+        }else{
+            stage.setResizable(true);
+            stage.setMaximized(true);
+        }
+    }
 }

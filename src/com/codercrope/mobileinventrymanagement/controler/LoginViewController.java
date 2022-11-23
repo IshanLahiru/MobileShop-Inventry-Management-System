@@ -11,6 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.sql.SQLException;
 
@@ -24,8 +25,7 @@ public class LoginViewController {
         this.stage = primaryStage;
     }
     public void initialize(){
-        btnEmail.setStyle("-fx-border-color:#C5291B;"
-        );
+        //btnEmail.setStyle("-fx-border-color:#C5291B;");
     }
    /* public void setUi() throws IOException {
         Stage stag = new Stage();
@@ -56,7 +56,11 @@ public class LoginViewController {
                     ((MainViewController) fxmlLoader.getController()).getStage(stage);
                     StageController.stage=stage;
                     StageController.stage.setMaximized(true);
+                    //StageController.stage.initStyle(StageStyle.TRANSPARENT);
                     stage.show();
+                    //stage.initStyle(StageStyle.UNDECORATED);
+
+
                     StageController.login.hide();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -71,8 +75,10 @@ public class LoginViewController {
     }
 
     public void btnEmailOnAction(ActionEvent actionEvent) {
+        btnPwd.requestFocus();
     }
 
-    public void btnPwdOnAction(ActionEvent actionEvent) {
+    public void btnPwdOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        btnLoginOnAction(actionEvent);
     }
 }

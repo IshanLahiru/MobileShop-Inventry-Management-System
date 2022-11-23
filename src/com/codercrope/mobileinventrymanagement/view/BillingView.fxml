@@ -91,7 +91,7 @@
                               <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
                                  <children>
                                     <Label prefHeight="21.0" prefWidth="20.0" />
-                                    <Label text="More Info">
+                                    <Label text="Item Price">
                                        <font>
                                           <Font name="System Bold" size="15.0" />
                                        </font>
@@ -139,7 +139,7 @@
                               <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                  <children>
                                     <Label prefHeight="21.0" prefWidth="20.0" />
-                                    <Label fx:id="lblMoreInfo" text="More information " />
+                                    <Label fx:id="lblItemPrice" text="More information " />
                                  </children>
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
@@ -164,18 +164,18 @@
                            <children>
                               <Label prefHeight="51.0" prefWidth="16.0" />
                               <Label prefHeight="51.0" prefWidth="16.0" />
-                              <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="113.0">
+                              <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="40.0" prefWidth="113.0">
                                  <graphic>
                                     <HBox prefHeight="31.0" prefWidth="106.0">
                                        <children>
                                           <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                              <children>
-                                                <Label layoutX="14.0" layoutY="2.0" prefHeight="25.0" prefWidth="56.0" text="Enter">
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="2.0" prefHeight="25.0" prefWidth="56.0" text="Add">
                                                    <font>
                                                       <Font name="System Bold" size="16.0" />
                                                    </font>
                                                 </Label>
-                                                <ImageView fitHeight="20.0" fitWidth="21.0" layoutX="62.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView fitHeight="20.0" fitWidth="21.0" layoutX="56.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
                                                       <Image url="@../assets/buttons/enter-key-b.png" />
                                                    </image>
@@ -249,9 +249,10 @@
                       <TableColumn maxWidth="5.0" minWidth="0.0" prefWidth="0.0" text="C1" />
                       <TableColumn fx:id="tblItemId" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="119.0" text="Item ID" />
                         <TableColumn fx:id="tblItemName" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="429.0" text="Item Name" />
-                        <TableColumn fx:id="tblMorInfo" maxWidth="1.7976931348623157E308" minWidth="67.0" prefWidth="163.0" text="More Info" />
+                        <TableColumn fx:id="tblItemPrice" maxWidth="1.7976931348623157E308" minWidth="67.0" prefWidth="163.0" text="Item Price" />
                         <TableColumn fx:id="tblOnStock" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="146.0" text="On Stock" />
                         <TableColumn fx:id="tblMoreDtl" maxWidth="1.7976931348623157E308" minWidth="75.0" prefWidth="143.0" text="More Details" />
+                        <TableColumn fx:id="tblItemPrice1" maxWidth="1.7976931348623157E308" minWidth="67.0" prefWidth="163.0" text="Item Price" />
                     </columns>
                   </TableView>
                </children>
@@ -282,7 +283,7 @@
             <RowConstraints maxHeight="19.0" minHeight="19.0" prefHeight="19.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ListView fx:id="listViewBilling" onMouseClicked="#listViewBillingClickEvt" prefHeight="356.0" prefWidth="347.0" style="-fx-border-color: black;" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="1" />
+            <ListView fx:id="listViewBilling" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#listViewBillingClickEvt" prefHeight="356.0" prefWidth="347.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="1" />
             <AnchorPane GridPane.rowIndex="3">
                <children>
                   <Label layoutX="12.0" layoutY="3.0" text="Sub Total" AnchorPane.leftAnchor="12.0">

@@ -1,7 +1,5 @@
 package com.codercrope.mobileinventrymanagement.to;
 
-import java.util.HashMap;
-
 public class Item {
     private String itemId;
     private Warranty warrentyId;
@@ -10,11 +8,12 @@ public class Item {
     private double itemPriceStock;
     private int profitPercentage;
     private String itemDtl;
+    private int stock;
 
 
     public Item(String itemId, Warranty warrentyId,
                 String itemName, String itemAddedDateTime,
-                double itemPriceStock , int profitPercentage, String itemDtl) {
+                double itemPriceStock, int profitPercentage, String itemDtl, int stock) {
         this.itemId = itemId;
         this.warrentyId = warrentyId;
         this.itemName = itemName;
@@ -22,6 +21,15 @@ public class Item {
         this.itemPriceStock = itemPriceStock;
         this.profitPercentage = profitPercentage;
         this.itemDtl = itemDtl;
+        this.stock = stock;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
     public String getItemId() {
