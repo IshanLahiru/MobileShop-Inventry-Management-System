@@ -337,8 +337,6 @@ public class BillingViewController {
                 });*/
                 txtQty.requestFocus();
 
-
-
             /*txtCustId.setText(temp.getCustId());
             txtCustName.setText(temp.getCustName());
             txtCustAddress.setText(temp.getCustAddress());
@@ -360,7 +358,6 @@ public class BillingViewController {
         listViewBilling.getItems().addAll(items);
         txtQty.setText("");
         txtSearch.requestFocus();
-
     }
 
     public void btnAddOnAction(ActionEvent actionEvent) throws IOException, SQLException, ClassNotFoundException {

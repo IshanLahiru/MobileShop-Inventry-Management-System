@@ -1,5 +1,6 @@
 package com.codercrope.mobileinventrymanagement.controler;
 
+import com.codercrope.mobileinventrymanagement.controler.subwindows.ItemMoreDetailViewController;
 import com.codercrope.mobileinventrymanagement.controler.tmlist.MainItemTM;
 import com.codercrope.mobileinventrymanagement.model.ItemModel;
 import com.codercrope.mobileinventrymanagement.to.Item;
@@ -7,6 +8,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -14,6 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -69,7 +74,13 @@ public class ItemViewController {
         tblItemView.setItems(cust);
     }
 
-    public void btnAddOrderOnAction(ActionEvent actionEvent) {
+    public void btnAddOrderOnAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/subwindows/AddOnlineOrderView.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        //((ItemMoreDetailViewController) fxmlLoader.getController()).getObject(item.getOb());
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1));
+        stage.show();
 
     }
 }
