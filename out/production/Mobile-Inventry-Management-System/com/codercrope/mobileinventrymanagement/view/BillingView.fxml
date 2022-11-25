@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane fx:id="pane1" prefHeight="720.0" prefWidth="1290.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.codercrope.mobileinventrymanagement.controler.BillingViewController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="1032.0" minWidth="1032.0" prefWidth="1032.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="213.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="19.0" minWidth="19.0" prefWidth="19.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="2" />
+      <GridPane prefHeight="720.0" prefWidth="926.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="19.0" minWidth="19.0" prefWidth="19.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1000.0" minWidth="10.0" prefWidth="1000.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="19.0" minWidth="19.0" prefWidth="19.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="19.0" minHeight="19.0" prefHeight="19.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="223.0" minHeight="10.0" prefHeight="152.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="223.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="569.0" minHeight="0.0" prefHeight="544.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="19.0" minHeight="19.0" prefHeight="19.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="1" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <GridPane prefHeight="136.0" prefWidth="205.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="656.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="138.0" minHeight="10.0" prefHeight="19.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="138.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="131.0" minHeight="10.0" prefHeight="74.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="73.0" prefWidth="1082.0" GridPane.rowIndex="2">
+                     <children>
+                        <GridPane layoutY="10.0" prefHeight="53.0" prefWidth="965.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label prefHeight="21.0" prefWidth="20.0" />
+                                    <Label text="Item ID">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                 <children>
+                                    <Label prefHeight="21.0" prefWidth="20.0" />
+                                    <Label text="Item Name">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
+                                 <children>
+                                    <Label prefHeight="21.0" prefWidth="20.0" />
+                                    <Label text="Item Price">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3">
+                                 <children>
+                                    <Label prefHeight="21.0" prefWidth="20.0" />
+                                    <Label text="On Stock">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="4">
+                                 <children>
+                                    <Label prefHeight="21.0" prefWidth="20.0" />
+                                    <Label text="More Details">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                 <children>
+                                    <Label prefHeight="21.0" prefWidth="20.0" />
+                                    <Label fx:id="lblItemId" text="Id of the Item" />
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                 <children>
+                                    <Label prefHeight="21.0" prefWidth="20.0" />
+                                    <Button fx:id="btnMoreDetails" mnemonicParsing="false" prefHeight="31.0" prefWidth="117.0" text="More details" />
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <children>
+                                    <Label prefHeight="21.0" prefWidth="20.0" />
+                                    <Label fx:id="lblItemName" text="Name of the item" />
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                 <children>
+                                    <Label prefHeight="21.0" prefWidth="20.0" />
+                                    <Label fx:id="lblItemPrice" text="More information " />
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                 <children>
+                                    <Label prefHeight="21.0" prefWidth="20.0" />
+                                    <Label fx:id="lblOnStock" text="On stock" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </GridPane>
+                     </children></AnchorPane>
+                  <GridPane GridPane.rowIndex="1">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="652.0" minWidth="10.0" prefWidth="652.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="492.0" minWidth="10.0" prefWidth="342.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+                           <children>
+                              <Label prefHeight="51.0" prefWidth="16.0" />
+                              <Label prefHeight="51.0" prefWidth="16.0" />
+                              <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="40.0" prefWidth="113.0">
+                                 <graphic>
+                                    <HBox prefHeight="31.0" prefWidth="106.0">
+                                       <children>
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="2.0" prefHeight="25.0" prefWidth="56.0" text="Add">
+                                                   <font>
+                                                      <Font name="System Bold" size="16.0" />
+                                                   </font>
+                                                </Label>
+                                                <ImageView fitHeight="20.0" fitWidth="21.0" layoutX="56.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../assets/buttons/enter-key-b.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </HBox>
+                                 </graphic>
+                              </Button>
+                              <Label prefHeight="51.0" prefWidth="16.0" />
+                              <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="113.0">
+                                 <graphic>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <AnchorPane prefHeight="30.0" prefWidth="88.0">
+                                             <children>
+                                                <Label layoutX="10.0" layoutY="2.0" prefHeight="25.0" prefWidth="56.0" text="Cancel">
+                                                   <font>
+                                                      <Font name="System Bold" size="16.0" />
+                                                   </font>
+                                                </Label>
+                                                <ImageView fitHeight="27.0" fitWidth="44.0" layoutX="67.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../assets/buttons/esc-b.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </HBox>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="52.0" />
+                              <ImageView fitHeight="40.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/buttons/search-b.png" />
+                                 </image>
+                              </ImageView>
+                              <TextField fx:id="txtSearch" onAction="#txtSearchOnAction" onKeyPressed="#txtSearchKeyPressedOnAction" onKeyReleased="#txtSearchKeyRelesedOnAction" prefHeight="41.0" prefWidth="569.0" promptText="Search...">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </TextField>
+                              <Label prefHeight="21.0" prefWidth="166.0" />
+                              <TextField fx:id="txtQty" onAction="#lblQtyOnAction" prefHeight="41.0" prefWidth="203.0" promptText="Qty...">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </HBox>
+                     </children>
+                  </GridPane>
+               </children>
+            </GridPane>
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="3">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="729.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="550.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <TableView fx:id="tblBillingView" maxHeight="-Infinity" maxWidth="-Infinity" onKeyPressed="#tblViewOnKeyPressedEvt" onMouseClicked="#tblBillingViewMouseClickEvent" prefHeight="550.0" prefWidth="1000.0">
+                    <columns>
+                      <TableColumn maxWidth="5.0" minWidth="0.0" prefWidth="0.0" text="C1" />
+                      <TableColumn fx:id="tblItemId" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="119.0" text="Item ID" />
+                        <TableColumn fx:id="tblItemName" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="429.0" text="Item Name" />
+                        <TableColumn fx:id="tblItemPrice" maxWidth="1.7976931348623157E308" minWidth="67.0" prefWidth="163.0" text="Item Price" />
+                        <TableColumn fx:id="tblOnStock" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="146.0" text="On Stock" />
+                        <TableColumn fx:id="tblMoreDtl" maxWidth="1.7976931348623157E308" minWidth="75.0" prefWidth="143.0" text="More Details" />
+                        <TableColumn fx:id="tblItemPrice1" maxWidth="1.7976931348623157E308" minWidth="67.0" prefWidth="163.0" text="Item Price" />
+                    </columns>
+                  </TableView>
+               </children>
+            </GridPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="2" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="1" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="2" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" />
+            <AnchorPane prefHeight="529.0" prefWidth="0.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="3" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="4" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+         </children>
+      </GridPane>
+      <GridPane GridPane.columnIndex="1">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="19.0" minHeight="19.0" prefHeight="19.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="539.0" minHeight="10.0" prefHeight="369.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="19.0" minHeight="19.0" prefHeight="19.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="280.0" minHeight="10.0" prefHeight="261.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="199.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="19.0" minHeight="19.0" prefHeight="19.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ListView fx:id="listViewBilling" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#listViewBillingClickEvt" prefHeight="356.0" prefWidth="347.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="1" />
+            <AnchorPane GridPane.rowIndex="3">
+               <children>
+                  <Label layoutX="12.0" layoutY="3.0" text="Sub Total" AnchorPane.leftAnchor="12.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="20.0" layoutY="27.0" prefHeight="21.0" prefWidth="44.0" text="Total" />
+                  <Label layoutX="20.0" layoutY="48.0" prefHeight="21.0" prefWidth="70.0" text="Discounts" />
+                  <Separator layoutX="13.0" layoutY="78.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0" />
+                  <Label layoutX="13.0" layoutY="77.0" text="Total">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="106.0" layoutY="105.0" text="Rs. 00000" AnchorPane.rightAnchor="15.0">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="118.0" layoutY="48.0" text="Rs. 0000" AnchorPane.rightAnchor="15.0" />
+                  <Label layoutX="118.0" layoutY="27.0" text="Rs. 0000" AnchorPane.rightAnchor="15.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="17.0" prefWidth="130.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="2">
+               <children>
+                  <Separator AnchorPane.bottomAnchor="3.5" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="3.5" />
+               </children>
+            </AnchorPane>
+            <Button fx:id="btnPay" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="46.0" prefWidth="116.0" styleClass="btn-3" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="4">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.0" minWidth="10.0" prefWidth="119.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="91.0" minWidth="10.0" prefWidth="74.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutY="-5.0" text="Pay" AnchorPane.leftAnchor="1.0" AnchorPane.topAnchor="-5.0">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="1.0" layoutY="15.0" text="Item Count" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1">
+                           <children>
+                              <Label layoutX="9.0" layoutY="8.0" text="Rs. 00000" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </GridPane>
+               </graphic>
+            </Button>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" />
+            <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="5" />
+         </children>
+      </GridPane>
+   </children>
+</GridPane>
