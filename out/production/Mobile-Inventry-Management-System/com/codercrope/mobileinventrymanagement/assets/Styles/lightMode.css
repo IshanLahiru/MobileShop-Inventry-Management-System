@@ -55,3 +55,7 @@
 .listViewMain:hover{
     -fx-border-color: #C5291B;
 }
+.roundTile{
+    -fx-background-radius: 10;
+    -fx-background-color: #FFFFFF;
+}
