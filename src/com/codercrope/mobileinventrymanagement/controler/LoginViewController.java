@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -18,8 +19,8 @@ import java.sql.SQLException;
 public class LoginViewController {
     public Stage stage;
     public TextField btnEmail;
-    public TextField btnPwd;
     public Button btnLogIn;
+    public PasswordField btnPwd;
 
     public void getStage(Stage primaryStage){
         this.stage = primaryStage;
@@ -41,6 +42,7 @@ public class LoginViewController {
 
     public void btnLoginOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
 
+        System.out.println(btnPwd.getText());
         boolean val = UserValidation.initValidation(btnEmail.getText(),btnPwd.getText());
         //User.initUser(UserValidation.getUser(btnEmail.getText(),btnPwd.getText()));
         //System.out.println(User.getUser().getAdministrativeDtlId());

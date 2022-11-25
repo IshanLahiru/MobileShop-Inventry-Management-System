@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="pane1" prefHeight="720.0" prefWidth="1290.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.codercrope.mobileinventrymanagement.controler.orderViewController">
+<GridPane fx:id="pane1" prefHeight="720.0" prefWidth="1290.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.codercrope.mobileinventrymanagement.controler.orderViewController">
   <columnConstraints>
     <ColumnConstraints maxWidth="19.0" minWidth="19.0" prefWidth="19.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -46,7 +46,6 @@
                   <TableColumn fx:id="tblMoreDtl" prefWidth="129.0" text="More Details" />
               </columns>
             </TableView>
-            <AnchorPane prefHeight="550.0" prefWidth="55.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="1" />
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
                <children>
                   <Label contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="27.0" prefWidth="582.0" text="  Items" textAlignment="CENTER">
@@ -59,19 +58,7 @@
             </VBox>
          </children>
       </GridPane>
-      <AnchorPane prefHeight="19.0" prefWidth="1262.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="1" />
-      <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="3" />
-      <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="2" />
-      <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-      <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-      <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-      <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-      <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="4" />
-      <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="2" GridPane.rowIndex="4" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" />
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="1" />
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="2" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="primary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
             <Label layoutX="31.0" layoutY="29.0" text="Label" />
@@ -79,6 +66,5 @@
             <Label layoutX="31.0" layoutY="101.0" text="Label" />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" />
    </children>
 </GridPane>

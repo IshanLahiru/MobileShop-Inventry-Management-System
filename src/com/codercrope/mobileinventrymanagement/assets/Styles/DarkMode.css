@@ -30,3 +30,7 @@
 .myButton:hover {
     -fx-background-color: rgba(197, 197, 197, 0.25);
 }
+.roundTile{
+    -fx-background-radius: 10;
+    -fx-background-color: #383838;
+}
