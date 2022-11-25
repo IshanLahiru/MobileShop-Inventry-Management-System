@@ -49,6 +49,9 @@ public class ItemViewController {
     @FXML
     private TableColumn<MainItemTM, Button> tblMoreDtl;
 
+    @FXML
+    private Button btnEditWarranty;
+
     public void initialize() throws SQLException, ClassNotFoundException {
         tblItemId.setCellValueFactory(new PropertyValueFactory<MainItemTM, String>("ItemId"));
         tblWorrantyId.setCellValueFactory(new PropertyValueFactory<MainItemTM, String>("WorrantyId"));
@@ -76,6 +79,17 @@ public class ItemViewController {
 
     public void btnAddOrderOnAction(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/subwindows/AddOnlineOrderView.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        //((ItemMoreDetailViewController) fxmlLoader.getController()).getObject(item.getOb());
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1));
+        stage.show();
+
+    }
+
+    @FXML
+    void btnEditWarrantyOnAction(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/subwindows/EditWarrantyView.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         //((ItemMoreDetailViewController) fxmlLoader.getController()).getObject(item.getOb());
         Stage stage = new Stage();

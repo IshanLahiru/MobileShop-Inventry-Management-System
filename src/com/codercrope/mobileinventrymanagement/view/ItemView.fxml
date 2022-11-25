@@ -132,6 +132,22 @@
                               <RowConstraints maxHeight="24.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                 <children>
+                                    <Label layoutX="6.0" layoutY="5.0" text="edit warranty" />
+                                 </children></AnchorPane>
+                              <Button fx:id="btnEditWarranty" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnEditWarrantyOnAction" prefHeight="72.0" prefWidth="103.0" text="edit warranty" />
+                           </children>
+                        </GridPane>
+                        <GridPane prefHeight="91.0" prefWidth="70.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="70.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="70.0" minHeight="70.0" prefHeight="70.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="24.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
