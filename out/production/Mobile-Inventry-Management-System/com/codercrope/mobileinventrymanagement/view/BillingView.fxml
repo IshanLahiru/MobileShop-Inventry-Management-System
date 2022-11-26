@@ -211,15 +211,12 @@
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <Label prefHeight="21.0" prefWidth="52.0" />
-                              <AnchorPane prefHeight="54.0" prefWidth="63.0">
-                                 <children>
-                                    <ImageView fitHeight="34.0" fitWidth="30.0" layoutX="16.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../assets/buttons/search-b.png" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                              </AnchorPane>
+                              <AnchorPane prefHeight="54.0" prefWidth="63.0" />
+                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/buttons/search-b.png" />
+                                 </image>
+                              </ImageView>
                               <TextField fx:id="txtSearch" onAction="#txtSearchOnAction" onKeyPressed="#txtSearchKeyPressedOnAction" onKeyReleased="#txtSearchKeyRelesedOnAction" prefHeight="41.0" prefWidth="569.0" promptText="Search...">
                                  <font>
                                     <Font size="18.0" />

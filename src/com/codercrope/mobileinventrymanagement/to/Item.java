@@ -1,5 +1,12 @@
 package com.codercrope.mobileinventrymanagement.to;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class Item {
     private String itemId;
     private Warranty warrentyId;
@@ -87,4 +94,20 @@ public class Item {
     public void setItemDtl(String itemDtl) {
         this.itemDtl = itemDtl;
     }
+
+    public HashMap<String, Object> getItemDtlHM() {
+        HashMap<String, Object> mapObj = new Gson().fromJson(
+                itemDtl, new TypeToken<HashMap<String, Object>>() {}.getType()
+        );
+        return mapObj;
+        /*Map<String, Object> userData = new Gson().fromJson(itemDtl, new TypeToken<HashMap<String, Object>>() {
+        }.getType());
+        // print all key-value pairs
+        System.out.println("key : " + userData.get("Name"));
+        System.out.println("Mobile : " + userData.get("Mobile"));
+        System.out.println("Designation : " + userData.get("Designation"));
+        System.out.println("Pet : " + userData.get("Pet"));
+        System.out.println("Address : " + userData.get("Address"));*/
+    }
+
 }

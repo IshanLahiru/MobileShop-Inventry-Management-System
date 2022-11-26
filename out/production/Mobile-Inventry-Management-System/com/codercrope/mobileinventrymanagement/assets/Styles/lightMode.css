@@ -43,6 +43,9 @@
 .btn-3:hover {
     -fx-background-color: linear-gradient(to left, #84fab0 0%, #8fd3f4 55%, #84fab0 80%);
 }
+.btn-3:selected {
+    -fx-background-color: yellow;
+}
 .list-cell {
     -fx-background-color: transparent;
 }
@@ -58,4 +61,7 @@
 .roundTile{
     -fx-background-radius: 10;
     -fx-background-color: #FFFFFF;
+}
+.background-gradient{
+    -fx-background: linear-gradient(to right, #bdc3c7, #2c3e50);
 }

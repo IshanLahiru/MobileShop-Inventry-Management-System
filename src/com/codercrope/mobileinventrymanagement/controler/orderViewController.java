@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -18,6 +19,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class orderViewController {
+    public ListView MoreDtlListView;
     @FXML
     private GridPane pane1;
 
@@ -51,6 +53,7 @@ public class orderViewController {
         tblDateTime.setCellValueFactory(new PropertyValueFactory<MainBillingItemTM, String>("dateTime"));
         tblPaymentStats.setCellValueFactory(new PropertyValueFactory<MainBillingItemTM, Double>("custPaymentSts"));
         tblMoreDtl.setCellValueFactory(new PropertyValueFactory<MainBillingItemTM, Button>("tem"));
+        //MoreDtlListView.setVisible(false);
 
         setData();
     }

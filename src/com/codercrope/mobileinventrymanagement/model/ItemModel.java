@@ -50,4 +50,25 @@ public class ItemModel {
         //System.out.println(items.size());
         return items;
     }
+
+    public static String getItemId() throws SQLException, ClassNotFoundException {
+        String sql = "SELECT id FROM Orders ORDER BY id DESC LIMIT 1";
+        ResultSet result = CrudUtil.execute(sql);
+
+        if (result.next()) {
+            return generateNextItemId(result.getString(1));
+        }
+        return generateNextItemId(result.getString(null));
+    }
+    private static String generateNextItemId(String currentItemId) {
+        if (currentItemId != null) {
+            String[] split = currentItemId.split("I0");
+            int id = Integer.parseInt(split[1]);
+            id += 1;
+            return "D0" + id;
+        }
+        return "-1";
+
+
+    }
 }

@@ -1,4 +1,4 @@
-package com.codercrope.mobileinventrymanagement.controler;
+package com.codercrope.mobileinventrymanagement.view.subwindows;
 
 import com.codercrope.mobileinventrymanagement.controler.subwindows.ItemMoreDetailViewController;
 import com.codercrope.mobileinventrymanagement.controler.tmlist.MainItemTM;
@@ -11,11 +11,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -23,10 +22,9 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ItemViewController {
+public class AddItemsViewController {
 
-    public Button btnAddOrder;
-    public Button AddItem;
+
     @FXML
     private GridPane pane1;
 
@@ -52,7 +50,61 @@ public class ItemViewController {
     private TableColumn<MainItemTM, Button> tblMoreDtl;
 
     @FXML
-    private Button btnEditWarranty;
+    private TextField txtSearch;
+
+    @FXML
+    private Button btnSearch;
+
+    @FXML
+    private ListView<?> itemDtlView;
+
+    @FXML
+    private TextField txtEnterItemDtlTopic;
+
+    @FXML
+    private TextArea txtEnterItemDtl;
+
+    @FXML
+    private ListView<?> itemDtlComponentLWOnAction;
+
+    @FXML
+    private Label lblItemIdPT;
+
+    @FXML
+    private Label lblItemId;
+
+    @FXML
+    private Label lblWarrantyId;
+
+    @FXML
+    private Label lblWarrantyIdPt;
+
+    @FXML
+    private Label lblProfitPercentage;
+
+    @FXML
+    private TextField txtItemProfitPercentage;
+
+    @FXML
+    private Label LblItemName;
+
+    @FXML
+    private TextField txtItemName;
+
+    @FXML
+    private Label lblItemPrice;
+
+    @FXML
+    private TextField txtItemPrice;
+
+    @FXML
+    private Button btnAdd;
+
+    @FXML
+    private Button btnDelete;
+
+    @FXML
+    private Button btnUpdate;
 
     public void initialize() throws SQLException, ClassNotFoundException {
         tblItemId.setCellValueFactory(new PropertyValueFactory<MainItemTM, String>("ItemId"));
@@ -61,9 +113,68 @@ public class ItemViewController {
         tblAddedDateTime.setCellValueFactory(new PropertyValueFactory<MainItemTM, String>("AddedDateTime"));
         tblStockPrice.setCellValueFactory(new PropertyValueFactory<MainItemTM, Double>("StockPrice"));
         tblMoreDtl.setCellValueFactory(new PropertyValueFactory<MainItemTM, Button>("MoreDtl"));
-
+        btnDelete.setDisable(true);
+        btnUpdate.setDisable(true);
 
         setData();
+        lblItemId.setText(ItemModel.getItemId());
+    }
+
+    @FXML
+    void ItemDtlComponentOnMouseClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void btnAddOrderOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnDeleteOrderOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnSearchOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnUpdateOrderOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void tblMouseClickedOnAction(MouseEvent event) {
+        btnDelete.setDisable(false);
+        btnUpdate.setDisable(false);
+
+    }
+
+    @FXML
+    void txtEnterItemDtlOnKeyPressed(KeyEvent event) {
+
+    }
+
+    @FXML
+    void txtEnterItemDtlTopicOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void txtItemNAmeOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void txtItemPriceOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void txtItemProfitPercentageOnAction(ActionEvent event) {
+
     }
 
     public void setData() throws SQLException, ClassNotFoundException {
@@ -93,34 +204,4 @@ public class ItemViewController {
         tblItemView.setItems(cust);
     }
 
-    public void btnAddOrderOnAction(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/subwindows/AddOnlineOrderView.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-        //((ItemMoreDetailViewController) fxmlLoader.getController()).getObject(item.getOb());
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root1));
-        stage.show();
-
-    }
-
-    @FXML
-    void btnEditWarrantyOnAction(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/subwindows/EditWarrantyView.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-        //((ItemMoreDetailViewController) fxmlLoader.getController()).getObject(item.getOb());
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root1));
-        stage.show();
-
-    }
-
-    public void btnAddItemOnAction(ActionEvent actionEvent) throws IOException {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/subwindows/AddItemsView.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            //((ItemMoreDetailViewController) fxmlLoader.getController()).getObject(item.getOb());
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root1));
-            stage.show();
-
-    }
 }

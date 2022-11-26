@@ -180,7 +180,7 @@
                                        </rowConstraints>
                                        <children>
                                           <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
-                                          <Button fx:id="btnEditWarranty1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnEditWarrantyOnAction" prefHeight="72.0" prefWidth="103.0" text="Add Item" />
+                                          <Button fx:id="AddItem" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnAddItemOnAction" prefHeight="72.0" prefWidth="103.0" text="Add Item" />
                                        </children>
                                     </GridPane>
                                  </children>

@@ -318,6 +318,7 @@ public class BillingViewController {
             if(tblBillingView.getSelectionModel().getSelectedItem()!=null) {
                 MainBillingItemTM temp = (MainBillingItemTM) tblBillingView.getSelectionModel().getSelectedItem();
                 this.selectedItem = temp;
+                //System.out.println(selectedItem.getOb().getItemDtlHM().get("ishan"));
                 initLabels(temp);
                 /*lblItemId.setText(temp.getItemId());
                 lblItemName.setText(temp.getItemName());
