@@ -167,7 +167,7 @@
                                        <children>
                                           <Label layoutX="32.0" />
                                           <Label layoutX="-19.0" />
-                                          <Label alignment="CENTER" contentDisplay="CENTER" layoutX="5.0" layoutY="3.0" prefHeight="21.0" prefWidth="92.0" text="Add Item" textAlignment="CENTER" />
+                                          <Label alignment="CENTER" contentDisplay="CENTER" layoutX="5.0" layoutY="3.0" prefHeight="21.0" prefWidth="92.0" text="MAnage item" textAlignment="CENTER" />
                                        </children>
                                     </AnchorPane>
                                     <GridPane prefHeight="91.0" prefWidth="70.0">
@@ -197,7 +197,7 @@
                                     <Button fx:id="btnAddOrder" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnAddOrderOnAction" prefHeight="72.0" prefWidth="103.0" text="add a online order" />
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                                        <children>
-                                          <Label layoutX="4.0" text="Online Orders" />
+                                          <Label layoutX="4.0" text="Online orders" />
                                        </children>
                                     </AnchorPane>
                                  </children>
@@ -213,7 +213,7 @@
                                  <children>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                                        <children>
-                                          <Label alignment="CENTER" contentDisplay="CENTER" layoutX="6.0" layoutY="2.0" prefHeight="21.0" prefWidth="92.0" text="Warranty" textAlignment="CENTER" />
+                                          <Label alignment="CENTER" contentDisplay="CENTER" layoutX="6.0" layoutY="2.0" prefHeight="21.0" prefWidth="92.0" text="Manage warranty" textAlignment="CENTER" />
                                        </children>
                                     </AnchorPane>
                                     <Button fx:id="btnEditWarranty" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnEditWarrantyOnAction" prefHeight="72.0" prefWidth="103.0" text="edit warranty" />

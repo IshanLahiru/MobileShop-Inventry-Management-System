@@ -2,8 +2,15 @@ package com.codercrope.mobileinventrymanagement.view.subwindows;
 
 import com.codercrope.mobileinventrymanagement.controler.subwindows.ItemMoreDetailViewController;
 import com.codercrope.mobileinventrymanagement.controler.tmlist.MainItemTM;
+import com.codercrope.mobileinventrymanagement.db.DBConnection;
+import com.codercrope.mobileinventrymanagement.model.AddItemModel;
 import com.codercrope.mobileinventrymanagement.model.ItemModel;
+import com.codercrope.mobileinventrymanagement.model.WarrantyModel;
+import com.codercrope.mobileinventrymanagement.model.WarrantyTypeModel;
 import com.codercrope.mobileinventrymanagement.to.Item;
+import com.codercrope.mobileinventrymanagement.to.Warranty;
+import com.codercrope.mobileinventrymanagement.to.WarrantyType;
+import com.codercrope.mobileinventrymanagement.util.CrudUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,11 +27,15 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class AddItemsViewController {
 
 
+    public Button btnAddWarranty;
+    public SplitMenuButton warrantyTypeSelector;
     @FXML
     private GridPane pane1;
 
@@ -106,6 +117,8 @@ public class AddItemsViewController {
     @FXML
     private Button btnUpdate;
 
+    String warrantyType;
+
     public void initialize() throws SQLException, ClassNotFoundException {
         tblItemId.setCellValueFactory(new PropertyValueFactory<MainItemTM, String>("ItemId"));
         tblWorrantyId.setCellValueFactory(new PropertyValueFactory<MainItemTM, String>("WorrantyId"));
@@ -118,15 +131,48 @@ public class AddItemsViewController {
 
         setData();
         lblItemId.setText(ItemModel.getItemId());
+        lblWarrantyId.setText(WarrantyModel.getWarrantyId());
+        ArrayList<WarrantyType> ar = WarrantyTypeModel.getWarrantyTypes();
+        for (WarrantyType w : ar){
+            MenuItem i = new MenuItem(w.getWarrantyTypeId());
+            warrantyTypeSelector.getItems().add(i);
+            i.setOnAction(event ->{
+                warrantyTypeSelector.setText(w.getWarrantyTypeId());
+                //warrantyType = w.getWarrantyTypeId();
+            });
+        }
     }
 
     @FXML
-    void ItemDtlComponentOnMouseClicked(MouseEvent event) {
+    public void ItemDtlComponentOnMouseClicked(MouseEvent event) {
 
     }
 
     @FXML
-    void btnAddOrderOnAction(ActionEvent event) {
+    public void btnAddOrderOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String dateTime = dtf.format(now);
+        boolean sta = AddItemModel.addItem(new Item(lblItemId.getText(),WarrantyModel.getWarranty(lblWarrantyId.getText()),txtItemName.getText(),dateTime,Double.parseDouble(txtItemPrice.getText()),10,"",0),new Warranty(lblWarrantyId.getText(),WarrantyTypeModel.getWarrantyType(warrantyTypeSelector.getText())));
+        if(sta){
+            new Alert(Alert.AlertType.INFORMATION,"Item Added successfully").show();
+        }else{
+            new Alert(Alert.AlertType.ERROR,"Error: not added! try again").show();
+        }
+        /*try {
+            DBConnection.getInstance().getConnection().setAutoCommit(false);
+            boolean warranty = WarrantyModel.save(new Warranty(lblWarrantyId.getText(),WarrantyTypeModel.getWarrantyType(warrantyTypeSelector.getText())));
+            boolean item =ItemModel.save(new Item(lblItemId.getText(),WarrantyModel.getWarranty(lblWarrantyId.getText()),txtItemName.getText(),dateTime,Double.parseDouble(txtItemPrice.getText()),10,"",0));
+            if (!warranty&&item){
+                DBConnection.getInstance().getConnection().rollback();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }finally {
+            DBConnection.getInstance().getConnection().setAutoCommit(true);
+        }*/
 
     }
 
@@ -164,16 +210,28 @@ public class AddItemsViewController {
 
     @FXML
     void txtItemNAmeOnAction(ActionEvent event) {
+        txtItemProfitPercentage.requestFocus();
 
     }
 
     @FXML
-    void txtItemPriceOnAction(ActionEvent event) {
-
+    void txtItemPriceOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
+        btnAddOrderOnAction(event);
     }
 
     @FXML
     void txtItemProfitPercentageOnAction(ActionEvent event) {
+        warrantyTypeSelector.requestFocus();
+
+    }
+
+    @FXML
+    public void warrantyTypeSelectorOnAction(ActionEvent actionEvent) {
+        txtItemPrice.requestFocus();
+    }
+
+    @FXML
+    private void btnAddWarrantymouseClickEvent(ActionEvent event) {
 
     }
 
@@ -203,5 +261,6 @@ public class AddItemsViewController {
         }
         tblItemView.setItems(cust);
     }
+
 
 }

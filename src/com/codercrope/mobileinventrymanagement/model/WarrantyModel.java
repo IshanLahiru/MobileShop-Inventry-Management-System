@@ -23,4 +23,31 @@ public class WarrantyModel {
         }
         return warranty;
     }
+
+    public static String getWarrantyId() throws SQLException, ClassNotFoundException {
+        String sql = "SELECT warranty_id FROM warranty ORDER BY warranty_id DESC LIMIT 1";
+        ResultSet result = CrudUtil.execute(sql);
+
+        if (result.next()) {
+            return generateNextItemId(result.getString(1));
+        }
+        return generateNextItemId(result.getString(null));
+    }
+    private static String generateNextItemId(String currentItemId) {
+        if (currentItemId != null) {
+            String[] split = currentItemId.split("WI0");
+            int id = Integer.parseInt(split[1]);
+            id += 1;
+            String str = String.format("%04d", id);
+            return "WI0" + str;
+        }
+        return "-1";
+
+
+    }
+
+    public static boolean save(Warranty warranty) throws SQLException, ClassNotFoundException {
+        String sql = "INSERT INTO warranty VALUES(?, ?)";
+        return CrudUtil.execute(sql, warranty.getWarrantyId(),warranty.getWarrantyTypeId());
+    }
 }

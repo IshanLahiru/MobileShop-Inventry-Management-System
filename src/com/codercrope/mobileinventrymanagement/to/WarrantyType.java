@@ -1,7 +1,5 @@
 package com.codercrope.mobileinventrymanagement.to;
 
-import java.util.HashMap;
-
 public class WarrantyType {
     private String warrantyTypeId;
     private String warrantyDuration;
