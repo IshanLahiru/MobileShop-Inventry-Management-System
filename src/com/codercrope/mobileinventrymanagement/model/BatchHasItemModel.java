@@ -45,4 +45,9 @@ public class BatchHasItemModel {
         String sql = "UPDATE batch_has_item SET item_qty = ? WHERE batch_id = ? AND item_id = ? ";
         return CrudUtil.execute(sql,value,key,itemId);
     }
+
+    public static boolean delete(String itemId) throws SQLException, ClassNotFoundException {
+        String sql = "Delete FROM batch_has_item where item_id = ?";
+        return CrudUtil.execute(sql,itemId);
+    }
 }

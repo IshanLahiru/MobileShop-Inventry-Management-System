@@ -151,7 +151,7 @@
                                     <RowConstraints maxHeight="131.0" minHeight="1.0" prefHeight="32.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <TextField fx:id="txtEnterItemDtlTopic" onAction="#txtEnterItemDtlTopicOnAction" promptText="Enter the item dtl topic..." GridPane.rowIndex="1" />
+                                    <TextField fx:id="txtEnterItemDtlTopic" onAction="#txtEnterItemDtlTopicOnAction" onMouseClicked="#txtEnterItemDtlTopicOnMouseClick" promptText="Enter the item dtl topic..." GridPane.rowIndex="1" />
                                     <TextArea fx:id="txtEnterItemDtl" onKeyPressed="#txtEnterItemDtlOnKeyPressed" prefHeight="42.0" prefWidth="269.0" promptText="Enter the item dtl " GridPane.rowIndex="3" />
                                     <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
                                        <children>

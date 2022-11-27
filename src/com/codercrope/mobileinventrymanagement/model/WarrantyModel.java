@@ -31,7 +31,7 @@ public class WarrantyModel {
         if (result.next()) {
             return generateNextItemId(result.getString(1));
         }
-        return generateNextItemId(result.getString(null));
+        return "WI00001";
     }
     private static String generateNextItemId(String currentItemId) {
         if (currentItemId != null) {
@@ -59,5 +59,10 @@ public class WarrantyModel {
     public static boolean update(String warrantyId, String warrantTypeId) throws SQLException, ClassNotFoundException {
         String sql = "UPDATE warranty SET warranty_type_id = ? WHERE warranty_id = ?";
         return CrudUtil.execute(sql, warrantTypeId ,warrantyId );
+    }
+
+    public static boolean delete(String warrantyId) throws SQLException, ClassNotFoundException {
+        String sql = "DELETE FROM warranty WHERE warranty_id = ?";
+        return CrudUtil.execute(sql,warrantyId );
     }
 }

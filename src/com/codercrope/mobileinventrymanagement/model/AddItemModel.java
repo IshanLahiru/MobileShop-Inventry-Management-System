@@ -67,4 +67,21 @@ public class AddItemModel {
     public static String getItemDtlJson (HashMap<String, String> hm) {
         return new Gson().toJson(hm);
     }
+
+    public static boolean delete(AddItem item) throws SQLException, ClassNotFoundException {
+        try {
+            DBConnection.getInstance().getConnection().setAutoCommit(false);
+            boolean batchHasItem = BatchHasItemModel.delete(item.getItemId());
+            boolean itemTable = ItemModel.delete(item.getItemId());
+            boolean warrantyTable = WarrantyModel.delete(item.getWarrantyId());
+            if (warrantyTable && itemTable && batchHasItem) {
+                DBConnection.getInstance().getConnection().commit();
+                return true;
+            }
+            DBConnection.getInstance().getConnection().rollback();
+            return false;
+        } finally {
+            DBConnection.getInstance().getConnection().setAutoCommit(true);
+        }
+    }
 }

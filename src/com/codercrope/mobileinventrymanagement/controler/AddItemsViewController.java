@@ -47,6 +47,9 @@ public class AddItemsViewController {
     public ArrayList<Button> batchListView = new ArrayList<>();
     public ArrayList<AddItemViewDtlTileListViewCompController> batchListDtl = new ArrayList<AddItemViewDtlTileListViewCompController>();
     public ArrayList<Button> batchListViewdtl = new ArrayList<>();
+    public Button btnAddDtl;
+    public Button btnDeleteDtl;
+    public TableColumn ItemOnStock;
     String warrantyType;
     HashMap<String, String> hm = new HashMap<>();
     HashMap<String, String> tempArrayForlist = new HashMap<>();
@@ -132,6 +135,11 @@ public class AddItemsViewController {
         batchDtlListView.getItems().removeAll(batchListView);
         batchList.clear();
         initBatchDtlList(null);
+        btnAdd.setDisable(false);
+        btnUpdateDtl.setDisable(false);
+        btnAddDtl.setDisable(true);
+        btnDeleteDtl.setDisable(false);
+        txtEnterItemDtl.setWrapText(true);
 
 
     }
@@ -178,7 +186,24 @@ public class AddItemsViewController {
     }
 
     @FXML
-    void btnDeleteOrderOnAction(ActionEvent event) {
+    void btnDeleteOrderOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String dateTime = dtf.format(now);
+        System.out.println(dateTime);
+        System.out.println(warrantyTypeSelector.getText());
+        for (AddItemViewBSListComponentController b : batchList) {
+            hm.put(b.getBatchId(), b.getNoOfItems());
+        }
+        boolean sta = AddItemModel.delete(new AddItem(lblWarrantyId.getText(), warrantyTypeSelector.getText(), lblItemId.getText(), txtItemName.getText(), dateTime, Double.parseDouble(txtItemPrice.getText()), Integer.parseInt(txtItemProfitPercentage.getText()), AddItemModel.getItemDtlJson(tempArrayForlist), hm));
+        if (sta) {
+            setData();
+            lblItemId.setText(ItemModel.getItemId());
+            lblWarrantyId.setText(WarrantyModel.getWarrantyId());
+            new Alert(Alert.AlertType.INFORMATION, "Item deleted successfully").show();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Error: not deleted! try again").show();
+        }
 
     }
 
@@ -215,41 +240,22 @@ public class AddItemsViewController {
         btnUpdate.setDisable(false);
         btnAdd.setDisable(true);
         if (event.getButton() == MouseButton.PRIMARY) {
-            if (tblItemView.getSelectionModel().getSelectedItem() != null) {
+            //if (tblItemView.getSelectionModel().getSelectedItem() != null) {
                 MainItemTM temp = tblItemView.getSelectionModel().getSelectedItem();
-                txtEnterItemDtlTopic.setEditable(false);
-                btnUpdateDtl.setText("Update details");
+                txtEnterItemDtlTopic.setEditable(true);
                 initData(temp);
-                /*lblItemId.setText(temp.getItemId());
-                lblItemName.setText(temp.getItemName());
-                lblItemPrice.setText(String.valueOf(temp.getItemPriceStock()));
-                lblOnStock.setText(String.valueOf(temp.getQty()));
-                btnMoreDetails.setOnMouseClicked(e -> {
-                    try {
-                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/subwindows/ItemMoreDetailView.fxml"));
-                        Parent root1 = (Parent) fxmlLoader.load();
-                        ((ItemMoreDetailViewController) fxmlLoader.getController()).getObject(temp.getOb());
-                        Stage stage = new Stage();
-                        stage.setScene(new Scene(root1));
-                        stage.show();
-                    } catch (IOException ex) {
-                        ex.printStackTrace();
-                    }
-                });*/
-
-
-            /*txtCustId.setText(temp.getCustId());
-            txtCustName.setText(temp.getCustName());
-            txtCustAddress.setText(temp.getCustAddress());
-            txtCustSallery.setText(String.valueOf(temp.getSalary()));*/
-            }
+                btnUpdateDtl.setDisable(true);
+                btnAddDtl.setDisable(false);
+                btnDeleteDtl.setDisable(true);
         } else if (event.getButton() == MouseButton.SECONDARY) {
-            System.out.println("rightClicked on the table");
+            //System.out.println("rightClicked on the table");
             txtEnterItemDtlTopic.setEditable(true);
             txtEnterItemDtlTopic.setText("");
             txtEnterItemDtl.setText("");
-            btnUpdateDtl.setText("Add details");
             initialize();
+            btnUpdateDtl.setDisable(true);
+            btnAddDtl.setDisable(false);
+            btnDeleteDtl.setDisable(true);
         }
 
     }
@@ -264,23 +270,6 @@ public class AddItemsViewController {
         txtItemPrice.setText(ItemPriceGenerator.getItemPrice(it.getItemId()));
         initBatchDtlList(it);
 
-    }
-
-    public void btnUpdateDtlOnAction(ActionEvent actionEvent) throws IOException {
-        tempArrayForlist.put(txtEnterItemDtlTopic.getText(), txtEnterItemDtl.getText());
-        txtEnterItemDtlTopic.setText("");
-        txtEnterItemDtl.setText("");
-        if (txtEnterItemDtlTopic.isEditable()) {
-            for (Map.Entry<String, String> entry : tempArrayForlist.entrySet()) {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/listview/AddItemViewDtlTileListViewComp.fxml"));
-                Button root1 = (Button) fxmlLoader.load();
-                AddItemViewDtlTileListViewCompController batch = ((AddItemViewDtlTileListViewCompController) fxmlLoader.getController());
-                batch.setData(entry.getKey(), entry.getValue(), txtEnterItemDtlTopic, txtEnterItemDtl);
-                batchListViewdtl.add(root1);
-                batchListDtl.add(batch);
-            }
-            itemDtlComponentLW.getItems().addAll(batchListViewdtl);
-        }
     }
 
     private void initBatchDtlList(Item it) throws SQLException, ClassNotFoundException, IOException {
@@ -310,7 +299,7 @@ public class AddItemsViewController {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/listview/AddItemViewDtlTileListViewComp.fxml"));
                     Button root1 = (Button) fxmlLoader.load();
                     AddItemViewDtlTileListViewCompController batch = ((AddItemViewDtlTileListViewCompController) fxmlLoader.getController());
-                    batch.setData(entry.getKey(), entry.getValue(), txtEnterItemDtlTopic, txtEnterItemDtl);
+                    batch.setData(this,entry.getKey(), entry.getValue(), txtEnterItemDtlTopic, txtEnterItemDtl);
                     batchListViewdtl.add(root1);
                     batchListDtl.add(batch);
                 }
@@ -408,12 +397,66 @@ public class AddItemsViewController {
     public void btnAddOnlineOrderOnAction(ActionEvent actionEvent) {
     }
 
-    public void btnAddOnlineOrderOnMouseClickEvent(MouseEvent mouseEvent) {
+    public void btnAddOnlineOrderOnMouseClickEvent(MouseEvent mouseEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/subwindows/AddOnlineOrderView.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        //((ItemMoreDetailViewController) fxmlLoader.getController()).getObject(item.getOb());
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1));
+        stage.show();
     }
 
     public void btnAddBatchIdMouseClickEvent(MouseEvent mouseEvent) {
+
     }
 
     public void btnUpdateDtlOnClickEvt(MouseEvent mouseEvent) {
+    }
+
+    public void btnAddDtlOnAction(ActionEvent actionEvent) throws IOException {
+        tempArrayForlist.put(txtEnterItemDtlTopic.getText(), txtEnterItemDtl.getText());
+        txtEnterItemDtlTopic.setText("");
+        txtEnterItemDtl.setText("");
+            for (Map.Entry<String, String> entry : tempArrayForlist.entrySet()) {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/listview/AddItemViewDtlTileListViewComp.fxml"));
+                Button root1 = (Button) fxmlLoader.load();
+                AddItemViewDtlTileListViewCompController batch = ((AddItemViewDtlTileListViewCompController) fxmlLoader.getController());
+                batch.setData(this, entry.getKey(), entry.getValue(), txtEnterItemDtlTopic, txtEnterItemDtl);
+                batchListViewdtl.add(root1);
+                batchListDtl.add(batch);
+            }
+            itemDtlComponentLW.getItems().addAll(batchListViewdtl);
+    }
+
+    public void btnDeleteDtlOnAction(ActionEvent actionEvent) {
+        tempArrayForlist.remove(txtEnterItemDtlTopic.getText());
+        txtEnterItemDtlTopic.setText("");
+        txtEnterItemDtl.setText("");
+    }
+
+    public void btnUpdateDtlOnAction(ActionEvent actionEvent) throws IOException {
+        tempArrayForlist.put(txtEnterItemDtlTopic.getText(), txtEnterItemDtl.getText());
+        txtEnterItemDtlTopic.setText("");
+        txtEnterItemDtl.setText("");
+        if (txtEnterItemDtlTopic.isEditable()) {
+            for (Map.Entry<String, String> entry : tempArrayForlist.entrySet()) {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/listview/AddItemViewDtlTileListViewComp.fxml"));
+                Button root1 = (Button) fxmlLoader.load();
+                AddItemViewDtlTileListViewCompController batch = ((AddItemViewDtlTileListViewCompController) fxmlLoader.getController());
+                batch.setData(this,entry.getKey(), entry.getValue(), txtEnterItemDtlTopic, txtEnterItemDtl);
+                batchListViewdtl.add(root1);
+                batchListDtl.add(batch);
+            }
+            itemDtlComponentLW.getItems().addAll(batchListViewdtl);
+        }
+    }
+
+    public void txtEnterItemDtlTopicOnMouseClick(MouseEvent mouseEvent) {
+        if (mouseEvent.getButton() == MouseButton.SECONDARY) {
+            txtEnterItemDtlTopic.setEditable(true);
+            btnAddDtl.setDisable(true);
+            btnUpdateDtl.setDisable(false);
+            btnDeleteDtl.setDisable(true);
+        }
     }
 }

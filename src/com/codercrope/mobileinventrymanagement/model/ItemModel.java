@@ -59,7 +59,7 @@ public class ItemModel {
         if (result.next()) {
             return generateNextItemId(result.getString(1));
         }
-        return generateNextItemId(result.getString(null));
+        return "I00001";
     }
 
     private static String generateNextItemId(String currentItemId) {
@@ -70,7 +70,7 @@ public class ItemModel {
             String str = String.format("%04d", id);
             return "I0" + str;
         }
-        return "-1";
+        return "I00001";
 
 
     }
@@ -137,5 +137,10 @@ public class ItemModel {
                     itemDtl,
                     itemId
             );
+    }
+
+    public static boolean delete(String itemId) throws SQLException, ClassNotFoundException {
+        String sql = "DELETE FROM item WHERE item_id = ?";
+        return CrudUtil.execute(sql,itemId);
     }
 }

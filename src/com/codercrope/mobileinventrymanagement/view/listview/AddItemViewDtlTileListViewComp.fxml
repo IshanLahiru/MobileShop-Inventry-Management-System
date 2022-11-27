@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -29,7 +28,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <TextArea fx:id="txtContent" prefHeight="200.0" prefWidth="200.0" promptText="text heare" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="txtContent" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
    </graphic>
