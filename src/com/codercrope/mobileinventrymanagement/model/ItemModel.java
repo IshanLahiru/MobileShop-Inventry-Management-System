@@ -99,4 +99,43 @@ public class ItemModel {
                 itemDtl
         );
     }
+
+    public static String getProfitPercentage(String itemId) throws SQLException, ClassNotFoundException {
+        String sql = "SELECT profit_percentage FROM item where item_id = ? ";
+        ResultSet result = CrudUtil.execute(sql, itemId);
+        if (result.next()) {
+            return result.getString(7);
+        }
+        return null;
+    }
+
+    public static Item gatItem(String itemId) throws SQLException, ClassNotFoundException {
+        String sql = "SELECT * FROM item where item_id = ? ";
+        ResultSet result = CrudUtil.execute(sql, itemId);
+        if (result.next()) {
+            return new Item(
+                    result.getString(1),
+                    WarrantyModel.getWarranty(result.getString(2)),
+                    result.getString(3),
+                    result.getString(4),
+                    Double.parseDouble(result.getString(5)),
+                    Integer.parseInt(result.getString(6)),
+                    result.getString(7),
+                    BatchHasItemModel.getItemCount(result.getString(1)));
+        }
+        return null;
+    }
+
+    public static boolean update(String itemId, String warrantyId, String itemName, String itemAddedDateTime, Double itePriceStock, int profitPercentage, String itemDtl) throws SQLException, ClassNotFoundException {
+            String sql = "UPDATE item SET warrenty_id = ? , item_name = ? ,item_added_date_time = ? ,ite_price_stock = ? ,profit_percentage = ? ,itm_dtl = ?  WHERE item_id = ?";
+            return CrudUtil.execute(sql,
+                    warrantyId,
+                    itemName,
+                    itemAddedDateTime,
+                    itePriceStock,
+                    profitPercentage,
+                    itemDtl,
+                    itemId
+            );
+    }
 }

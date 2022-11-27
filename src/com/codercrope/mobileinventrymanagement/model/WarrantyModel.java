@@ -55,4 +55,9 @@ public class WarrantyModel {
         String sql = "INSERT INTO warranty VALUES(?, ?)";
         return CrudUtil.execute(sql, warrantyId, warrantTypeId);
     }
+
+    public static boolean update(String warrantyId, String warrantTypeId) throws SQLException, ClassNotFoundException {
+        String sql = "UPDATE warranty SET warranty_type_id = ? WHERE warranty_id = ?";
+        return CrudUtil.execute(sql, warrantTypeId ,warrantyId );
+    }
 }
