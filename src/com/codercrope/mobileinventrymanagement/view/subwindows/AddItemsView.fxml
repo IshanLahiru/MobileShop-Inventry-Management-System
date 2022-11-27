@@ -53,17 +53,27 @@
                 </TableView>
                     <AnchorPane prefHeight="200.0" prefWidth="200.0">
                         <children>
-                            <GridPane layoutX="9.0" layoutY="19.0" prefHeight="30.0" prefWidth="463.0">
+                            <GridPane layoutX="9.0" layoutY="19.0" prefHeight="30.0" prefWidth="640.0">
                                 <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="330.0" minWidth="10.0" prefWidth="306.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="114.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="90.0" prefWidth="90.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="90.0" prefWidth="58.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="114.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="114.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
                                 </columnConstraints>
                                 <rowConstraints>
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                 <children>
                                     <TextField fx:id="txtSearch" prefHeight="62.0" prefWidth="306.0" promptText="Search...." />
-                                    <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#btnSearchOnAction" prefHeight="31.0" prefWidth="136.0" text="Search" GridPane.columnIndex="1" />
+                                    <Button fx:id="btnSearch" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSearchOnAction" prefHeight="31.0" prefWidth="136.0" text="Search" GridPane.columnIndex="1" />
+                        <Button fx:id="btnAdd" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnAddOrderOnAction" prefHeight="31.0" prefWidth="155.0" text="Add" GridPane.columnIndex="3" />
+                        <Button fx:id="btnDelete" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnDeleteOrderOnAction" text="Delete" GridPane.columnIndex="5" />
+                        <Button fx:id="btnUpdate" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnUpdateOrderOnAction" prefHeight="31.0" prefWidth="143.0" text="Update" GridPane.columnIndex="7" />
                                 </children>
                             </GridPane>
                         </children>
@@ -76,7 +86,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <ListView fx:id="itemDtlView" prefHeight="200.0" prefWidth="200.0" styleClass="roundTile" stylesheets="@../../assets/Styles/lightMode.css" />
+                  <ListView fx:id="itemDtlComponentLWOnAction" onMouseClicked="#ItemDtlComponentOnMouseClicked" prefHeight="200.0" prefWidth="200.0" styleClass="myButton" stylesheets="@../../assets/Styles/lightMode.css" />
                </children>
             </GridPane>
             </children>
@@ -117,7 +127,6 @@
                             <children>
                                 <GridPane prefHeight="181.0" prefWidth="635.0">
                                     <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="267.0" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
                                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="267.0" />
@@ -129,7 +138,7 @@
                                         <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
                                     </rowConstraints>
                            <children>
-                              <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <GridPane GridPane.columnIndex="2" GridPane.rowIndex="1">
                                 <columnConstraints>
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                 </columnConstraints>
@@ -144,7 +153,35 @@
                                     <TextArea fx:id="txtEnterItemDtl" onKeyPressed="#txtEnterItemDtlOnKeyPressed" prefHeight="200.0" prefWidth="200.0" promptText="Enter the item dtl " GridPane.rowIndex="3" />
                                  </children>
                               </GridPane>
-                              <ListView fx:id="itemDtlComponentLWOnAction" onMouseClicked="#ItemDtlComponentOnMouseClicked" prefHeight="200.0" prefWidth="200.0" styleClass="myButton" stylesheets="@../../assets/Styles/lightMode.css" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <GridPane GridPane.rowIndex="1">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="133.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <ListView fx:id="batchDtlListView" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="307.0">
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <Label alignment="CENTER" prefHeight="21.0" prefWidth="255.0" text="Batch ID" />
+                                                <Label alignment="CENTER" prefHeight="21.0" prefWidth="255.0" text="Qty" GridPane.columnIndex="1" />
+                                             </children>
+                                          </GridPane>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </GridPane>
                            </children>
                                 </GridPane>
                             </children>
@@ -159,7 +196,7 @@
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="62.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="62.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="62.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
@@ -206,7 +243,7 @@
                            </rowConstraints>
                            <children>
                               <Label fx:id="lblProfitPercentage" text="ItemProfit Percentage" />
-                              <TextField fx:id="txtItemProfitPercentage" onAction="#txtItemProfitPercentageOnAction" prefHeight="31.0" prefWidth="277.0" promptText="Enter profit percentage here ..." GridPane.rowIndex="1" />
+                              <TextField fx:id="txtItemProfitPercentage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#txtItemProfitPercentageOnAction" prefHeight="31.0" prefWidth="277.0" promptText="Enter profit percentage here ..." GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
                         <GridPane prefHeight="47.0" prefWidth="261.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -219,7 +256,7 @@
                            </rowConstraints>
                            <children>
                               <Label fx:id="LblItemName" text="Item Name" />
-                              <TextField fx:id="txtItemName" onAction="#txtItemNAmeOnAction" promptText="Enter the item name heare.." GridPane.rowIndex="1" />
+                              <TextField fx:id="txtItemName" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#txtItemNAmeOnAction" promptText="Enter the item name heare.." GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
                         <GridPane prefHeight="47.0" prefWidth="261.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
@@ -232,18 +269,9 @@
                            </rowConstraints>
                            <children>
                               <Label fx:id="lblItemPrice" text="Item price (In USD)" />
-                              <TextField fx:id="txtItemPrice" onAction="#txtItemPriceOnAction" promptText="Enter the item price here..." GridPane.rowIndex="1" />
+                              <TextField fx:id="txtItemPrice" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#txtItemPriceOnAction" promptText="Enter the item price here..." GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
-                           <children>
-                              <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#btnAddOrderOnAction" text="Add" />
-                              <Label text="      " />
-                              <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#btnDeleteOrderOnAction" text="Delete" />
-                              <Label text="      " />
-                              <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#btnUpdateOrderOnAction" text="Update" />
-                           </children>
-                        </HBox>
                         <GridPane prefHeight="47.0" prefWidth="261.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -256,16 +284,37 @@
                               <Label fx:id="lblItemPrice1" text="Warranty Type" />
                               <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                                  <children>
-                                    <SplitMenuButton fx:id="warrantyTypeSelector" mnemonicParsing="false" onAction="#warrantyTypeSelectorOnAction" prefHeight="31.0" prefWidth="190.0" text="SplitMenuButton">
+                                    <SplitMenuButton fx:id="warrantyTypeSelector" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#warrantyTypeSelectorOnAction" prefHeight="31.0" prefWidth="190.0" text="SplitMenuButton">
                                        <items>
                                           <MenuItem mnemonicParsing="false" text="Action 1" />
                                           <MenuItem mnemonicParsing="false" text="Action 2" />
                                        </items>
                                     </SplitMenuButton>
-                                    <Label text="      " />
-                                    <Button fx:id="btnAddWarranty" mnemonicParsing="false" onMouseClicked="#btnAddWarrantymouseClickEvent" text="add w type" />
+                                    <Label minHeight="10.0" minWidth="10.0" prefWidth="10.0" />
+                                    <Button fx:id="btnAddWarranty" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#btnAddWarrantymouseClickEvent" prefHeight="33.0" prefWidth="88.0" text="Add" />
                                  </children>
                               </HBox>
+                           </children>
+                        </GridPane>
+                        <GridPane prefHeight="47.0" prefWidth="261.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="63.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label fx:id="lblBatchDtls" text="Online order" GridPane.columnIndex="2" />
+                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                 <children>
+                                    <Button fx:id="btnAddOnlineOrder" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnAddOnlineOrderOnAction" onMouseClicked="#btnAddOnlineOrderOnMouseClickEvent" prefHeight="31.0" prefWidth="335.0" text="Add online order" />
+                                 </children>
+                              </HBox>
+                              <Button fx:id="AddBatchId" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnAddBatchIdOnAction" onMouseClicked="#btnAddBatchIdMouseClickEvent" prefHeight="31.0" prefWidth="335.0" text="Add a batch" GridPane.rowIndex="1" />
+                              <Label fx:id="lblBatchDtls1" text="Batch" />
                            </children>
                         </GridPane>
                      </children>
