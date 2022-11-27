@@ -102,7 +102,7 @@
       <workItem from="1669464059234" duration="2147000" />
       <workItem from="1669521895164" duration="28261000" />
       <workItem from="1669558587580" duration="1411000" />
-      <workItem from="1669561295470" duration="10628000" />
+      <workItem from="1669561295470" duration="11051000" />
     </task>
     <task id="LOCAL-00001" summary="updates">
       <created>1669344683070</created>
@@ -188,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669560158883</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="item adding process is been completed , the transection is working correctly">
+      <created>1669573508972</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1669573508973</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
