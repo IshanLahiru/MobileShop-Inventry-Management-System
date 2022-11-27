@@ -11,7 +11,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -115,7 +114,7 @@ public class ItemViewController {
     }
 
     public void btnAddItemOnAction(ActionEvent actionEvent) throws IOException {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/subwindows/AddItemsView.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/AddItemsView.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             //((ItemMoreDetailViewController) fxmlLoader.getController()).getObject(item.getOb());
             Stage stage = new Stage();

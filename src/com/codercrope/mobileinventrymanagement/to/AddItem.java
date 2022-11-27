@@ -8,12 +8,12 @@ public class AddItem {
     private String itemId;
     private String itemName;
     private String itemAddedDateTime;
-    private String itePriceStock;
-    private String profitPercentage;
+    private Double itePriceStock;
+    private int profitPercentage;
     private String ItemDtl;
-    private HashMap<String,String> batchHasItem;
+    private HashMap<String, String> batchHasItem;
 
-    public AddItem(String warrantyId, String warrantTypeId, String itemId, String itemName, String itemAddedDateTime, String itePriceStock, String profitPercentage, String itemDtl, HashMap<String, String> batchHasItem) {
+    public AddItem(String warrantyId, String warrantTypeId, String itemId, String itemName, String itemAddedDateTime, Double itePriceStock, int profitPercentage, String itemDtl, HashMap<String, String> batchHasItem) {
         this.warrantyId = warrantyId;
         this.warrantTypeId = warrantTypeId;
         this.itemId = itemId;
@@ -65,19 +65,19 @@ public class AddItem {
         this.itemAddedDateTime = itemAddedDateTime;
     }
 
-    public String getItePriceStock() {
+    public Double getItePriceStock() {
         return itePriceStock;
     }
 
-    public void setItePriceStock(String itePriceStock) {
+    public void setItePriceStock(Double itePriceStock) {
         this.itePriceStock = itePriceStock;
     }
 
-    public String getProfitPercentage() {
+    public int getProfitPercentage() {
         return profitPercentage;
     }
 
-    public void setProfitPercentage(String profitPercentage) {
+    public void setProfitPercentage(int profitPercentage) {
         this.profitPercentage = profitPercentage;
     }
 

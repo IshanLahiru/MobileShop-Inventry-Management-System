@@ -86,4 +86,17 @@ public class ItemModel {
                 item.getItemDtl()
         );
     }
+
+    public static boolean save(String itemId, String warrantyId, String itemName, String itemAddedDateTime, Double itePriceStock, int profitPercentage, String itemDtl) throws SQLException, ClassNotFoundException {
+        String sql = "INSERT INTO item VALUES(?, ? ,? ,? ,? ,? ,?)";
+        return CrudUtil.execute(sql,
+                itemId,
+                warrantyId,
+                itemName,
+                itemAddedDateTime,
+                itePriceStock,
+                profitPercentage,
+                itemDtl
+        );
+    }
 }

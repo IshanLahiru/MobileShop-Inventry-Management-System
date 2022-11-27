@@ -1,4 +1,4 @@
-package com.codercrope.mobileinventrymanagement.view.subwindows;
+package com.codercrope.mobileinventrymanagement.controler;
 
 import com.codercrope.mobileinventrymanagement.controler.subwindows.ItemMoreDetailViewController;
 import com.codercrope.mobileinventrymanagement.controler.tmlist.MainItemTM;
@@ -171,11 +171,12 @@ public class AddItemsViewController {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         String dateTime = dtf.format(now);
+        System.out.println(dateTime);
         System.out.println(warrantyTypeSelector.getText());
         for (AddItemViewBSListComponentController b : batchList){
             hm.put(b.getBatchId(),b.getNoOfItems());
         }
-        boolean sta = AddItemModel.save(new AddItem(lblWarrantyId.getText(), warrantyTypeSelector.getText(), lblItemId.getText(), txtItemName.getText(), dateTime, lblItemPrice.getText(), lblProfitPercentage.getText(), "null", hm));
+        boolean sta = AddItemModel.save(new AddItem(lblWarrantyId.getText(), warrantyTypeSelector.getText(), lblItemId.getText(), txtItemName.getText(), dateTime, Double.parseDouble(txtItemPrice.getText()), Integer.parseInt(txtItemProfitPercentage.getText()), "null", hm));
         if(sta){
             setData();
             lblItemId.setText(ItemModel.getItemId());
@@ -251,8 +252,7 @@ public class AddItemsViewController {
     }
 
     @FXML
-    public void warrantyTypeSelectorOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-
+    public void warrantyTypeSelectorOnAction(ActionEvent actionEvent) {
         //WarrantyModel.save(new Warranty(lblWarrantyId.getText(),WarrantyTypeModel.getWarrantyType(warrantyTypeSelector.getText())));
         txtItemPrice.requestFocus();
     }

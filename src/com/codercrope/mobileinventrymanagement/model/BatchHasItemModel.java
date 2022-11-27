@@ -17,4 +17,10 @@ public class BatchHasItemModel {
         //System.out.println(items.size());
         return -1;
     }
+
+    public static boolean save(String batchId, String itemId, String itemQty) throws SQLException, ClassNotFoundException {
+        String sql = "INSERT INTO batch_has_item VALUES(?, ? ,?)";
+        return CrudUtil.execute(sql,batchId,itemId,itemQty);
+
+    }
 }

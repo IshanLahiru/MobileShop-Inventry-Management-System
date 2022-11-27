@@ -15,7 +15,7 @@ public class ButtonItemSideVBController implements SideBarController {
     @FXML
     void btnClickEvent(MouseEvent event) {
         //System.out.println("btn clicked");
-        setUi(pane ,"/com/codercrope/mobileinventrymanagement/view/ItemView.fxml");
+        setUi(pane ,"/com/codercrope/mobileinventrymanagement/view/AddItemsView.fxml");
 
     }
 
