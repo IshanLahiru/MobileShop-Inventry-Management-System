@@ -23,17 +23,12 @@ public class AddItemViewBSListComponentController {
     }
 
     public String getNoOfItems() {
-        if (this.txtNoOfItems == null) {
-            return "0";
-        }
-        return this.txtNoOfItems.getText();
-
-
+        return (this.txtNoOfItems.getText().equals("")) ? "0":this.txtNoOfItems.getText();
     }
     public String getBatchId(){
         return lblBatchId.getText();
     }
     public String getItem(){
-        return this.item;
+        return (this.item.equals("")) ? "0":this.item;
     }
 }

@@ -416,23 +416,20 @@ public class AddItemsViewController {
         stage.show();
     }
 
-    public void btnAddBatchIdMouseClickEvent(MouseEvent mouseEvent) {
-
-    }
-
     public void btnUpdateDtlOnClickEvt(MouseEvent mouseEvent) throws IOException {
+        tempArrayForlist.remove(txtEnterItemDtlTopic.getText());
         tempArrayForlist.put(txtEnterItemDtlTopic.getText(), txtEnterItemDtl.getText());
         txtEnterItemDtlTopic.setText("");
         txtEnterItemDtl.setText("");
         setDataToDtlTmList();
     }
+
     public void btnDeleteDtlOnAction(ActionEvent actionEvent) throws IOException {
         tempArrayForlist.remove(txtEnterItemDtlTopic.getText());
         txtEnterItemDtlTopic.setText("");
         txtEnterItemDtl.setText("");
         setDataToDtlTmList();
     }
-
     public void btnAddDtlOnAction(ActionEvent actionEvent) throws IOException {
         tempArrayForlist.put(txtEnterItemDtlTopic.getText(), txtEnterItemDtl.getText());
         txtEnterItemDtlTopic.setText("");
@@ -483,6 +480,15 @@ public class AddItemsViewController {
 
     public void btnAddWarrantyOnAction(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/subwindows/AddWarrantyTypeView.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        //((ItemMoreDetailViewController) fxmlLoader.getController()).getObject(item.getOb());
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1));
+        stage.show();
+    }
+
+    public void btnAddBatchIdMouseClickEvent(MouseEvent mouseEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/subwindows/AddBatchView.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         //((ItemMoreDetailViewController) fxmlLoader.getController()).getObject(item.getOb());
         Stage stage = new Stage();

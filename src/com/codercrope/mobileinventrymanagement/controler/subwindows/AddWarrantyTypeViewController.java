@@ -1,4 +1,4 @@
-package com.codercrope.mobileinventrymanagement.view.subwindows;
+package com.codercrope.mobileinventrymanagement.controler.subwindows;
 
 import com.codercrope.mobileinventrymanagement.controler.tmlist.MainItemTM;
 import com.codercrope.mobileinventrymanagement.controler.tmlist.WarrantyTM;
@@ -83,6 +83,11 @@ public class AddWarrantyTypeViewController {
         tblWarrantyDuration.setCellValueFactory(new PropertyValueFactory<MainItemTM, Integer>("warrantyDuration"));
         tblWarrantyCost.setCellValueFactory(new PropertyValueFactory<MainItemTM, Double>("warrantyCost"));
         tblMoreDtl.setCellValueFactory(new PropertyValueFactory<MainItemTM, Button>("btn"));
+
+        warrantyDtlListView.getItems().removeAll(warrantyDtlList);
+        warrantyListControllers.clear();
+        warrantyDtlList.clear();
+        warrantyDtlHM.clear();
 
         btnDelete.setDisable(true);
         btnUpdate.setDisable(true);
@@ -177,9 +182,9 @@ public class AddWarrantyTypeViewController {
         String dateTime = dtf.format(now);
         System.out.println(dateTime);
         System.out.println(warrantyTypeSelector.getText());*/
-        for (WarrantyDtlListViewComponentController b : warrantyListControllers) {
+        /*for (WarrantyDtlListViewComponentController b : warrantyListControllers) {
             warrantyDtlHM.put(b.getId(), b.getContent());
-        }
+        }*/
         boolean sta = WarrantyTypeModel.save(new AddWarrantyType(lblWarrantyId.getText(), txtWarrantyDuration.getText(), txtWarrantyCost.getText(), warrantyDtlHM));
         if (sta) {
             initialize();
@@ -198,9 +203,9 @@ public class AddWarrantyTypeViewController {
         String dateTime = dtf.format(now);
         System.out.println(dateTime);
         System.out.println(warrantyTypeSelector.getText());*/
-        for (WarrantyDtlListViewComponentController b : warrantyListControllers) {
+        /*for (WarrantyDtlListViewComponentController b : warrantyListControllers) {
             warrantyDtlHM.put(b.getId(), b.getContent());
-        }
+        }*/
         boolean sta = WarrantyTypeModel.update(new AddWarrantyType(lblWarrantyId.getText(), txtWarrantyDuration.getText(), txtWarrantyCost.getText(), warrantyDtlHM));
         if (sta) {
             initialize();
@@ -228,8 +233,6 @@ public class AddWarrantyTypeViewController {
         } else {
             new Alert(Alert.AlertType.ERROR, "Error: not deleted! try again").show();
         }
-
-
     }
 
     @FXML
@@ -271,6 +274,10 @@ public class AddWarrantyTypeViewController {
         btnAdd.setDisable(true);
         if (event.getButton() == MouseButton.PRIMARY) {
             //if (tblItemView.getSelectionModel().getSelectedItem() != null) {
+            warrantyDtlListView.getItems().removeAll(warrantyDtlList);
+            warrantyListControllers.clear();
+            warrantyDtlList.clear();
+            warrantyDtlHM.clear();
             WarrantyTM temp = tblWarranty.getSelectionModel().getSelectedItem();
             txtEnterWarrantyDtlTopic.setEditable(true);
             initData(temp);
@@ -280,6 +287,8 @@ public class AddWarrantyTypeViewController {
             btnAdd.setDisable(true);
             btnDelete.setDisable(false);
             btnUpdate.setDisable(false);
+            txtEnterWarrantyDtlTopic.setText("");
+            txtEnterWarrantyDtl.setText("");
         } else if (event.getButton() == MouseButton.SECONDARY) {
             //System.out.println("rightClicked on the table");
             txtEnterWarrantyDtlTopic.setEditable(true);
@@ -308,6 +317,7 @@ public class AddWarrantyTypeViewController {
     private void initWarrantyDtlList(WarrantyType it) throws SQLException, ClassNotFoundException, IOException {
         warrantyDtlListView.getItems().removeAll(warrantyDtlList);
         warrantyDtlList.clear();
+        warrantyDtlHM.clear();
         warrantyDtlHM = it.getWarrantyDtlHM();
         for (Map.Entry<String, String> entry : warrantyDtlHM.entrySet()) {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/listview/WarrantyDtlListViewComponent.fxml"));

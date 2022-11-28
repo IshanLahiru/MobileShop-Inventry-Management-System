@@ -1,6 +1,6 @@
 package com.codercrope.mobileinventrymanagement.view.listview;
 
-import com.codercrope.mobileinventrymanagement.view.subwindows.AddWarrantyTypeViewController;
+import com.codercrope.mobileinventrymanagement.controler.subwindows.AddWarrantyTypeViewController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

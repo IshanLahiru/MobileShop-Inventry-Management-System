@@ -1,22 +1,35 @@
-package com.codercrope.mobileinventrymanagement.to;
+package com.codercrope.mobileinventrymanagement.controler.tmlist;
+
+import com.codercrope.mobileinventrymanagement.to.OnlineOrder;
+import javafx.scene.control.Button;
 
 import java.util.HashMap;
 
-public class OnlineOrder {
+public class OnlineOrderTM {
+    private OnlineOrder ob;
     private String orderId;
     private String batchId;
     private String paymentId;
     private String employeeId;
     private String dateTime;
-    private String onlineOrdersLinks;
+    private Button button;
 
-    public OnlineOrder(String orderId, String batchId, String paymentId, String employeeId, String dateTime, String onlineOrdersLinks) {
+    public OnlineOrderTM(OnlineOrder ob, String id, String orderId, String batchId, String paymentId, String employeeId, String dateTime, Button button) {
+        this.ob = ob;
         this.orderId = orderId;
         this.batchId = batchId;
         this.paymentId = paymentId;
         this.employeeId = employeeId;
         this.dateTime = dateTime;
-        this.onlineOrdersLinks = onlineOrdersLinks;
+        this.button = button;
+    }
+
+    public OnlineOrder getOb() {
+        return ob;
+    }
+
+    public void setOb(OnlineOrder ob) {
+        this.ob = ob;
     }
 
     public String getOrderId() {
@@ -59,11 +72,11 @@ public class OnlineOrder {
         this.dateTime = dateTime;
     }
 
-    public String getOnlineOrdersLinks() {
-        return onlineOrdersLinks;
+    public Button getButton() {
+        return button;
     }
 
-    public void setOnlineOrdersLinks(String onlineOrdersLinks) {
-        this.onlineOrdersLinks = onlineOrdersLinks;
+    public void setButton(Button button) {
+        this.button = button;
     }
 }
