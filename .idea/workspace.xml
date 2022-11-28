@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e91fbc91-78b6-4d3a-8976-9480ef1eaa53" name="Changes" comment="item adding process is been completed , the transection is working correctly">
-      <change afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/tmlist/WarrantyTM.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/to/AddWarrantyType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/listview/WarrantyDtlListViewComponent.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/listview/WarrantyDtlListViewComponentController.java" afterDir="false" />
+    <list default="true" id="e91fbc91-78b6-4d3a-8976-9480ef1eaa53" name="Changes" comment="completed the add warranty forme, but not completely, becouse the delete functionality is not fully made, becouse the warranty and items should delete in this stat">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/model/WarrantyTypeModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/model/WarrantyTypeModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/to/WarrantyType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/to/WarrantyType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/AddItemsViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/AddItemsViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/WarrantyTypeModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/WarrantyTypeModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/to/WarrantyType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/to/WarrantyType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/listview/AddItemViewDtlTileListViewCompController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/listview/AddItemViewDtlTileListViewCompController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/subwindows/AddWarrantyTypeView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/subwindows/AddWarrantyTypeView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/subwindows/AddWarrantyTypeViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/subwindows/AddWarrantyTypeViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/controler/AddItemsViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/controler/AddItemsViewController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +108,8 @@
       <workItem from="1669558587580" duration="1411000" />
       <workItem from="1669561295470" duration="11790000" />
       <workItem from="1669593894273" duration="14572000" />
-      <workItem from="1669612009108" duration="9765000" />
+      <workItem from="1669612009108" duration="10078000" />
+      <workItem from="1669625593093" duration="5000" />
     </task>
     <task id="LOCAL-00001" summary="updates">
       <created>1669344683070</created>
@@ -233,7 +223,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669604163301</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="completed the add warranty forme, but not completely, becouse the delete functionality is not fully made, becouse the warranty and items should delete in this stat">
+      <created>1669622155071</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1669622155071</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -258,6 +255,7 @@
     <MESSAGE value="itemAddingPreperation" />
     <MESSAGE value="item add update" />
     <MESSAGE value="item adding process is been completed , the transection is working correctly" />
-    <option name="LAST_COMMIT_MESSAGE" value="item adding process is been completed , the transection is working correctly" />
+    <MESSAGE value="completed the add warranty forme, but not completely, becouse the delete functionality is not fully made, becouse the warranty and items should delete in this stat" />
+    <option name="LAST_COMMIT_MESSAGE" value="completed the add warranty forme, but not completely, becouse the delete functionality is not fully made, becouse the warranty and items should delete in this stat" />
   </component>
 </project>
