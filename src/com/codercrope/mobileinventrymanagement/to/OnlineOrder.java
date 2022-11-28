@@ -1,5 +1,8 @@
 package com.codercrope.mobileinventrymanagement.to;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import java.util.HashMap;
 
 public class OnlineOrder {
@@ -65,5 +68,12 @@ public class OnlineOrder {
 
     public void setOnlineOrdersLinks(String onlineOrdersLinks) {
         this.onlineOrdersLinks = onlineOrdersLinks;
+    }
+
+    public HashMap<String, String> getOnlineOrdersLinksHM() {
+        HashMap<String, String> mapObj = new Gson().fromJson(
+                onlineOrdersLinks, new TypeToken<HashMap<String, String>>() {}.getType()
+        );
+        return mapObj;
     }
 }

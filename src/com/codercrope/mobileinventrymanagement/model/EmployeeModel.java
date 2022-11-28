@@ -4,6 +4,8 @@ import com.codercrope.mobileinventrymanagement.to.AdministrativeDtl;
 import com.codercrope.mobileinventrymanagement.to.Employee;
 import com.codercrope.mobileinventrymanagement.to.UserEPVal;
 import com.codercrope.mobileinventrymanagement.util.CrudUtil;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -61,5 +63,19 @@ public class EmployeeModel {
             );
         }
         return admin;
+    }
+
+    public static ObservableList<String> getEmployeeIds() throws SQLException, ClassNotFoundException {
+        String sql = "SELECT employee_id FROM employee";
+        ResultSet result = CrudUtil.execute(sql);
+        //System.out.println("result set size is = "+result.getFetchSize());
+        ObservableList<String> data = FXCollections.observableArrayList();
+        while (result.next()) {
+            data.add(result.getString(1)
+            );
+        }
+        //System.out.println(items.size());
+        return data;
+
     }
 }

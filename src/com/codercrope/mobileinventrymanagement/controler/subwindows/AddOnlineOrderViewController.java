@@ -1,8 +1,12 @@
 package com.codercrope.mobileinventrymanagement.controler.subwindows;
 
 import com.codercrope.mobileinventrymanagement.controler.tmlist.OnlineOrderTM;
-import com.codercrope.mobileinventrymanagement.model.OnlineOrderModel;
+import com.codercrope.mobileinventrymanagement.controler.tmlist.WarrantyTM;
+import com.codercrope.mobileinventrymanagement.model.*;
 import com.codercrope.mobileinventrymanagement.to.OnlineOrder;
+import com.codercrope.mobileinventrymanagement.to.WarrantyType;
+import com.codercrope.mobileinventrymanagement.view.listview.OnlineOrderLinksListViewComponentController;
+import com.codercrope.mobileinventrymanagement.view.listview.WarrantyDtlListViewComponentController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,12 +17,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AddOnlineOrderViewController {
 
@@ -44,28 +51,40 @@ public class AddOnlineOrderViewController {
     private TableColumn<OnlineOrderTM, Button> tblMoreDetails;
 
     @FXML
-    private TextField txtEnterWarrantyDtlTopic;
+    private Label lblOrderId;
 
     @FXML
-    private TextArea txtEnterWarrantyDtl;
+    private ChoiceBox<String> employIdComboBox;
+
+    @FXML
+    private ChoiceBox<String> batchIdComboBox;
+
+    @FXML
+    private TextField txtPaymentAmount;
+
+    @FXML
+    private TextField txtEnterOrderLinkTitle;
+
+    @FXML
+    private TextArea txtEnterOrderLink;
 
     @FXML
     private Label LblItemName11;
 
     @FXML
-    private Button btnAddDtl;
+    public Button btnAddLink;
 
     @FXML
-    private Button btnUpdateDtl;
+    public Button btnUpdateLink;
 
     @FXML
-    private Button btnDeleteDtl;
+    public Button btnDeleteLink;
 
     @FXML
     private Label LblItemName111;
 
     @FXML
-    private ListView<?> warrantyDtlListView;
+    private ListView<Button> orderLinkDtlView;
 
     @FXML
     private TextField txtSearch;
@@ -82,6 +101,11 @@ public class AddOnlineOrderViewController {
     @FXML
     private Button btnUpdate;
 
+    public ArrayList<OnlineOrderLinksListViewComponentController> onlineLinkListControllers = new ArrayList<OnlineOrderLinksListViewComponentController>();
+    public ArrayList<Button> onlineOrderLink = new ArrayList<>();
+    public HashMap<String, String> onlineOrderLinkHM = new HashMap<>();
+
+
 
     public void initialize() throws SQLException, ClassNotFoundException, IOException {
         tblOrderId.setCellValueFactory(new PropertyValueFactory<OnlineOrderTM, String>("orderId"));
@@ -91,20 +115,38 @@ public class AddOnlineOrderViewController {
         tblDateTime.setCellValueFactory(new PropertyValueFactory<OnlineOrderTM, String>("dateTime"));
         tblMoreDetails.setCellValueFactory(new PropertyValueFactory<OnlineOrderTM, Button>("button"));
 
+        lblOrderId.setText(OnlineOrderModel.getNextOnlineOrderId());
+        //lblBatchId.setText(BatchModel.getNextBatchId());
 
-        /*warrantyDtlListView.getItems().removeAll(warrantyDtlList);
-        warrantyListControllers.clear();
-        warrantyDtlList.clear();
-        warrantyDtlHM.clear();
+        ObservableList<String> empIds = EmployeeModel.getEmployeeIds();
+        employIdComboBox.setItems(empIds);
+        employIdComboBox.getSelectionModel().selectFirst();
 
+        employIdComboBox.requestFocus();
+
+        ObservableList<String> batchIds = BatchModel.getBatchIds();
+        batchIdComboBox.setItems(batchIds);
+        batchIdComboBox.getSelectionModel().selectFirst();
+        setData();
+
+        btnUpdateLink.setDisable(true);
+        btnDeleteLink.setDisable(true);
+        btnAddLink.setDisable(false);
+
+        btnAdd.setDisable(false);
         btnDelete.setDisable(true);
         btnUpdate.setDisable(true);
-        btnAdd.setDisable(false);
-        txtEnterWarrantyDtl.setWrapText(true);
-        lblWarrantyId.setText(WarrantyTypeModel.getNextWarrantyId());
-        txtWarrantyDuration.requestFocus();*/
 
-        setData();
+        txtPaymentAmount.setText("");
+        txtEnterOrderLinkTitle.setText("");
+        txtEnterOrderLink.setText("");
+
+        orderLinkDtlView.getItems().removeAll(onlineOrderLink);
+        onlineLinkListControllers.clear();
+        onlineOrderLink.clear();
+        onlineOrderLinkHM.clear();
+
+
         /*lblItemId.setText(ItemModel.getItemId());
         lblWarrantyId.setText(WarrantyModel.getWarrantyId());
         ArrayList<WarrantyType> ar = WarrantyTypeModel.getWarrantyTypes();
@@ -174,8 +216,81 @@ public class AddOnlineOrderViewController {
     }
 
     @FXML
-    void btnAddDtlOnAction(ActionEvent event) {
+    public void tblOnlineOrderOnMouseClicked(MouseEvent mouseEvent) throws SQLException, IOException, ClassNotFoundException {
+        btnDelete.setDisable(false);
+        btnUpdate.setDisable(false);
+        btnAdd.setDisable(true);
+        if (mouseEvent.getButton() == MouseButton.PRIMARY) {
+            //if (tblItemView.getSelectionModel().getSelectedItem() != null) {
+            orderLinkDtlView.getItems().removeAll(onlineOrderLink);
+            onlineLinkListControllers.clear();
+            onlineOrderLink.clear();
+            onlineOrderLinkHM.clear();
+            OnlineOrderTM temp = tblOnlineOrder.getSelectionModel().getSelectedItem();
+            txtEnterOrderLinkTitle.setEditable(true);
+            initData(temp);
+            btnUpdateLink.setDisable(true);
+            btnAddLink.setDisable(false);
+            btnDeleteLink.setDisable(true);
+            btnAdd.setDisable(true);
+            btnDelete.setDisable(false);
+            btnUpdate.setDisable(false);
+            txtEnterOrderLinkTitle.setText("");
+            txtEnterOrderLink.setText("");
+        } else if (mouseEvent.getButton() == MouseButton.SECONDARY) {
+            //System.out.println("rightClicked on the table");
+            txtEnterOrderLinkTitle.setEditable(true);
+            txtEnterOrderLink.setText("");
+            txtEnterOrderLinkTitle.setText("");
+            initialize();
+        }
+    }
+    private void initData(OnlineOrderTM temp) throws SQLException, ClassNotFoundException, IOException {
+        if (temp!=null) {
+            OnlineOrder it = temp.getOb();
+            txtPaymentAmount.setText(PaymentModel.getPaymentAmount(it.getPaymentId()));
+            initOrderLinkList(it);
+        }
 
+    }
+    private void initOrderLinkList(OnlineOrder it) throws SQLException, ClassNotFoundException, IOException {
+        orderLinkDtlView.getItems().removeAll(onlineOrderLink);
+        onlineLinkListControllers.clear();
+        onlineOrderLink.clear();
+        onlineOrderLinkHM.clear();
+        onlineOrderLinkHM = it.getOnlineOrdersLinksHM();
+        for (Map.Entry<String, String> entry : onlineOrderLinkHM.entrySet()) {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/listview/OnlineOrderLinksListViewComponent.fxml"));
+            Button root1 = (Button) fxmlLoader.load();
+            OnlineOrderLinksListViewComponentController batch = ((OnlineOrderLinksListViewComponentController) fxmlLoader.getController());
+            batch.setData(this, entry.getKey(), entry.getValue(), txtEnterOrderLinkTitle, txtEnterOrderLink);
+            onlineOrderLink.add(root1);
+            onlineLinkListControllers.add(batch);
+        }
+        orderLinkDtlView.getItems().addAll(onlineOrderLink);
+    }
+
+
+    @FXML
+    void btnAddLinkOnAction(ActionEvent event) throws IOException {
+        onlineOrderLinkHM.put(txtEnterOrderLinkTitle.getText(), txtEnterOrderLink.getText());
+        txtEnterOrderLinkTitle.setText("");
+        txtEnterOrderLink.setText("");
+        setDataToDtlTmList();
+
+    }
+    private void setDataToDtlTmList() throws IOException {
+        orderLinkDtlView.getItems().removeAll(onlineOrderLink);
+        onlineOrderLink.clear();
+        for (Map.Entry<String, String> entry : onlineOrderLinkHM.entrySet()) {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/listview/OnlineOrderLinksListViewComponent.fxml"));
+            Button root1 = (Button) fxmlLoader.load();
+            OnlineOrderLinksListViewComponentController batch = ((OnlineOrderLinksListViewComponentController) fxmlLoader.getController());
+            batch.setData(this, entry.getKey(), entry.getValue(), txtEnterOrderLinkTitle, txtEnterOrderLink);
+            onlineOrderLink.add(root1);
+            onlineLinkListControllers.add(batch);
+        }
+        orderLinkDtlView.getItems().addAll(onlineOrderLink);
     }
 
     @FXML
@@ -184,7 +299,11 @@ public class AddOnlineOrderViewController {
     }
 
     @FXML
-    void btnDeleteDtlOnAction(ActionEvent event) {
+    void btnDeleteLinkOnAction(ActionEvent event) throws IOException {
+        onlineOrderLinkHM.put(txtEnterOrderLinkTitle.getText(), txtEnterOrderLink.getText());
+        txtEnterOrderLinkTitle.setText("");
+        txtEnterOrderLink.setText("");
+        setDataToDtlTmList();
 
     }
 
@@ -199,14 +318,18 @@ public class AddOnlineOrderViewController {
     }
 
     @FXML
-    void btnUpdateDtlOnAction(ActionEvent event) {
+    void btnUpdateDtlOnClickEvt(MouseEvent event) {
 
     }
 
     @FXML
-    void btnUpdateDtlOnClickEvt(MouseEvent event) {
-
+    void btnUpdateLinkOnAction(ActionEvent event) throws IOException {
+        onlineOrderLinkHM.remove(txtEnterOrderLinkTitle.getText());
+        txtEnterOrderLinkTitle.setText("");
+        txtEnterOrderLink.setText("");
+        setDataToDtlTmList();
     }
+
 
     @FXML
     void btnUpdateOrderOnAction(ActionEvent event) {
@@ -224,12 +347,22 @@ public class AddOnlineOrderViewController {
     }
 
     @FXML
-    void txtEnterWarrantyDtlTopicOnAction(ActionEvent event) {
+    void txtEnterOrderLinkOnAction(MouseEvent event) {
+
+    }
+
+    @FXML
+    void txtEnterOrderLinkTitleOnAction(ActionEvent event) {
 
     }
 
     @FXML
     void txtEnterWarrantyDtlTopicOnKeyPressed(KeyEvent event) {
+
+    }
+
+    @FXML
+    void txtPaymentAmountOnAction(ActionEvent event) {
 
     }
 
@@ -247,5 +380,4 @@ public class AddOnlineOrderViewController {
     void warrantyDtlListViewOnMouseClick(MouseEvent event) {
 
     }
-
 }

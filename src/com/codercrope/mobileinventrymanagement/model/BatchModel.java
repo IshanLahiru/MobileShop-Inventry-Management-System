@@ -2,6 +2,8 @@ package com.codercrope.mobileinventrymanagement.model;
 
 import com.codercrope.mobileinventrymanagement.to.Batch;
 import com.codercrope.mobileinventrymanagement.util.CrudUtil;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,7 +34,7 @@ public class BatchModel {
         //System.out.println("result set size is = "+result.getFetchSize());
         ArrayList<Batch> batches = new ArrayList<>();
 
-        if (result.next()) {
+        while (result.next()) {
             return new Batch(
                     result.getString(1),
                     result.getString(2),
@@ -42,5 +44,39 @@ public class BatchModel {
         }
         //System.out.println(items.size());
         return null;
+    }
+
+    public static String getNextBatchId() throws SQLException, ClassNotFoundException {
+        String sql = "SELECT batch_id FROM batch ORDER BY batch_id DESC LIMIT 1";
+        ResultSet result = CrudUtil.execute(sql);
+
+        if (result.next()) {
+            return generateNextBatchId(result.getString(1));
+        }
+        return "B00001";
+    }
+    private static String generateNextBatchId(String currentItemId) {
+        if (currentItemId != null) {
+            String[] split = currentItemId.split("B0");
+            int id = Integer.parseInt(split[1]);
+            id += 1;
+            String str = String.format("%04d", id);
+            return "B0" + str;
+        }
+        return "-1";
+    }
+
+    public static ObservableList<String> getBatchIds() throws SQLException, ClassNotFoundException {
+        String sql = "SELECT batch_id FROM batch";
+        ResultSet result = CrudUtil.execute(sql);
+        //System.out.println("result set size is = "+result.getFetchSize());
+        ObservableList<String> data = FXCollections.observableArrayList();
+        while (result.next()) {
+            data.add(result.getString(1)
+            );
+        }
+        //System.out.println(items.size());
+        return data;
+
     }
 }

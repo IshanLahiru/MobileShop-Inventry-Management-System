@@ -12,15 +12,17 @@ public class OnlineOrderTM {
     private String paymentId;
     private String employeeId;
     private String dateTime;
+    private String onlineOrderLinks;
     private Button button;
 
-    public OnlineOrderTM(OnlineOrder ob, String id, String orderId, String batchId, String paymentId, String employeeId, String dateTime, Button button) {
+    public OnlineOrderTM(OnlineOrder ob, String orderId, String batchId, String paymentId, String employeeId, String dateTime, String onlineOrderLinks, Button button) {
         this.ob = ob;
         this.orderId = orderId;
         this.batchId = batchId;
         this.paymentId = paymentId;
         this.employeeId = employeeId;
         this.dateTime = dateTime;
+        this.onlineOrderLinks = onlineOrderLinks;
         this.button = button;
     }
 
@@ -70,6 +72,14 @@ public class OnlineOrderTM {
 
     public void setDateTime(String dateTime) {
         this.dateTime = dateTime;
+    }
+
+    public String getOnlineOrderLinks() {
+        return onlineOrderLinks;
+    }
+
+    public void setOnlineOrderLinks(String onlineOrderLinks) {
+        this.onlineOrderLinks = onlineOrderLinks;
     }
 
     public Button getButton() {
