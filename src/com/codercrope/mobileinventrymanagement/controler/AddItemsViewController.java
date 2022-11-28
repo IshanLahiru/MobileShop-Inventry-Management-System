@@ -421,7 +421,7 @@ public class AddItemsViewController {
     }
 
     public void btnUpdateDtlOnClickEvt(MouseEvent mouseEvent) throws IOException {
-        tempArrayForlist.remove(txtEnterItemDtlTopic.getText());
+        tempArrayForlist.put(txtEnterItemDtlTopic.getText(), txtEnterItemDtl.getText());
         txtEnterItemDtlTopic.setText("");
         txtEnterItemDtl.setText("");
         setDataToDtlTmList();

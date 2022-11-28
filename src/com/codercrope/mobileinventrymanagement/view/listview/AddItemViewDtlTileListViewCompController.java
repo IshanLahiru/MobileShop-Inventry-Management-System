@@ -36,7 +36,7 @@ public class AddItemViewDtlTileListViewCompController {
         this.txtContent.setText(content);
         this.txtTopic = textField;
         this.txtArea = textArea;
-        txtContent.setWrapText(true);
+        this.txtContent.setWrapText(true);
     }
 
 }

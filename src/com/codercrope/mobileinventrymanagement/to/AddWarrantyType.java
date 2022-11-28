@@ -1,19 +1,16 @@
 package com.codercrope.mobileinventrymanagement.to;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import javafx.scene.control.Button;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
-public class WarrantyType {
+public class AddWarrantyType {
     private String warrantyTypeId;
     private String warrantyDuration;
     private String warrantyCost;
-    private String warrantyTypeDtl;
+    private HashMap<String,String> warrantyTypeDtl;
 
-    public WarrantyType(String warrantyTypeId, String warrantyDuration, String warrantyCost, String warrantyTypeDtl) {
+    public AddWarrantyType(String warrantyTypeId, String warrantyDuration, String warrantyCost, HashMap<String, String> warrantyTypeDtl) {
         this.warrantyTypeId = warrantyTypeId;
         this.warrantyDuration = warrantyDuration;
         this.warrantyCost = warrantyCost;
@@ -44,18 +41,14 @@ public class WarrantyType {
         this.warrantyCost = warrantyCost;
     }
 
-    public String getWarrantyTypeDtl() {
+    public HashMap<String, String> getWarrantyTypeDtlHm() {
         return warrantyTypeDtl;
     }
 
-    public void setWarrantyTypeDtl(String warrantyTypeDtl) {
+    public void setWarrantyTypeDtl(HashMap<String, String> warrantyTypeDtl) {
         this.warrantyTypeDtl = warrantyTypeDtl;
     }
-
-    public HashMap<String,String> getWarrantyDtlHM() {
-        HashMap<String, String> mapObj = new Gson().fromJson(
-                warrantyTypeDtl, new TypeToken<HashMap<String, String>>() {}.getType()
-        );
-        return mapObj;
+    public static String getWarrantyTypeDtlJson(HashMap<String, String> hm) {
+        return new Gson().toJson(hm);
     }
 }
