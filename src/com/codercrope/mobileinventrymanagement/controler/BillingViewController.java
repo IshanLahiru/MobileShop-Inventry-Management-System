@@ -5,6 +5,7 @@ import com.codercrope.mobileinventrymanagement.controler.subwindows.ItemMoreDeta
 import com.codercrope.mobileinventrymanagement.controler.tmlist.MainBillingItemTM;
 import com.codercrope.mobileinventrymanagement.controler.tmlist.MainBillingListViewTm;
 import com.codercrope.mobileinventrymanagement.model.ItemModel;
+import com.codercrope.mobileinventrymanagement.model.PriceModel;
 import com.codercrope.mobileinventrymanagement.to.Item;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -209,9 +210,16 @@ public class BillingViewController {
         }
 
     }
-    public void setRow(Item item){
+    public void setRow(Item item) throws SQLException, ClassNotFoundException {
         Button tem = new Button("  More Details  ");
-        MainBillingItemTM temp = new MainBillingItemTM(item,item.getItemId(), item.getItemName(),item.getStock(), item.getItemPriceStock(), tem);
+        MainBillingItemTM temp = new MainBillingItemTM(item,item.getItemId(),
+                item.getItemName(),
+                item.getStock(),
+                PriceModel.getItemPrice(item.getItemId(),
+                        item.getItemPriceStock(),
+                        item.getProfitPercentage()),
+                tem
+        );
         tem.setOnAction(e -> {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/subwindows/ItemMoreDetailView.fxml"));

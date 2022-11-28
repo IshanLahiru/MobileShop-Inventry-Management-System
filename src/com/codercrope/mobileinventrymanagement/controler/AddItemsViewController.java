@@ -49,7 +49,7 @@ public class AddItemsViewController {
     public ArrayList<Button> batchListViewdtl = new ArrayList<>();
     public Button btnAddDtl;
     public Button btnDeleteDtl;
-    public TableColumn ItemOnStock;
+
     String warrantyType;
     HashMap<String, String> hm = new HashMap<>();
     HashMap<String, String> tempArrayForlist = new HashMap<>();
@@ -67,6 +67,8 @@ public class AddItemsViewController {
     private TableColumn<MainItemTM, String> tblAddedDateTime;
     @FXML
     private TableColumn<MainItemTM, Double> tblStockPrice;
+    @FXML
+    private TableColumn<MainItemTM, Integer> tblItemOnStock;
     @FXML
     private TableColumn<MainItemTM, Button> tblMoreDtl;
     @FXML
@@ -114,6 +116,7 @@ public class AddItemsViewController {
         tblItemName.setCellValueFactory(new PropertyValueFactory<MainItemTM, String>("ItemName"));
         tblAddedDateTime.setCellValueFactory(new PropertyValueFactory<MainItemTM, String>("AddedDateTime"));
         tblStockPrice.setCellValueFactory(new PropertyValueFactory<MainItemTM, Double>("StockPrice"));
+        tblItemOnStock.setCellValueFactory(new PropertyValueFactory<MainItemTM, Integer>("ItemsOnStock"));
         tblMoreDtl.setCellValueFactory(new PropertyValueFactory<MainItemTM, Button>("MoreDtl"));
         btnDelete.setDisable(true);
         btnUpdate.setDisable(true);
@@ -359,20 +362,27 @@ public class AddItemsViewController {
     }
 
     @FXML
-    private void btnAddWarrantymouseClickEvent(ActionEvent event) {
+    private void btnAddWarrantymouseClickEvent(MouseEvent event) {
 
     }
 
     public void setData() throws SQLException, ClassNotFoundException {
         ArrayList<Item> items = ItemModel.getItems();
-        for (Item ob : items) {
+        /*for (Item ob : items) {
             System.out.println(ob.getItemDtlHM());//to check the hash map object
             System.out.println("json is passed");
-        }
+        }*/
         ObservableList<MainItemTM> cust = FXCollections.observableArrayList();
         for (Item ob : items) {
             Button tem = new Button("  More Details  ");
-            MainItemTM temp = new MainItemTM(ob, ob.getItemId(), ob.getWarrentyId().getWarrantyId(), ob.getItemName(), ob.getItemAddedDateTime(), ob.getItemPriceStock(), tem);
+            MainItemTM temp = new MainItemTM(ob, ob.getItemId(),
+                    ob.getWarrentyId().getWarrantyId(),
+                    ob.getItemName(),
+                    ob.getItemAddedDateTime(),
+                    ob.getItemPriceStock(),
+                    BatchHasItemModel.getItemCount(ob.getItemId()),
+                    tem
+            );
             tem.setOnAction(e -> {
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/subwindows/ItemMoreDetailView.fxml"));
@@ -410,28 +420,39 @@ public class AddItemsViewController {
 
     }
 
-    public void btnUpdateDtlOnClickEvt(MouseEvent mouseEvent) {
+    public void btnUpdateDtlOnClickEvt(MouseEvent mouseEvent) throws IOException {
+        tempArrayForlist.remove(txtEnterItemDtlTopic.getText());
+        txtEnterItemDtlTopic.setText("");
+        txtEnterItemDtl.setText("");
+        setDataToDtlTmList();
+    }
+    public void btnDeleteDtlOnAction(ActionEvent actionEvent) throws IOException {
+        tempArrayForlist.remove(txtEnterItemDtlTopic.getText());
+        txtEnterItemDtlTopic.setText("");
+        txtEnterItemDtl.setText("");
+        setDataToDtlTmList();
     }
 
     public void btnAddDtlOnAction(ActionEvent actionEvent) throws IOException {
         tempArrayForlist.put(txtEnterItemDtlTopic.getText(), txtEnterItemDtl.getText());
         txtEnterItemDtlTopic.setText("");
         txtEnterItemDtl.setText("");
-            for (Map.Entry<String, String> entry : tempArrayForlist.entrySet()) {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/listview/AddItemViewDtlTileListViewComp.fxml"));
-                Button root1 = (Button) fxmlLoader.load();
-                AddItemViewDtlTileListViewCompController batch = ((AddItemViewDtlTileListViewCompController) fxmlLoader.getController());
-                batch.setData(this, entry.getKey(), entry.getValue(), txtEnterItemDtlTopic, txtEnterItemDtl);
-                batchListViewdtl.add(root1);
-                batchListDtl.add(batch);
-            }
-            itemDtlComponentLW.getItems().addAll(batchListViewdtl);
+        setDataToDtlTmList();
     }
 
-    public void btnDeleteDtlOnAction(ActionEvent actionEvent) {
-        tempArrayForlist.remove(txtEnterItemDtlTopic.getText());
-        txtEnterItemDtlTopic.setText("");
-        txtEnterItemDtl.setText("");
+    private void setDataToDtlTmList() throws IOException {
+        itemDtlComponentLW.getItems().clear();
+        batchListViewdtl.clear();
+        batchListDtl.clear();
+        for (Map.Entry<String, String> entry : tempArrayForlist.entrySet()) {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/listview/AddItemViewDtlTileListViewComp.fxml"));
+            Button root1 = (Button) fxmlLoader.load();
+            AddItemViewDtlTileListViewCompController batch = ((AddItemViewDtlTileListViewCompController) fxmlLoader.getController());
+            batch.setData(this, entry.getKey(), entry.getValue(), txtEnterItemDtlTopic, txtEnterItemDtl);
+            batchListViewdtl.add(root1);
+            batchListDtl.add(batch);
+        }
+        itemDtlComponentLW.getItems().addAll(batchListViewdtl);
     }
 
     public void btnUpdateDtlOnAction(ActionEvent actionEvent) throws IOException {
@@ -458,5 +479,14 @@ public class AddItemsViewController {
             btnUpdateDtl.setDisable(false);
             btnDeleteDtl.setDisable(true);
         }
+    }
+
+    public void btnAddWarrantyOnAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/subwindows/AddWarrantyTypeView.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        //((ItemMoreDetailViewController) fxmlLoader.getController()).getObject(item.getOb());
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1));
+        stage.show();
     }
 }

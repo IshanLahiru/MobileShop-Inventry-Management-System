@@ -4,11 +4,21 @@ public class Batch {
     private String batchId;
     private String batchDtl;
     private String dateTime;
+    private double dollerRate;
 
-    public Batch(String batchId, String batchDtl, String dateTime, double v) {
+    public Batch(String batchId, String batchDtl, String dateTime, double dollerRate) {
         this.batchId = batchId;
         this.batchDtl = batchDtl;
         this.dateTime = dateTime;
+        this.dollerRate = dollerRate;
+    }
+
+    public double getDollerRate() {
+        return dollerRate;
+    }
+
+    public void setDollerRate(double dollerRate) {
+        this.dollerRate = dollerRate;
     }
 
     public String getBatchId() {

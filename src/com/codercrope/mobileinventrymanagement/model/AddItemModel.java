@@ -18,20 +18,25 @@ public class AddItemModel {
     public static boolean save(AddItem item) throws SQLException, ClassNotFoundException {
         try {
             DBConnection.getInstance().getConnection().setAutoCommit(false);
-            boolean warrantyTable = WarrantyModel.save(item.getWarrantyId(),item.getWarrantTypeId());
-            boolean itemTable = ItemModel.save(item.getItemId(),item.getWarrantyId(),item.getItemName(),item.getItemAddedDateTime(),item.getItePriceStock(),item.getProfitPercentage(),item.getItemDtl());
-            ArrayList<Boolean> ar = new ArrayList();
-            for (Map.Entry<String, String> entry : item.getBatchHasItem().entrySet()) {
-                ar.add(BatchHasItemModel.save(entry.getKey(),item.getItemId(),entry.getValue()));
-            }
-            boolean batchHasItem = true;
-            for (boolean b : ar){
-                batchHasItem = (batchHasItem & b);
-            }
-                if (warrantyTable & itemTable & batchHasItem) {
+            boolean warrantyTable = WarrantyModel.save(item.getWarrantyId(), item.getWarrantTypeId());
+            if (warrantyTable) {
+                boolean itemTable = ItemModel.save(item.getItemId(), item.getWarrantyId(), item.getItemName(), item.getItemAddedDateTime(), item.getItePriceStock(), item.getProfitPercentage(), item.getItemDtl());
+                if (itemTable) {
+                    ArrayList<Boolean> ar = new ArrayList();
+                    for (Map.Entry<String, String> entry : item.getBatchHasItem().entrySet()) {
+                        ar.add(BatchHasItemModel.save(entry.getKey(), item.getItemId(), entry.getValue()));
+                    }
+                    boolean batchHasItem = true;
+                    for (boolean b : ar) {
+                        batchHasItem = (batchHasItem & b);
+                    }
+                    if (batchHasItem) {
                         DBConnection.getInstance().getConnection().commit();
                         return true;
+                    }
                 }
+            }
+
             DBConnection.getInstance().getConnection().rollback();
             return false;
         } finally {
@@ -42,19 +47,23 @@ public class AddItemModel {
     public static boolean Update(AddItem item) throws SQLException, ClassNotFoundException {
         try {
             DBConnection.getInstance().getConnection().setAutoCommit(false);
-            boolean warrantyTable = WarrantyModel.update(item.getWarrantyId(),item.getWarrantTypeId());
-            boolean itemTable = ItemModel.update(item.getItemId(),item.getWarrantyId(),item.getItemName(),item.getItemAddedDateTime(),item.getItePriceStock(),item.getProfitPercentage(),item.getItemDtl());
-            ArrayList<Boolean> ar = new ArrayList();
-            for (Map.Entry<String, String> entry : item.getBatchHasItem().entrySet()) {
-                ar.add(BatchHasItemModel.update(entry.getKey(),item.getItemId(),entry.getValue()));
-            }
-            boolean batchHasItem = true;
-            for (boolean b : ar){
-                batchHasItem = (batchHasItem & b);
-            }
-            if (warrantyTable & itemTable & batchHasItem) {
-                DBConnection.getInstance().getConnection().commit();
-                return true;
+            boolean warrantyTable = WarrantyModel.update(item.getWarrantyId(), item.getWarrantTypeId());
+            if (warrantyTable) {
+                boolean itemTable = ItemModel.update(item.getItemId(), item.getWarrantyId(), item.getItemName(), item.getItemAddedDateTime(), item.getItePriceStock(), item.getProfitPercentage(), item.getItemDtl());
+                if (itemTable) {
+                    ArrayList<Boolean> ar = new ArrayList();
+                    for (Map.Entry<String, String> entry : item.getBatchHasItem().entrySet()) {
+                        ar.add(BatchHasItemModel.update(entry.getKey(), item.getItemId(), entry.getValue()));
+                    }
+                    boolean batchHasItem = true;
+                    for (boolean b : ar) {
+                        batchHasItem = (batchHasItem & b);
+                    }
+                    if (batchHasItem) {
+                        DBConnection.getInstance().getConnection().commit();
+                        return true;
+                    }
+                }
             }
             DBConnection.getInstance().getConnection().rollback();
             return false;
@@ -64,7 +73,7 @@ public class AddItemModel {
 
     }
 
-    public static String getItemDtlJson (HashMap<String, String> hm) {
+    public static String getItemDtlJson(HashMap<String, String> hm) {
         return new Gson().toJson(hm);
     }
 
@@ -72,11 +81,15 @@ public class AddItemModel {
         try {
             DBConnection.getInstance().getConnection().setAutoCommit(false);
             boolean batchHasItem = BatchHasItemModel.delete(item.getItemId());
-            boolean itemTable = ItemModel.delete(item.getItemId());
-            boolean warrantyTable = WarrantyModel.delete(item.getWarrantyId());
-            if (warrantyTable && itemTable && batchHasItem) {
-                DBConnection.getInstance().getConnection().commit();
-                return true;
+            if (batchHasItem) {
+                boolean itemTable = ItemModel.delete(item.getItemId());
+                if (itemTable) {
+                    boolean warrantyTable = WarrantyModel.delete(item.getWarrantyId());
+                    if (warrantyTable) {
+                        DBConnection.getInstance().getConnection().commit();
+                        return true;
+                    }
+                }
             }
             DBConnection.getInstance().getConnection().rollback();
             return false;

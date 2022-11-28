@@ -12,18 +12,19 @@ public class MainItemTM {
     private String ItemName;
     private String AddedDateTime;
     private double StockPrice;
+    private int ItemsOnStock;
     private Button MoreDtl;
 
-    public MainItemTM(Item ob, String itemId, String worrantyId, String itemName, String addedDateTime, double stockPrice, Button moreDtl) {
+    public MainItemTM(Item ob, String itemId, String worrantyId, String itemName, String addedDateTime, double stockPrice, int itemsOnStock, Button moreDtl) {
         this.ob = ob;
         ItemId = itemId;
         WorrantyId = worrantyId;
         ItemName = itemName;
         AddedDateTime = addedDateTime;
         StockPrice = stockPrice;
+        ItemsOnStock = itemsOnStock;
         MoreDtl = moreDtl;
     }
-
 
     public Item getOb() {
         return ob;
@@ -79,5 +80,13 @@ public class MainItemTM {
 
     public void setMoreDtl(Button moreDtl) {
         MoreDtl = moreDtl;
+    }
+
+    public int getItemsOnStock() {
+        return ItemsOnStock;
+    }
+
+    public void setItemsOnStock(int itemsOnStock) {
+        ItemsOnStock = itemsOnStock;
     }
 }

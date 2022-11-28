@@ -2,7 +2,9 @@ package com.codercrope.mobileinventrymanagement.controler;
 
 import com.codercrope.mobileinventrymanagement.controler.subwindows.ItemMoreDetailViewController;
 import com.codercrope.mobileinventrymanagement.controler.tmlist.MainItemTM;
+import com.codercrope.mobileinventrymanagement.model.BatchHasItemModel;
 import com.codercrope.mobileinventrymanagement.model.ItemModel;
+import com.codercrope.mobileinventrymanagement.model.PriceModel;
 import com.codercrope.mobileinventrymanagement.to.Item;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -74,7 +76,14 @@ public class ItemViewController {
         ObservableList<MainItemTM> cust = FXCollections.observableArrayList();
         for (Item ob : items) {
             Button tem = new Button("  More Details  ");
-            MainItemTM temp = new MainItemTM(ob, ob.getItemId(), ob.getWarrentyId().getWarrantyId(), ob.getItemName(), ob.getItemAddedDateTime(), ob.getItemPriceStock(), tem);
+            MainItemTM temp = new MainItemTM(ob, ob.getItemId(),
+                    ob.getWarrentyId().getWarrantyId(),
+                    ob.getItemName(),
+                    ob.getItemAddedDateTime(),
+                    PriceModel.getItemPrice(ob.getItemId(),ob.getItemPriceStock(), ob.getProfitPercentage()),
+                    BatchHasItemModel.getItemCount(ob.getItemId()),
+                    tem
+            );
             tem.setOnAction(e -> {
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/subwindows/ItemMoreDetailView.fxml"));
