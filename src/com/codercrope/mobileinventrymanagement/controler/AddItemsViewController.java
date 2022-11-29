@@ -43,14 +43,14 @@ public class AddItemsViewController {
     public ListView itemDtlComponentLW;
     public Button btnUpdateDtl;
     public Label lblBatchDtls1;
-    public ArrayList<AddItemViewBSListComponentController> batchList = new ArrayList<AddItemViewBSListComponentController>();
-    public ArrayList<Button> batchListView = new ArrayList<>();
-    public ArrayList<AddItemViewDtlTileListViewCompController> batchListDtl = new ArrayList<AddItemViewDtlTileListViewCompController>();
+
     public ArrayList<Button> batchListViewdtl = new ArrayList<>();
     public Button btnAddDtl;
     public Button btnDeleteDtl;
 
-    String warrantyType;
+    public ArrayList<AddItemViewBSListComponentController> batchList = new ArrayList<AddItemViewBSListComponentController>();
+    public ArrayList<Button> batchListView = new ArrayList<>();
+    public ArrayList<AddItemViewDtlTileListViewCompController> batchListDtl = new ArrayList<AddItemViewDtlTileListViewCompController>();
     HashMap<String, String> hm = new HashMap<>();
     HashMap<String, String> tempArrayForlist = new HashMap<>();
     @FXML
@@ -244,12 +244,12 @@ public class AddItemsViewController {
         btnAdd.setDisable(true);
         if (event.getButton() == MouseButton.PRIMARY) {
             //if (tblItemView.getSelectionModel().getSelectedItem() != null) {
-                MainItemTM temp = tblItemView.getSelectionModel().getSelectedItem();
-                txtEnterItemDtlTopic.setEditable(true);
-                initData(temp);
-                btnUpdateDtl.setDisable(true);
-                btnAddDtl.setDisable(false);
-                btnDeleteDtl.setDisable(true);
+            MainItemTM temp = tblItemView.getSelectionModel().getSelectedItem();
+            txtEnterItemDtlTopic.setEditable(true);
+            initData(temp);
+            btnUpdateDtl.setDisable(true);
+            btnAddDtl.setDisable(false);
+            btnDeleteDtl.setDisable(true);
         } else if (event.getButton() == MouseButton.SECONDARY) {
             //System.out.println("rightClicked on the table");
             txtEnterItemDtlTopic.setEditable(true);
@@ -302,7 +302,7 @@ public class AddItemsViewController {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/listview/AddItemViewDtlTileListViewComp.fxml"));
                     Button root1 = (Button) fxmlLoader.load();
                     AddItemViewDtlTileListViewCompController batch = ((AddItemViewDtlTileListViewCompController) fxmlLoader.getController());
-                    batch.setData(this,entry.getKey(), entry.getValue(), txtEnterItemDtlTopic, txtEnterItemDtl);
+                    batch.setData(this, entry.getKey(), entry.getValue(), txtEnterItemDtlTopic, txtEnterItemDtl);
                     batchListViewdtl.add(root1);
                     batchListDtl.add(batch);
                 }
@@ -430,6 +430,7 @@ public class AddItemsViewController {
         txtEnterItemDtl.setText("");
         setDataToDtlTmList();
     }
+
     public void btnAddDtlOnAction(ActionEvent actionEvent) throws IOException {
         tempArrayForlist.put(txtEnterItemDtlTopic.getText(), txtEnterItemDtl.getText());
         txtEnterItemDtlTopic.setText("");
@@ -461,7 +462,7 @@ public class AddItemsViewController {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/listview/AddItemViewDtlTileListViewComp.fxml"));
                 Button root1 = (Button) fxmlLoader.load();
                 AddItemViewDtlTileListViewCompController batch = ((AddItemViewDtlTileListViewCompController) fxmlLoader.getController());
-                batch.setData(this,entry.getKey(), entry.getValue(), txtEnterItemDtlTopic, txtEnterItemDtl);
+                batch.setData(this, entry.getKey(), entry.getValue(), txtEnterItemDtlTopic, txtEnterItemDtl);
                 batchListViewdtl.add(root1);
                 batchListDtl.add(batch);
             }

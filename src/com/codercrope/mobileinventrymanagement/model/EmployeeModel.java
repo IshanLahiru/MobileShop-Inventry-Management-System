@@ -84,7 +84,7 @@ public class EmployeeModel {
     public static Employee getEmployee(String employeeId) throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM employee WHERE employee_id = ?";
         ResultSet result = CrudUtil.execute(sql, employeeId);
-        while(result.next()) {
+        if(result.next()) {
             return new Employee(
                     result.getString(1),
                     AdministrativeDtlModel.getModel(result.getString(2)),

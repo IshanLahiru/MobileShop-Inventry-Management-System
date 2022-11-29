@@ -2,20 +2,28 @@ package com.codercrope.mobileinventrymanagement.controler;
 
 import com.codercrope.mobileinventrymanagement.controler.tmlist.EmployeeTM;
 import com.codercrope.mobileinventrymanagement.model.*;
+import com.codercrope.mobileinventrymanagement.to.AdministrativeDtl;
 import com.codercrope.mobileinventrymanagement.to.Employee;
+import com.codercrope.mobileinventrymanagement.to.WarrantyType;
+import com.codercrope.mobileinventrymanagement.view.listview.AddEmployeeViewDtlTileListViewCompController;
+import com.codercrope.mobileinventrymanagement.view.listview.AddItemViewDtlTileListViewCompController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class WorkerViewController {
 
@@ -48,16 +56,16 @@ public class WorkerViewController {
     private Button btnSearch;
 
     @FXML
-    private Button btnAdd;
+    public Button btnAdd;
 
     @FXML
-    private Button btnDelete;
+    public Button btnDelete;
 
     @FXML
-    private Button btnUpdate;
+    public Button btnUpdate;
 
     @FXML
-    private ListView<?> empDtlComponentLW;
+    private ListView<Button> empDtlComponentLW;
 
     @FXML
     private Label lblItemIdPT;
@@ -114,13 +122,17 @@ public class WorkerViewController {
     private TextArea txtEnterItemDtl;
 
     @FXML
-    private Button btnAddDtl;
+    public Button btnAddDtl;
 
     @FXML
-    private Button btnUpdateDtl;
+    public Button btnUpdateDtl;
 
     @FXML
-    private Button btnDeleteDtl;
+    public Button btnDeleteDtl;
+
+    public HashMap<String,String> workerDtlHm = new HashMap<>();
+    public ArrayList<AddEmployeeViewDtlTileListViewCompController> dtlListControllers = new ArrayList<AddEmployeeViewDtlTileListViewCompController>();
+    public ArrayList<Button> dtlListComp = new ArrayList<Button>();
 
     public void initialize() throws SQLException, ClassNotFoundException, IOException {
         tblEmpId.setCellValueFactory(new PropertyValueFactory<EmployeeTM, String>("employeeId"));
@@ -134,6 +146,19 @@ public class WorkerViewController {
 
         setData();
         lblEmployeeId.setText(EmployeeModel.getNextEmployeeID());
+
+        ArrayList<String> ar = AdministrativeDtlModel.getAdministrativeDtlSts();
+        empStatsSelector.getItems().clear();
+        for (String w : ar) {
+            MenuItem i = new MenuItem(w);
+            empStatsSelector.getItems().add(i);
+            i.setOnAction(event -> {
+                empStatsSelector.setText(w);
+                //warrantyType = w.getWarrantyTypeId();
+            });
+        }
+        empStatsSelector.setText(ar.get(ar.size() - 2));
+
         /*lblItemId.setText(ItemModel.getItemId());
         lblWarrantyId.setText(WarrantyModel.getWarrantyId());
         ArrayList<WarrantyType> ar = WarrantyTypeModel.getWarrantyTypes();
@@ -187,8 +212,27 @@ public class WorkerViewController {
     }
 
     @FXML
-    void btnAddDtlOnAction(ActionEvent event) {
+    void btnAddDtlOnAction(ActionEvent event) throws IOException {
+        workerDtlHm.put(txtEnterItemDtlTopic.getText(), txtEnterItemDtl.getText());
+        txtEnterItemDtlTopic.setText("");
+        txtEnterItemDtl.setText("");
+        setDataToDtlTmList();
 
+    }
+
+    private void setDataToDtlTmList() throws IOException {
+        empDtlComponentLW.getItems().removeAll(dtlListComp);
+        dtlListComp.clear();
+        dtlListControllers.clear();
+        for (Map.Entry<String, String> entry : workerDtlHm.entrySet()) {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/listview/AddEmployeeViewDtlTileListViewComp.fxml"));
+            Button root1 = (Button) fxmlLoader.load();
+            AddEmployeeViewDtlTileListViewCompController batch = ((AddEmployeeViewDtlTileListViewCompController) fxmlLoader.getController());
+            batch.setData(this, entry.getKey(), entry.getValue(), txtEnterItemDtlTopic, txtEnterItemDtl);
+            dtlListComp.add(root1);
+            dtlListControllers.add(batch);
+        }
+        empDtlComponentLW.getItems().addAll(dtlListComp);
     }
 
     @FXML
@@ -197,7 +241,11 @@ public class WorkerViewController {
     }
 
     @FXML
-    void btnDeleteDtlOnAction(ActionEvent event) {
+    void btnDeleteDtlOnAction(ActionEvent event) throws IOException {
+        workerDtlHm.remove(txtEnterItemDtlTopic.getText());
+        txtEnterItemDtlTopic.setText("");
+        txtEnterItemDtl.setText("");
+        setDataToDtlTmList();
 
     }
 
@@ -212,7 +260,11 @@ public class WorkerViewController {
     }
 
     @FXML
-    void btnUpdateDtlOnAction(ActionEvent event) {
+    void btnUpdateDtlOnAction(ActionEvent event) throws IOException {
+        workerDtlHm.remove(txtEnterItemDtlTopic.getText());
+        txtEnterItemDtlTopic.setText("");
+        txtEnterItemDtl.setText("");
+        setDataToDtlTmList();
 
     }
 
@@ -237,8 +289,67 @@ public class WorkerViewController {
     }
 
     @FXML
-    void tblEmployeeViewOnAction(MouseEvent event) {
+    void tblEmployeeViewOnAction(MouseEvent event) throws SQLException, IOException, ClassNotFoundException {
+        btnDelete.setDisable(false);
+        btnUpdate.setDisable(false);
+        btnAdd.setDisable(true);
+        if (event.getButton() == MouseButton.PRIMARY) {
+            //if (tblItemView.getSelectionModel().getSelectedItem() != null) {
+            EmployeeTM selectedItem = tblEmployeeView.getSelectionModel().getSelectedItem();
+            txtEnterItemDtlTopic.setEditable(true);
+            empStatsSelector.setText(selectedItem.getOb().getAdministrativeDtlId().getAdministrativeStats());
+            initData(selectedItem);
+            btnUpdateDtl.setDisable(true);
+            btnAddDtl.setDisable(false);
+            btnDeleteDtl.setDisable(true);
+        } else if (event.getButton() == MouseButton.SECONDARY) {
+            //System.out.println("rightClicked on the table");
+            txtEnterItemDtlTopic.setEditable(true);
+            txtEnterItemDtlTopic.setText("");
+            txtEnterItemDtl.setText("");
+            initialize();
+            btnUpdateDtl.setDisable(true);
+            btnAddDtl.setDisable(false);
+            btnDeleteDtl.setDisable(true);
+        }
+    }
+    private void initData(EmployeeTM temp) throws SQLException, ClassNotFoundException, IOException {
+        Employee emp = EmployeeModel.getEmployee(temp.getEmployeeId());
+        lblEmployeeId.setText(emp.getEmployeeId());
+        txtFullName.setText(emp.getFullName());
+        BdayPicker.setAccessibleText(emp.getBirthday());
+        txtAddress.setText(emp.getAddress());
+        txtEmail.setText(emp.getEmail());
+        txtPwdField.setText(emp.getPwd());
+        initListView(emp);
+        /*lblWarrantyId.setText(it.getWarrentyId().getWarrantyId());
+        txtItemName.setText(it.getItemName());
+        txtItemProfitPercentage.setText(String.valueOf(it.getProfitPercentage()));
+        warrantyTypeSelector.setText(it.getWarrentyId().getWarrantyTypeId().getWarrantyTypeId());
+        txtItemPrice.setText(ItemPriceGenerator.getItemPrice(it.getItemId()));
+        initBatchDtlList(it);*/
 
+    }
+
+    private void initListView(Employee emp) throws IOException {
+        empDtlComponentLW.getItems().removeAll(dtlListComp);
+        dtlListComp.clear();//this is the button array
+        workerDtlHm.clear();//this is the hashmap that contains the dtl date
+        dtlListControllers.clear();//this is the button controller
+        if (emp != null) {
+            workerDtlHm = emp.getEmployeeDtlHM();
+            if (workerDtlHm != null) {
+                for (Map.Entry<String, String> entry : workerDtlHm.entrySet()) {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/listview/AddEmployeeViewDtlTileListViewComp.fxml"));
+                    Button root1 = (Button) fxmlLoader.load();
+                    AddEmployeeViewDtlTileListViewCompController batch = ((AddEmployeeViewDtlTileListViewCompController) fxmlLoader.getController());
+                    batch.setData(this, entry.getKey(), entry.getValue(), txtEnterItemDtlTopic, txtEnterItemDtl);
+                    dtlListComp.add(root1);
+                    dtlListControllers.add(batch);
+                }
+                empDtlComponentLW.getItems().addAll(dtlListComp);
+            }
+        }
     }
 
     @FXML
@@ -276,4 +387,7 @@ public class WorkerViewController {
 
     }
 
+    public void btnShowPwdOnMouseClick(MouseEvent mouseEvent) {
+        new Alert(Alert.AlertType.INFORMATION, ("The Password Is : "+txtPwdField.getText())).show();
+    }
 }

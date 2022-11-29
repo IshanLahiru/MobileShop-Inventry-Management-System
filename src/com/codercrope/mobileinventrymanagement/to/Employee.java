@@ -1,5 +1,10 @@
 package com.codercrope.mobileinventrymanagement.to;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.util.HashMap;
+
 public class Employee {
     private String employeeId;
     private AdministrativeDtl administrativeDtlId;
@@ -86,5 +91,12 @@ public class Employee {
 
     public void setEmployeeDtl(String employeeDtl) {
         this.employeeDtl = employeeDtl;
+    }
+
+    public HashMap<String, String> getEmployeeDtlHM() {
+        HashMap<String, String> mapObj = new Gson().fromJson(
+                employeeDtl, new TypeToken<HashMap<String, String>>() {}.getType()
+        );
+        return mapObj;
     }
 }
