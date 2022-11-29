@@ -2,13 +2,16 @@ package com.codercrope.mobileinventrymanagement.controler;
 
 import com.codercrope.mobileinventrymanagement.controler.tmlist.EmployeeTM;
 import com.codercrope.mobileinventrymanagement.model.*;
+import com.codercrope.mobileinventrymanagement.to.AddItem;
 import com.codercrope.mobileinventrymanagement.to.AdministrativeDtl;
 import com.codercrope.mobileinventrymanagement.to.Employee;
 import com.codercrope.mobileinventrymanagement.to.WarrantyType;
 import com.codercrope.mobileinventrymanagement.view.listview.AddEmployeeViewDtlTileListViewCompController;
+import com.codercrope.mobileinventrymanagement.view.listview.AddItemViewBSListComponentController;
 import com.codercrope.mobileinventrymanagement.view.listview.AddItemViewDtlTileListViewCompController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.css.converter.StringConverter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,8 +22,12 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
+import javax.swing.text.DateFormatter;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -134,6 +141,8 @@ public class WorkerViewController {
     public ArrayList<AddEmployeeViewDtlTileListViewCompController> dtlListControllers = new ArrayList<AddEmployeeViewDtlTileListViewCompController>();
     public ArrayList<Button> dtlListComp = new ArrayList<Button>();
 
+    private final String pattern = "yyyy-MM-dd";
+
     public void initialize() throws SQLException, ClassNotFoundException, IOException {
         tblEmpId.setCellValueFactory(new PropertyValueFactory<EmployeeTM, String>("employeeId"));
         tblEmpAdminSts.setCellValueFactory(new PropertyValueFactory<EmployeeTM, String>("administrativeSts"));
@@ -141,8 +150,8 @@ public class WorkerViewController {
         tblEmpEmail.setCellValueFactory(new PropertyValueFactory<EmployeeTM, String>("email"));
         tblEmpMoreDtl.setCellValueFactory(new PropertyValueFactory<EmployeeTM, Button>("Dtl"));
 
-        btnDelete.setDisable(true);
-        btnUpdate.setDisable(true);
+        /*btnDelete.setDisable(true);
+        btnUpdate.setDisable(true);*/
 
         setData();
         lblEmployeeId.setText(EmployeeModel.getNextEmployeeID());
@@ -158,6 +167,19 @@ public class WorkerViewController {
             });
         }
         empStatsSelector.setText(ar.get(ar.size() - 2));
+
+        btnDelete.setDisable(true);
+        btnUpdate.setDisable(true);
+        btnAdd.setDisable(false);
+
+        txtFullName.setText("");
+        //BdayPicker.setAccessibleText(emp.getBirthday());
+        //BdayPicker.setValue(getDate(emp.getBirthday()));
+        txtAddress.setText("");
+        txtEmail.setText("");
+        txtPwdField.setText("");
+
+
 
         /*lblItemId.setText(ItemModel.getItemId());
         lblWarrantyId.setText(WarrantyModel.getWarrantyId());
@@ -236,7 +258,74 @@ public class WorkerViewController {
     }
 
     @FXML
-    void btnAddOrderOnAction(ActionEvent event) {
+    void btnUpdateOrderOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
+        /*DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String dateTime = dtf.format(now);
+        System.out.println(dateTime);
+        System.out.println(warrantyTypeSelector.getText());
+        */
+        boolean sta = AddEmployeeModel.update(new Employee(lblEmployeeId.getText(),
+                AdministrativeDtlModel.getAdministrativeDtlId(empStatsSelector.getText()),txtFullName.getText(),BdayPicker.getValue().toString(),txtAddress.getText(),txtPwdField.getText(),txtEmail.getText(),AddEmployeeModel.getEmployeeDtlJson(workerDtlHm)));
+        if (sta) {
+            setData();
+            lblItemId.setText(ItemModel.getItemId());
+            //lblWarrantyId.setText(WarrantyModel.getWarrantyId());
+            new Alert(Alert.AlertType.INFORMATION, "Employee updated successfully").show();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Error: not updated! try again").show();
+        }
+
+    }
+
+    @FXML
+    void btnDeleteOrderOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
+        /*DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String dateTime = dtf.format(now);
+        System.out.println(dateTime);
+        System.out.println(warrantyTypeSelector.getText());
+        */
+        boolean sta = AddEmployeeModel.delete(new Employee(lblEmployeeId.getText(),
+                AdministrativeDtlModel.getAdministrativeDtlId(empStatsSelector.getText()),txtFullName.getText(),BdayPicker.getValue().toString(),txtAddress.getText(),txtPwdField.getText(),txtEmail.getText(),AddEmployeeModel.getEmployeeDtlJson(workerDtlHm)));
+        if (sta) {
+            setData();
+            lblItemId.setText(ItemModel.getItemId());
+            //lblWarrantyId.setText(WarrantyModel.getWarrantyId());
+            new Alert(Alert.AlertType.INFORMATION, "Employee deleted successfully").show();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Error: not deleted! try again").show();
+        }
+
+
+    }
+
+    @FXML
+    void btnAddOrderOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
+        /*DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String dateTime = dtf.format(now);
+        System.out.println(dateTime);
+        System.out.println(warrantyTypeSelector.getText());
+        */
+        boolean sta = AddEmployeeModel.add(new Employee(lblEmployeeId.getText(),
+                AdministrativeDtlModel.getAdministrativeDtlId(empStatsSelector.getText()),
+                txtFullName.getText(),
+                String.valueOf(BdayPicker.getValue()),
+                txtAddress.getText(),
+                txtPwdField.getText(),
+                txtEmail.getText(),
+                AddEmployeeModel.getEmployeeDtlJson(workerDtlHm)));
+        if (sta) {
+            setData();
+            //lblItemId.setText(ItemModel.getItemId());
+            //lblWarrantyId.setText(WarrantyModel.getWarrantyId());
+            new Alert(Alert.AlertType.INFORMATION, "Employee added successfully").show();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Error: not added! try again").show();
+        }
+
+
 
     }
 
@@ -246,11 +335,6 @@ public class WorkerViewController {
         txtEnterItemDtlTopic.setText("");
         txtEnterItemDtl.setText("");
         setDataToDtlTmList();
-
-    }
-
-    @FXML
-    void btnDeleteOrderOnAction(ActionEvent event) {
 
     }
 
@@ -271,10 +355,6 @@ public class WorkerViewController {
     @FXML
     void btnUpdateDtlOnClickEvt(MouseEvent event) {
 
-    }
-
-    @FXML
-    void btnUpdateOrderOnAction(ActionEvent event) {
 
     }
 
@@ -304,6 +384,7 @@ public class WorkerViewController {
             btnDeleteDtl.setDisable(true);
         } else if (event.getButton() == MouseButton.SECONDARY) {
             //System.out.println("rightClicked on the table");
+
             txtEnterItemDtlTopic.setEditable(true);
             txtEnterItemDtlTopic.setText("");
             txtEnterItemDtl.setText("");
@@ -317,7 +398,8 @@ public class WorkerViewController {
         Employee emp = EmployeeModel.getEmployee(temp.getEmployeeId());
         lblEmployeeId.setText(emp.getEmployeeId());
         txtFullName.setText(emp.getFullName());
-        BdayPicker.setAccessibleText(emp.getBirthday());
+        //BdayPicker.setAccessibleText(emp.getBirthday());
+        //BdayPicker.setValue(getDate(emp.getBirthday()));
         txtAddress.setText(emp.getAddress());
         txtEmail.setText(emp.getEmail());
         txtPwdField.setText(emp.getPwd());
@@ -329,6 +411,12 @@ public class WorkerViewController {
         txtItemPrice.setText(ItemPriceGenerator.getItemPrice(it.getItemId()));
         initBatchDtlList(it);*/
 
+    }
+    public static LocalDate getDate (String dateString){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate localDate = LocalDate.parse(dateString, formatter);
+        System.out.println("the date is : "+ localDate);
+        return localDate;
     }
 
     private void initListView(Employee emp) throws IOException {

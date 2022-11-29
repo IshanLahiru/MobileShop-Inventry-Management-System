@@ -99,4 +99,7 @@ public class Employee {
         );
         return mapObj;
     }
+    public static String getEmployeeDtlJson(HashMap<String, String> hm) {
+        return new Gson().toJson(hm);
+    }
 }

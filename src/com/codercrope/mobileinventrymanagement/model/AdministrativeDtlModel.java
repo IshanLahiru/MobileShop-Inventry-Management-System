@@ -45,4 +45,16 @@ public class AdministrativeDtlModel {
         }
         return ar;
     }
+
+    public static AdministrativeDtl getAdministrativeDtlId(String text) throws SQLException, ClassNotFoundException {
+        String sql = "SELECT * FROM administrative_dtl WHERE administrative_stats = ?";
+        ResultSet result = CrudUtil.execute(sql,text);
+        if (result.next()) {
+            return new AdministrativeDtl(
+                    result.getString(1),
+                    result.getString(2)
+            );
+        }
+        return null;
+    }
 }
