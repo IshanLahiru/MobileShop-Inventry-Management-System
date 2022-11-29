@@ -1,29 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e91fbc91-78b6-4d3a-8976-9480ef1eaa53" name="Changes" comment="add batch and add order functionalities are not been completed.">
-      <change afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/AddOnlineOrderModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/to/OnlineOrderStr.java" afterDir="false" />
+    <list default="true" id="e91fbc91-78b6-4d3a-8976-9480ef1eaa53" name="Changes" comment="completed the add order form, all the edits and transections">
+      <change afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/AddBatchModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/a16678f1-8457-4d69-9bb6-9cefe82dd754.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a16678f1-8457-4d69-9bb6-9cefe82dd754.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/controler/subwindows/AddOnlineOrderViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/controler/subwindows/AddOnlineOrderViewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/model/AddItemModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/model/AddItemModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/model/AdministrativeDtlModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/model/AdministrativeDtlModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/model/EmployeeModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/model/EmployeeModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/model/OnlineOrderModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/model/OnlineOrderModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/model/PaymentModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/model/PaymentModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/to/OnlineOrder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/to/OnlineOrder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/to/Payment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/to/Payment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/view/subwindows/AddOnlineOrderView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/view/subwindows/AddOnlineOrderView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/subwindows/AddOnlineOrderViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/subwindows/AddOnlineOrderViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/AddItemModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/AddItemModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/AdministrativeDtlModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/AdministrativeDtlModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/EmployeeModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/EmployeeModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/OnlineOrderModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/OnlineOrderModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/PaymentModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/PaymentModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/to/OnlineOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/to/OnlineOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/to/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/to/Payment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/subwindows/AddOnlineOrderView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/subwindows/AddOnlineOrderView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/view/subwindows/AddBatchView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/view/subwindows/AddBatchView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/view/subwindows/AddBatchViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/view/subwindows/AddBatchViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/WorkerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/WorkerViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/BatchHasItemModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/BatchHasItemModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/BatchModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/BatchModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/ItemModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/model/ItemModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/WorkerView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/WorkerView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/subwindows/AddBatchView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/subwindows/AddBatchView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/subwindows/AddBatchViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/subwindows/AddBatchViewController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +54,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
+    <property name="database.data.extractors.current.id" value="Comma-separated (CSV)_id" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/listview" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -72,9 +64,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.codercrope.mobileinventrymanagement.model" />
+      <recent name="com.codercrope.mobileinventrymanagement.view.subwindows" />
       <recent name="com.codercrope.mobileinventrymanagement.controler.tmlist" />
       <recent name="com.codercrope.mobileinventrymanagement.to" />
-      <recent name="com.codercrope.mobileinventrymanagement.model" />
       <recent name="com.codercrope.mobileinventrymanagement.controler" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -133,7 +126,9 @@
       <workItem from="1669626737231" duration="4461000" />
       <workItem from="1669632761599" duration="8915000" />
       <workItem from="1669645186449" duration="14553000" />
-      <workItem from="1669673937826" duration="12581000" />
+      <workItem from="1669673937826" duration="13019000" />
+      <workItem from="1669690706072" duration="14000" />
+      <workItem from="1669693111458" duration="8222000" />
     </task>
     <task id="LOCAL-00001" summary="updates">
       <created>1669344683070</created>
@@ -275,7 +270,21 @@
       <option name="project" value="LOCAL" />
       <updated>1669661284309</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="completed the add order form, all the edits and transections">
+      <created>1669688682521</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1669688682521</updated>
+    </task>
+    <task id="LOCAL-00022" summary="completed the add order form, all the edits and transections">
+      <created>1669689004714</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1669689004714</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,6 +311,7 @@
     <MESSAGE value="item adding process is been completed , the transection is working correctly" />
     <MESSAGE value="completed the add warranty forme, but not completely, becouse the delete functionality is not fully made, becouse the warranty and items should delete in this stat" />
     <MESSAGE value="add batch and add order functionalities are not been completed." />
-    <option name="LAST_COMMIT_MESSAGE" value="add batch and add order functionalities are not been completed." />
+    <MESSAGE value="completed the add order form, all the edits and transections" />
+    <option name="LAST_COMMIT_MESSAGE" value="completed the add order form, all the edits and transections" />
   </component>
 </project>

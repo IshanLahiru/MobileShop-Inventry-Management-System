@@ -50,4 +50,8 @@ public class BatchHasItemModel {
         String sql = "Delete FROM batch_has_item where item_id = ?";
         return CrudUtil.execute(sql,itemId);
     }
+    public static boolean deleteBatch(String batchId) throws SQLException, ClassNotFoundException {
+        String sql = "Delete FROM batch_has_item where batch_id = ?";
+        return CrudUtil.execute(sql,batchId);
+    }
 }

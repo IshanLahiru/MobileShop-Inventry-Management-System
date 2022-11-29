@@ -1,7 +1,6 @@
 package com.codercrope.mobileinventrymanagement.model;
 
 import com.codercrope.mobileinventrymanagement.to.Item;
-import com.codercrope.mobileinventrymanagement.to.Warranty;
 import com.codercrope.mobileinventrymanagement.util.CrudUtil;
 
 import java.sql.ResultSet;
@@ -25,6 +24,19 @@ public class ItemModel {
                     Integer.parseInt(result.getString(6)),
                     result.getString(7),
                     BatchHasItemModel.getItemCount(result.getString(1))));
+        }
+        //System.out.println(items.size());
+        return items;
+    }
+
+    public static ArrayList<String> getItemIds() throws SQLException, ClassNotFoundException {
+        String sql = "SELECT item_id FROM item";
+        ResultSet result = CrudUtil.execute(sql);
+        //System.out.println("result set size is = "+result.getFetchSize());
+        ArrayList<String> items = new ArrayList<>();
+
+        while (result.next()) {
+            items.add(result.getString(1));
         }
         //System.out.println(items.size());
         return items;
@@ -87,19 +99,6 @@ public class ItemModel {
         );
     }
 
-    public static boolean save(String itemId, String warrantyId, String itemName, String itemAddedDateTime, Double itePriceStock, int profitPercentage, String itemDtl) throws SQLException, ClassNotFoundException {
-        String sql = "INSERT INTO item VALUES(?, ? ,? ,? ,? ,? ,?)";
-        return CrudUtil.execute(sql,
-                itemId,
-                warrantyId,
-                itemName,
-                itemAddedDateTime,
-                itePriceStock,
-                profitPercentage,
-                itemDtl
-        );
-    }
-
     public static String getProfitPercentage(String itemId) throws SQLException, ClassNotFoundException {
         String sql = "SELECT profit_percentage FROM item where item_id = ? ";
         ResultSet result = CrudUtil.execute(sql, itemId);
@@ -124,6 +123,19 @@ public class ItemModel {
                     BatchHasItemModel.getItemCount(result.getString(1)));
         }
         return null;
+    }
+
+    public static boolean save(String itemId, String warrantyId, String itemName, String itemAddedDateTime, Double itePriceStock, int profitPercentage, String itemDtl) throws SQLException, ClassNotFoundException {
+        String sql = "INSERT INTO item VALUES(?, ? ,? ,? ,? ,? ,?)";
+        return CrudUtil.execute(sql,
+                itemId,
+                warrantyId,
+                itemName,
+                itemAddedDateTime,
+                itePriceStock,
+                profitPercentage,
+                itemDtl
+        );
     }
 
     public static boolean update(String itemId, String warrantyId, String itemName, String itemAddedDateTime, Double itePriceStock, int profitPercentage, String itemDtl) throws SQLException, ClassNotFoundException {

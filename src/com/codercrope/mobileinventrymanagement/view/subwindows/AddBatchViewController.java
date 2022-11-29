@@ -1,8 +1,15 @@
 package com.codercrope.mobileinventrymanagement.view.subwindows;
 
 import com.codercrope.mobileinventrymanagement.controler.tmlist.BatchTM;
+import com.codercrope.mobileinventrymanagement.controler.tmlist.OnlineOrderTM;
+import com.codercrope.mobileinventrymanagement.model.AddBatchModel;
+import com.codercrope.mobileinventrymanagement.model.AddOnlineOrderModel;
 import com.codercrope.mobileinventrymanagement.model.BatchModel;
+import com.codercrope.mobileinventrymanagement.model.PaymentModel;
 import com.codercrope.mobileinventrymanagement.to.Batch;
+import com.codercrope.mobileinventrymanagement.to.OnlineOrder;
+import com.codercrope.mobileinventrymanagement.to.OnlineOrderStr;
+import com.codercrope.mobileinventrymanagement.view.listview.OnlineOrderLinksListViewComponentController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,14 +17,19 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class AddBatchViewController {
 
+    public TextField txtDollerRate;
+    public TextArea txtBatchDtl;
     @FXML
     private TableView<BatchTM> tblBatch;
 
@@ -84,6 +96,14 @@ public class AddBatchViewController {
         txtEnterWarrantyDtl.setWrapText(true);
         lblWarrantyId.setText(WarrantyTypeModel.getNextWarrantyId());
         txtWarrantyDuration.requestFocus();*/
+
+        lblBatchId.setText(BatchModel.getNextBatchId());
+        txtBatchDtl.setWrapText(true);
+        btnAdd.setDisable(false);
+        btnDelete.setDisable(true);
+        btnUpdate.setDisable(true);
+        txtDollerRate.setText("");
+        txtBatchDtl.setText("");
 
 
         setData();
@@ -165,7 +185,31 @@ public class AddBatchViewController {
     }
 
     @FXML
-    void tblWarrantyOnMouseClickEvent(MouseEvent event) {
+    void tblWarrantyOnMouseClickEvent(MouseEvent event) throws SQLException, IOException, ClassNotFoundException {
+        btnDelete.setDisable(false);
+        btnUpdate.setDisable(false);
+        btnAdd.setDisable(true);
+        if (event.getButton() == MouseButton.PRIMARY) {
+            BatchTM selectedItem = tblBatch.getSelectionModel().getSelectedItem();
+            initData(selectedItem);
+            btnAdd.setDisable(true);
+            btnDelete.setDisable(false);
+            btnUpdate.setDisable(false);
+        } else if (event.getButton() == MouseButton.SECONDARY) {
+            //System.out.println("rightClicked on the table");
+            /*txtEnterOrderLinkTitle.setEditable(true);
+            txtEnterOrderLink.setText("");
+            txtEnterOrderLinkTitle.setText("");*/
+            initialize();
+        }
+    }
+    private void initData(BatchTM temp) throws SQLException, ClassNotFoundException, IOException {
+        if (temp!=null) {
+            Batch it = temp.getOb();
+            lblBatchId.setText(it.getBatchId());
+            txtDollerRate.setText(String.valueOf(it.getDollerRate()));
+            txtBatchDtl.setText(it.getBatchDtl());
+        }
 
     }
 
@@ -189,4 +233,68 @@ public class AddBatchViewController {
 
     }
 
+    public void txtDollerRateOnAction(ActionEvent actionEvent) {
+    }
+
+    public void txtBatchDtlOnKeyPressed(KeyEvent keyEvent) {
+        //in heare you need to filter the keys that been pressed and
+        //when the enter key been pressed, you needs to focous to the button
+    }
+
+    public void btnAddOnAction(ActionEvent actionEvent) throws SQLException, IOException, ClassNotFoundException {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String dateTime = dtf.format(now);
+        System.out.println(dateTime);
+        /*System.out.println(warrantyTypeSelector.getText());*/
+        /*for (WarrantyDtlListViewComponentController b : warrantyListControllers) {
+            warrantyDtlHM.put(b.getId(), b.getContent());
+        }*/
+        boolean sta = AddBatchModel.save(new Batch(
+                lblBatchId.getText(),txtBatchDtl.getText(),dateTime,Double.parseDouble(txtDollerRate.getText())));
+        if (sta) {
+            initialize();
+            new Alert(Alert.AlertType.INFORMATION, "Item Added successfully").show();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Error: not added! try again").show();
+        }
+    }
+
+    public void btnDeleteOnAction(ActionEvent actionEvent) throws SQLException, IOException, ClassNotFoundException {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String dateTime = dtf.format(now);
+        System.out.println(dateTime);/*
+        *//*System.out.println(warrantyTypeSelector.getText());*//*
+        for (OnlineOrderLinksListViewComponentController b : onlineLinkListControllers) {
+            onlineOrderLinkHM.put(b.getId(), b.getContent());
+        }*/
+        boolean sta = AddBatchModel.remove(new Batch(
+                lblBatchId.getText(),txtBatchDtl.getText(),dateTime,Double.parseDouble(txtDollerRate.getText())));
+        if (sta) {
+            initialize();
+            new Alert(Alert.AlertType.INFORMATION, "Item deleted successfully").show();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Error: not deleted! try again").show();
+        }
+    }
+
+    public void btnUpdateOnAction(ActionEvent actionEvent) throws SQLException, IOException, ClassNotFoundException {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String dateTime = dtf.format(now);
+        System.out.println(dateTime);
+        //System.out.println(warrantyTypeSelector.getText());
+        /*for (WarrantyDtlListViewComponentController b : warrantyListControllers) {
+            warrantyDtlHM.put(b.getId(), b.getContent());
+        }*/
+        boolean sta = AddBatchModel.update(new Batch(
+                lblBatchId.getText(),txtBatchDtl.getText(),dateTime,Double.parseDouble(txtDollerRate.getText())));
+        if (sta) {
+            initialize();
+            new Alert(Alert.AlertType.INFORMATION, "Item Updated successfully").show();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Error: not updated! try again").show();
+        }
+    }
 }

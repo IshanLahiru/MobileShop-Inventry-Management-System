@@ -77,6 +77,20 @@ public class BatchModel {
         }
         //System.out.println(items.size());
         return data;
+    }
 
+    public static boolean save(String batchId, String batchDtl, String dateTime, Double dollarRate) throws SQLException, ClassNotFoundException {
+        String sql = "INSERT INTO batch VALUES(?, ? ,? ,?)";
+        return CrudUtil.execute(sql,batchId,batchDtl,dateTime,String.valueOf(dollarRate));
+    }
+
+    public static boolean update(String batchId, String batchDtl, String dateTime, double dollerRate) throws SQLException, ClassNotFoundException {
+        String sql = "UPDATE batch SET batch_dtl = ? , date_time = ? , doller_rate = ?  WHERE batch_id = ?";
+        return CrudUtil.execute(sql,batchDtl,dateTime,String.valueOf(dollerRate),batchId);
+    }
+
+    public static boolean delete(String batchId) throws SQLException, ClassNotFoundException {
+        String sql = "DELETE FROM batch WHERE batch_id = ?";
+        return CrudUtil.execute(sql,batchId);
     }
 }

@@ -103,7 +103,7 @@
                                     </rowConstraints>
                                     <children>
                                         <Label fx:id="LblItemName21" text="Doller rate" />
-                                        <TextField fx:id="txtWarrantyDuration" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#txtWarrantyDurationOnAction" onKeyPressed="#txtWarrantyDurationOnKeyPressed" prefHeight="48.0" prefWidth="240.0" promptText="Enter warranty duration heare...." GridPane.rowIndex="2" />
+                                        <TextField fx:id="txtDollerRate" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#txtDollerRateOnAction" onKeyPressed="#txtWarrantyDurationOnKeyPressed" prefHeight="48.0" prefWidth="240.0" promptText="Enter warranty duration heare...." GridPane.rowIndex="2" />
                                     </children>
                                 </GridPane>
                             </children>
@@ -119,7 +119,7 @@
                             </rowConstraints>
                             <children>
                                 <Label fx:id="LblItemName111" text="Warranty Details" />
-                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" />
+                        <TextArea fx:id="txtBatchDtl" onKeyPressed="#txtBatchDtlOnKeyPressed" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" />
                             </children>
                         </GridPane>
                     </children>
@@ -144,9 +144,9 @@
                             <children>
                                 <TextField fx:id="txtSearch" onAction="#txtSearchOnAction" onKeyPressed="#txtSearchOnKeyPressed" prefHeight="31.0" prefWidth="218.0" promptText="Search...." />
                                 <Button fx:id="btnSearch" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSearchOnAction" text="Search" GridPane.columnIndex="1" />
-                                <Button fx:id="btnAdd" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnAddOrderOnAction" text="Add" GridPane.columnIndex="3" />
-                                <Button fx:id="btnDelete" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnDeleteOrderOnAction" text="Delete" GridPane.columnIndex="5" />
-                                <Button fx:id="btnUpdate" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnUpdateOrderOnAction" text="Update" GridPane.columnIndex="7" />
+                                <Button fx:id="btnAdd" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnAddOnAction" text="Add" GridPane.columnIndex="3" />
+                                <Button fx:id="btnDelete" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnDeleteOnAction" text="Delete" GridPane.columnIndex="5" />
+                                <Button fx:id="btnUpdate" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnUpdateOnAction" text="Update" GridPane.columnIndex="7" />
                             </children>
                         </GridPane>
                     </children>
