@@ -15,17 +15,18 @@ public class BillingViewListComponentController {
     public Button btnPlus;
     public Button btnMinus;
     public Button btnRemove;
-    private MainBillingItemTM billItem;
-    private BillingViewController billingViewController;
+    public Label lblIndex;
+    public MainBillingItemTM billItem;
+    public BillingViewController billingViewController;
 
-    public void addItem(MainBillingItemTM item, BillingViewController billingViewController){
+    public void addItem(int size, MainBillingItemTM item, BillingViewController billingViewController){
         this.billItem = item;
         this.billingViewController = billingViewController;
-        //System.out.println(billItem);
-        lblQty.setText(String.valueOf(billItem.getItemQty()));
-        lblItemName.setText(billItem.getItemName());
-        lblPrice.setText(String.valueOf(billItem.getItemPriceStock()));
-        billItem.getOb().setItemPriceStock(billItem.getOb().getProfitPercentage()-billItem.getItemQty());
+        lblIndex.setText(String.valueOf(size));
+        lblQty.setText(String.valueOf(item.getItemQty()));
+        lblPrice.setText(String.valueOf(item.getItemPriceStock()));
+        lblItemName.setText(item.getOb().getItemName());
+        lblItemName.setWrapText(true);
     }
 
     public void btnPlusClickEvent(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {

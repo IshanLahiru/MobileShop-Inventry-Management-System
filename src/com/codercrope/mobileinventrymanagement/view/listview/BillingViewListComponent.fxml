@@ -9,53 +9,80 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
 <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="35.0" prefWidth="350.0" stylesheets="@../../assets/Styles/lightMode.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.codercrope.mobileinventrymanagement.controler.listview.BillingViewListComponentController">
    <graphic>
       <GridPane prefHeight="25.0" prefWidth="368.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="333.0" minWidth="10.0" prefWidth="31.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="86.0" prefWidth="121.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="203.0" minWidth="10.0" prefWidth="166.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="198.0" minWidth="0.0" prefWidth="23.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="86.0" prefWidth="121.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="50.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="CENTER" text="00" />
-            <Label fx:id="lblItemName" prefHeight="21.0" prefWidth="116.0" text="ItemName" GridPane.columnIndex="1" />
-            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
+            <Label fx:id="lblIndex" alignment="CENTER" prefHeight="17.0" prefWidth="28.0" text="00">
+               <font>
+                  <Font size="12.0" />
+               </font></Label>
+            <Label fx:id="lblItemName" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="164.0" text="ItemName" GridPane.columnIndex="1">
+               <font>
+                  <Font size="12.0" />
+               </font></Label>
+            <HBox prefHeight="25.0" prefWidth="97.0" GridPane.columnIndex="2">
                <children>
-                  <Button fx:id="btnPlus" mnemonicParsing="false" onAction="#btnPlusClickEvent" prefHeight="30.0" prefWidth="2.0" styleClass="myButton" stylesheets="@../../assets/Styles/lightMode.css">
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../assets/buttons/add-b.png" />
-                           </image>
-                        </ImageView>
-                     </graphic></Button>
-                  <Label fx:id="lblQty" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="40.0" text="Rs 200" />
-                  <Button fx:id="btnMinus" mnemonicParsing="false" onAction="#btnMinusClickEvt" styleClass="exit-btn" stylesheets="@../../assets/Styles/lightMode.css">
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../assets/buttons/minus-b.png" />
-                           </image>
-                        </ImageView>
-                     </graphic></Button>
-                  <Label fx:id="lblPrice" alignment="CENTER" prefHeight="30.0" prefWidth="74.0" text="Label" />
+                  <GridPane prefHeight="25.0" prefWidth="102.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button fx:id="btnPlus" mnemonicParsing="false" onAction="#btnPlusClickEvent" prefHeight="30.0" prefWidth="0.0" styleClass="myButton" stylesheets="@../../assets/Styles/lightMode.css">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/buttons/add-b.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label fx:id="lblQty" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="48.0" text="00" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btnMinus" mnemonicParsing="false" onAction="#btnMinusClickEvt" prefHeight="30.0" prefWidth="0.0" styleClass="exit-btn" stylesheets="@../../assets/Styles/lightMode.css" GridPane.columnIndex="2">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/buttons/minus-b.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </GridPane>
                </children>
             </HBox>
-            <Button fx:id="btnRemove" mnemonicParsing="false" styleClass="myButton" stylesheets="@../../assets/Styles/lightMode.css" GridPane.columnIndex="3">
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../assets/close-b.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
+            <Label fx:id="lblPrice" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="108.0" text="00" GridPane.columnIndex="4">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5">
+               <image>
+                  <Image url="@../../assets/close-b.png" />
+               </image>
+            </ImageView>
          </children>
       </GridPane>
    </graphic>

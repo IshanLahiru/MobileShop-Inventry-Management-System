@@ -53,7 +53,7 @@ public class BillingViewController {
     private TextField txtSearch;
 
     @FXML
-    private TextField txtQty;
+    public TextField txtQty;
 
     @FXML
     private TableView<MainBillingItemTM> tblBillingView;
@@ -74,15 +74,16 @@ public class BillingViewController {
     private TableColumn<MainBillingItemTM, Button> tblMoreDtl;
 
     @FXML
-    private ListView<?> listViewBilling;
+    private ListView<Button> listViewBilling;
 
     @FXML
     private Button btnPay;
 
 
     private ObservableList<MainBillingItemTM> cust = FXCollections.observableArrayList();
-    private ArrayList items = new ArrayList<>();
-    private ArrayList<Item> item;
+    private ArrayList<Button> items = new ArrayList<>();
+    private ArrayList<BillingViewListComponentController> lwItemControllerDb =new ArrayList<>();
+    private ArrayList<Item> item = new ArrayList();
     private MainBillingItemTM selectedItem;
 
     public void initLabels(){
@@ -181,6 +182,7 @@ public class BillingViewController {
             if(tblBillingView.getSelectionModel().getSelectedItem()!=null) {
                 MainBillingItemTM temp = (MainBillingItemTM) tblBillingView.getSelectionModel().getSelectedItem();
                 this.selectedItem = temp;
+                System.out.println("the selected item id is : "+temp.getItemId());
                 initLabels(temp);
                 /*lblItemId.setText(temp.getItemId());
                 lblItemName.setText(temp.getItemName());
@@ -212,7 +214,9 @@ public class BillingViewController {
     }
     public void setRow(Item item) throws SQLException, ClassNotFoundException {
         Button tem = new Button("  More Details  ");
-        MainBillingItemTM temp = new MainBillingItemTM(item,item.getItemId(),
+        MainBillingItemTM temp = new MainBillingItemTM(
+                item,
+                item.getItemId(),
                 item.getItemName(),
                 item.getStock(),
                 PriceModel.getItemPrice(item.getItemId(),
@@ -358,15 +362,29 @@ public class BillingViewController {
 
     public void lblQtyOnAction(ActionEvent actionEvent) throws IOException, SQLException, ClassNotFoundException {
         this.selectedItem.setItemQty(Integer.parseInt(txtQty.getText()));
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/listview/BillingViewListComponent.fxml"));
-        Button root1 = (Button) fxmlLoader.load();
-        ((BillingViewListComponentController) fxmlLoader.getController()).addItem(this.selectedItem, this);
-        items.add(root1);
-        setData();
-        listViewBilling.getItems().removeAll(items);
-        listViewBilling.getItems().addAll(items);
-        txtQty.setText("");
-        txtSearch.requestFocus();
+        boolean exists =false;
+        int index = -1;
+        for(int i = 0 ; i<lwItemControllerDb.size();i++){
+            if(this.selectedItem.getOb().getItemId().equals(lwItemControllerDb.get(i).billItem.getItemId())){
+                index = i;
+                exists = true;
+            }
+        }
+        if(exists){
+            lwItemControllerDb.get(index).lblQty.setText(String.valueOf((Integer.parseInt(txtQty.getText()))+(Integer.parseInt(lwItemControllerDb.get(index).lblQty.getText()))));
+        }else {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/listview/BillingViewListComponent.fxml"));
+            Button root1 = (Button) fxmlLoader.load();
+            BillingViewListComponentController controller = (BillingViewListComponentController) fxmlLoader.getController();
+            controller.addItem(lwItemControllerDb.size() + 1, this.selectedItem, this);
+            lwItemControllerDb.add(controller);
+            items.add(root1);
+            setData();
+            listViewBilling.getItems().removeAll(items);
+            listViewBilling.getItems().addAll(items);
+            txtQty.setText("");
+            txtSearch.requestFocus();
+        }
     }
 
     public void btnAddOnAction(ActionEvent actionEvent) throws IOException, SQLException, ClassNotFoundException {
@@ -376,7 +394,7 @@ public class BillingViewController {
         new MainBillingListViewTm(this.selectedItem.getOb(),this.selectedItem.getItemId(),
                 this.selectedItem.getItemName(),this.selectedItem.getItemQty(),
                 this.selectedItem.getItemPriceStock(),items.size());
-        ((BillingViewListComponentController) fxmlLoader.getController()).addItem(this.selectedItem,this);
+        ((BillingViewListComponentController) fxmlLoader.getController()).addItem(lwItemControllerDb.size(), this.selectedItem,this);
         setData();
         items.add(root1);
         listViewBilling.getItems().removeAll(items);
