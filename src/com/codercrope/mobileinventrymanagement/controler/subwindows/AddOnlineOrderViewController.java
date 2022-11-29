@@ -3,7 +3,9 @@ package com.codercrope.mobileinventrymanagement.controler.subwindows;
 import com.codercrope.mobileinventrymanagement.controler.tmlist.OnlineOrderTM;
 import com.codercrope.mobileinventrymanagement.controler.tmlist.WarrantyTM;
 import com.codercrope.mobileinventrymanagement.model.*;
+import com.codercrope.mobileinventrymanagement.to.AddWarrantyType;
 import com.codercrope.mobileinventrymanagement.to.OnlineOrder;
+import com.codercrope.mobileinventrymanagement.to.OnlineOrderStr;
 import com.codercrope.mobileinventrymanagement.to.WarrantyType;
 import com.codercrope.mobileinventrymanagement.view.listview.OnlineOrderLinksListViewComponentController;
 import com.codercrope.mobileinventrymanagement.view.listview.WarrantyDtlListViewComponentController;
@@ -23,6 +25,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -104,7 +108,7 @@ public class AddOnlineOrderViewController {
     public ArrayList<OnlineOrderLinksListViewComponentController> onlineLinkListControllers = new ArrayList<OnlineOrderLinksListViewComponentController>();
     public ArrayList<Button> onlineOrderLink = new ArrayList<>();
     public HashMap<String, String> onlineOrderLinkHM = new HashMap<>();
-
+    private OnlineOrderTM selectedOrder;
 
 
     public void initialize() throws SQLException, ClassNotFoundException, IOException {
@@ -183,8 +187,8 @@ public class AddOnlineOrderViewController {
                     ob,
                     ob.getOrderId(),
                     ob.getBatchId(),
-                    ob.getPaymentId(),
-                    ob.getEmployeeId(),
+                    ob.getPaymentId().getPaymentId(),
+                    ob.getEmployeeId().getEmployeeId(),
                     ob.getDateTime(),
                     ob.getOnlineOrdersLinks(),
                     tem
@@ -237,6 +241,7 @@ public class AddOnlineOrderViewController {
             btnUpdate.setDisable(false);
             txtEnterOrderLinkTitle.setText("");
             txtEnterOrderLink.setText("");
+            this.selectedOrder = tblOnlineOrder.getSelectionModel().getSelectedItem();
         } else if (mouseEvent.getButton() == MouseButton.SECONDARY) {
             //System.out.println("rightClicked on the table");
             txtEnterOrderLinkTitle.setEditable(true);
@@ -248,7 +253,13 @@ public class AddOnlineOrderViewController {
     private void initData(OnlineOrderTM temp) throws SQLException, ClassNotFoundException, IOException {
         if (temp!=null) {
             OnlineOrder it = temp.getOb();
-            txtPaymentAmount.setText(PaymentModel.getPaymentAmount(it.getPaymentId()));
+            lblOrderId.setText(it.getOrderId());
+            /*ObservableList<String> empIds = EmployeeModel.getEmployeeIds();
+            employIdComboBox.setItems(empIds);
+            employIdComboBox.getSelectionModel().selectFirst();*/
+            employIdComboBox.getSelectionModel().select(temp.getEmployeeId());
+            batchIdComboBox.getSelectionModel().select(temp.getBatchId());
+            txtPaymentAmount.setText(PaymentModel.getPaymentAmount(it.getPaymentId().getPaymentId()));
             initOrderLinkList(it);
         }
 
@@ -294,11 +305,6 @@ public class AddOnlineOrderViewController {
     }
 
     @FXML
-    void btnAddOrderOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
     void btnDeleteLinkOnAction(ActionEvent event) throws IOException {
         onlineOrderLinkHM.put(txtEnterOrderLinkTitle.getText(), txtEnterOrderLink.getText());
         txtEnterOrderLinkTitle.setText("");
@@ -308,8 +314,92 @@ public class AddOnlineOrderViewController {
     }
 
     @FXML
-    void btnDeleteOrderOnAction(ActionEvent event) {
+    void btnAddOrderOnAction(ActionEvent event) throws SQLException, ClassNotFoundException, IOException {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String dateTime = dtf.format(now);
+        System.out.println(dateTime);
+        /*System.out.println(warrantyTypeSelector.getText());*/
+        /*for (WarrantyDtlListViewComponentController b : warrantyListControllers) {
+            warrantyDtlHM.put(b.getId(), b.getContent());
+        }*/
+        onlineOrderLinkHM.clear();
+        for (OnlineOrderLinksListViewComponentController b : onlineLinkListControllers) {
+            onlineOrderLinkHM.put(b.getId(), b.getContent());
+        }
+        System.out.println(batchIdComboBox.getSelectionModel().getSelectedItem());
+        boolean sta = AddOnlineOrderModel.save(new OnlineOrderStr(
+                lblOrderId.getText(),
+                batchIdComboBox.getSelectionModel().getSelectedItem(),
+                PaymentModel.getNextPaymentId(),
+                employIdComboBox.getSelectionModel().getSelectedItem(),
+                dateTime,
+                Double.parseDouble(txtPaymentAmount.getText()),
+                OnlineOrder.getOnlineOrdersLinksJson(onlineOrderLinkHM)
+        ));
+        if (sta) {
+            initialize();
+            new Alert(Alert.AlertType.INFORMATION, "Item Added successfully").show();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Error: not added! try again").show();
+        }
 
+
+    }
+
+    @FXML
+    void btnUpdateOrderOnAction(ActionEvent event) throws SQLException, IOException, ClassNotFoundException {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String dateTime = dtf.format(now);
+        System.out.println(dateTime);
+        //System.out.println(warrantyTypeSelector.getText());
+        /*for (WarrantyDtlListViewComponentController b : warrantyListControllers) {
+            warrantyDtlHM.put(b.getId(), b.getContent());
+        }*/
+        boolean sta = AddOnlineOrderModel.update(new OnlineOrderStr(
+                lblOrderId.getText(),
+                batchIdComboBox.getSelectionModel().getSelectedItem(),
+                selectedOrder.getPaymentId(),
+                employIdComboBox.getSelectionModel().getSelectedItem(),
+                dateTime,
+                Double.parseDouble(txtPaymentAmount.getText()),
+                OnlineOrder.getOnlineOrdersLinksJson(onlineOrderLinkHM)
+        ));
+        if (sta) {
+            initialize();
+            new Alert(Alert.AlertType.INFORMATION, "Item Updated successfully").show();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Error: not updated! try again").show();
+        }
+
+    }
+
+    @FXML
+    void btnDeleteOrderOnAction(ActionEvent event) throws SQLException, IOException, ClassNotFoundException {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String dateTime = dtf.format(now);
+        System.out.println(dateTime);
+        /*System.out.println(warrantyTypeSelector.getText());*/
+        for (OnlineOrderLinksListViewComponentController b : onlineLinkListControllers) {
+            onlineOrderLinkHM.put(b.getId(), b.getContent());
+        }
+        boolean sta = AddOnlineOrderModel.remove(new OnlineOrderStr(
+                lblOrderId.getText(),
+                batchIdComboBox.getSelectionModel().getSelectedItem(),
+                selectedOrder.getPaymentId(),
+                employIdComboBox.getSelectionModel().getSelectedItem(),
+                dateTime,
+                Double.parseDouble(txtPaymentAmount.getText()),
+                OnlineOrder.getOnlineOrdersLinksJson(onlineOrderLinkHM)
+        ));
+        if (sta) {
+            initialize();
+            new Alert(Alert.AlertType.INFORMATION, "Item deleted successfully").show();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Error: not deleted! try again").show();
+        }
     }
 
     @FXML
@@ -330,11 +420,6 @@ public class AddOnlineOrderViewController {
         setDataToDtlTmList();
     }
 
-
-    @FXML
-    void btnUpdateOrderOnAction(ActionEvent event) {
-
-    }
 
     @FXML
     void txtEnterItemDtlOnKeyPressed(KeyEvent event) {

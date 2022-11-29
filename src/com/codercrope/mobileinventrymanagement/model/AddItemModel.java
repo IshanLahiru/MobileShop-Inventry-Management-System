@@ -20,7 +20,15 @@ public class AddItemModel {
             DBConnection.getInstance().getConnection().setAutoCommit(false);
             boolean warrantyTable = WarrantyModel.save(item.getWarrantyId(), item.getWarrantTypeId());
             if (warrantyTable) {
-                boolean itemTable = ItemModel.save(item.getItemId(), item.getWarrantyId(), item.getItemName(), item.getItemAddedDateTime(), item.getItePriceStock(), item.getProfitPercentage(), item.getItemDtl());
+                boolean itemTable = ItemModel.save(
+                        item.getItemId(),
+                        item.getWarrantyId(),
+                        item.getItemName(),
+                        item.getItemAddedDateTime(),
+                        item.getItePriceStock(),
+                        item.getProfitPercentage(),
+                        item.getItemDtl()
+                );
                 if (itemTable) {
                     ArrayList<Boolean> ar = new ArrayList();
                     for (Map.Entry<String, String> entry : item.getBatchHasItem().entrySet()) {

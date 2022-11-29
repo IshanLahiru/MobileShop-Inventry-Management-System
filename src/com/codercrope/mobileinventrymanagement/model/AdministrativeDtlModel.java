@@ -25,7 +25,7 @@ public class AdministrativeDtlModel {
         ResultSet result = CrudUtil.execute(sql, string);
         AdministrativeDtl admin = null;
 
-        if (result.next()) {
+        while (result.next()) {
             admin = new AdministrativeDtl(
                     result.getString(1),
                     result.getString(2)

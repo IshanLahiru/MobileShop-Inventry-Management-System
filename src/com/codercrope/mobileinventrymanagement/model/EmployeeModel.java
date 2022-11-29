@@ -2,6 +2,7 @@ package com.codercrope.mobileinventrymanagement.model;
 
 import com.codercrope.mobileinventrymanagement.to.AdministrativeDtl;
 import com.codercrope.mobileinventrymanagement.to.Employee;
+import com.codercrope.mobileinventrymanagement.to.Payment;
 import com.codercrope.mobileinventrymanagement.to.UserEPVal;
 import com.codercrope.mobileinventrymanagement.util.CrudUtil;
 import javafx.collections.FXCollections;
@@ -77,5 +78,23 @@ public class EmployeeModel {
         //System.out.println(items.size());
         return data;
 
+    }
+
+    public static Employee getEmployee(String employeeId) throws SQLException, ClassNotFoundException {
+        String sql = "SELECT * FROM employee WHERE employee_id = ?";
+        ResultSet result = CrudUtil.execute(sql, employeeId);
+        while(result.next()) {
+            return new Employee(
+                    result.getString(1),
+                    AdministrativeDtlModel.getModel(result.getString(2)),
+                    result.getString(3),
+                    result.getString(4),
+                    result.getString(5),
+                    result.getString(6),
+                    result.getString(7),
+                    result.getString(8)
+            );
+        }
+        return null;
     }
 }

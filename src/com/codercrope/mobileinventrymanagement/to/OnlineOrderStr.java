@@ -8,20 +8,22 @@ import com.google.gson.reflect.TypeToken;
 import java.sql.SQLException;
 import java.util.HashMap;
 
-public class OnlineOrder {
+public class OnlineOrderStr {
     private String orderId;
     private String batchId;
-    private Payment paymentId;
+    private String paymentId;
     private Employee employeeId;
     private String dateTime;
+    private double paymentAmount;
     private String onlineOrdersLinks;
 
-    public OnlineOrder(String orderId, String batchId, String paymentId, String employeeId, String dateTime, String onlineOrdersLinks) throws SQLException, ClassNotFoundException {
+    public OnlineOrderStr(String orderId, String batchId, String paymentId, String employeeId, String dateTime, double paymentAmount,String onlineOrdersLinks) throws SQLException, ClassNotFoundException {
         this.orderId = orderId;
         this.batchId = batchId;
-        this.paymentId = PaymentModel.getPayment(paymentId);
+        this.paymentId = paymentId;
         this.employeeId = EmployeeModel.getEmployee(employeeId);
         this.dateTime = dateTime;
+        this.paymentAmount = paymentAmount;
         this.onlineOrdersLinks = onlineOrdersLinks;
     }
 
@@ -41,11 +43,11 @@ public class OnlineOrder {
         this.batchId = batchId;
     }
 
-    public Payment getPaymentId() {
+    public String getPaymentId() {
         return paymentId;
     }
 
-    public void setPaymentId(Payment paymentId) {
+    public void setPaymentId(String paymentId) {
         this.paymentId = paymentId;
     }
 
@@ -82,5 +84,13 @@ public class OnlineOrder {
     }
     public static String getOnlineOrdersLinksJson(HashMap<String, String> hm) {
         return new Gson().toJson(hm);
+    }
+
+    public double getPaymentAmount() {
+        return paymentAmount;
+    }
+
+    public void setPaymentAmount(double paymentAmount) {
+        this.paymentAmount = paymentAmount;
     }
 }

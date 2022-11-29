@@ -172,7 +172,7 @@
                                           <RowConstraints maxHeight="63.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <Label text="Payment amount" />
+                                          <Label text="Payment amount ($)" />
                                           <TextField fx:id="txtPaymentAmount" onAction="#txtPaymentAmountOnAction" GridPane.rowIndex="1" />
                                        </children>
                                     </GridPane>

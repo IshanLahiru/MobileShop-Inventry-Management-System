@@ -2,6 +2,7 @@ package com.codercrope.mobileinventrymanagement.model;
 
 import com.codercrope.mobileinventrymanagement.to.Item;
 import com.codercrope.mobileinventrymanagement.to.OnlineOrder;
+import com.codercrope.mobileinventrymanagement.to.Payment;
 import com.codercrope.mobileinventrymanagement.util.CrudUtil;
 
 import java.sql.ResultSet;
@@ -49,5 +50,33 @@ public class OnlineOrderModel {
             return "OO0" + str;
         }
         return "-1";
+    }
+
+    public static Object getOnlineOrder(String text) throws SQLException, ClassNotFoundException {
+        String sql = "SELECT * FROM payment WHERE payment_id = ?";
+        ResultSet result = CrudUtil.execute(sql, text);
+        while(result.next()) {
+            return new Payment(result.getString(1),
+                    result.getString(2),
+                    result.getString(3),
+                    result.getString(4)
+            );
+        }
+        return null;
+    }
+
+    public static boolean save(String orderId, String batchId, String paymentId, String employeeId, String dateTime, String onlineOrdersLinks) throws SQLException, ClassNotFoundException {
+        String sql = "INSERT INTO online_orders VALUES(?, ? ,? ,? ,? ,?)";
+        return CrudUtil.execute(sql,orderId,batchId,paymentId,employeeId,dateTime,onlineOrdersLinks);
+    }
+
+    public static boolean update(String orderId, String batchId, String paymentId, String employeeId, String dateTime, String onlineOrdersLinks) throws SQLException, ClassNotFoundException {
+        String sql = "UPDATE online_orders SET batch_id = ? , payment_id = ? , employee_id = ? , date_time = ? , online_orders_links = ?  WHERE order_id = ? ";
+        return CrudUtil.execute(sql,batchId,paymentId,employeeId,dateTime,onlineOrdersLinks,orderId);
+    }
+
+    public static boolean delete(String orderId, String batchId, String paymentId, String employeeId, String dateTime, String onlineOrdersLinks) throws SQLException, ClassNotFoundException {
+        String sql = "DELETE FROM online_orders WHERE order_id = ? ";
+        return CrudUtil.execute(sql,orderId);
     }
 }
