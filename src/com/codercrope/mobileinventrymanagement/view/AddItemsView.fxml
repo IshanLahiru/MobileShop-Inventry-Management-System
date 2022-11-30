@@ -147,50 +147,55 @@
                                   <RowConstraints maxHeight="106.0" minHeight="2.0" prefHeight="12.0" vgrow="SOMETIMES" />
                                   <RowConstraints maxHeight="106.0" minHeight="0.0" prefHeight="33.0" vgrow="SOMETIMES" />
                                   <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="131.0" minHeight="1.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="1.7976931348623157E308" minHeight="1.0" prefHeight="32.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
                                     <TextField fx:id="txtEnterItemDtlTopic" onAction="#txtEnterItemDtlTopicOnAction" onMouseClicked="#txtEnterItemDtlTopicOnMouseClick" promptText="Enter the item dtl topic..." GridPane.rowIndex="1" />
-                                    <TextArea fx:id="txtEnterItemDtl" onKeyPressed="#txtEnterItemDtlOnKeyPressed" prefHeight="42.0" prefWidth="269.0" promptText="Enter the item dtl " GridPane.rowIndex="3" />
-                                    <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
+                                    <TextArea fx:id="txtEnterItemDtl" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onKeyPressed="#txtEnterItemDtlOnKeyPressed" promptText="Enter the item dtl " GridPane.rowIndex="3" />
+                                    <GridPane GridPane.rowIndex="5">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints vgrow="SOMETIMES" />
+                                       </rowConstraints>
                                        <children>
-                                          <Button fx:id="btnAddDtl" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnAddDtlOnAction" prefWidth="90.0" styleClass="btn-add" stylesheets="@../assets/Styles/lightMode.css" text="Add" textFill="WHITE" />
-                                          <Label prefWidth="10.0" />
-                                          <Button fx:id="btnUpdateDtl" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnUpdateDtlOnAction" onMouseClicked="#btnUpdateDtlOnClickEvt" prefWidth="90.0" styleClass="btn-update" stylesheets="@../assets/Styles/lightMode.css" text="Update" textFill="WHITE" />
-                                          <Label prefWidth="10.0" />
-                                          <Button fx:id="btnDeleteDtl" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnDeleteDtlOnAction" prefWidth="90.0" styleClass="btn-delete" stylesheets="@../assets/Styles/lightMode.css" text="Delete" textFill="WHITE" />
+                                          <Button fx:id="btnAddDtl" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnAddDtlOnAction" styleClass="btn-add" stylesheets="@../assets/Styles/lightMode.css" text="Add" textFill="WHITE" />
+                                          <Button fx:id="btnUpdateDtl" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnUpdateDtlOnAction" onMouseClicked="#btnUpdateDtlOnClickEvt" styleClass="btn-update" stylesheets="@../assets/Styles/lightMode.css" text="Update" textFill="WHITE" GridPane.columnIndex="2" />
+                                          <Button fx:id="btnDeleteDtl" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnDeleteDtlOnAction" styleClass="btn-delete" stylesheets="@../assets/Styles/lightMode.css" text="Delete" textFill="WHITE" GridPane.columnIndex="4" />
                                        </children>
-                                    </HBox>
+                                    </GridPane>
                                  </children>
                               </GridPane>
-                              <GridPane GridPane.rowIndex="1">
+                              <GridPane styleClass="box-border" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="1">
                                 <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
                                 </columnConstraints>
                                 <rowConstraints>
                                     <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
                                   <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="133.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <ListView fx:id="batchDtlListView" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
-                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                    <ListView fx:id="batchDtlListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="1" />
+                                    <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="307.0" styleClass="box-border" stylesheets="@../assets/Styles/lightMode.css">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
                                        <children>
-                                          <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="307.0">
-                                            <columnConstraints>
-                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                            </columnConstraints>
-                                            <rowConstraints>
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                            </rowConstraints>
-                                             <children>
-                                                <Label alignment="CENTER" prefHeight="21.0" prefWidth="255.0" text="Batch ID" />
-                                                <Label alignment="CENTER" prefHeight="21.0" prefWidth="255.0" text="Qty" GridPane.columnIndex="1" />
-                                             </children>
-                                          </GridPane>
+                                          <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../assets/Styles/lightMode.css" text="Batch ID" />
+                                          <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../assets/Styles/lightMode.css" text="Qty" GridPane.columnIndex="1" />
                                        </children>
-                                    </HBox>
+                                    </GridPane>
                                  </children>
                               </GridPane>
                            </children>

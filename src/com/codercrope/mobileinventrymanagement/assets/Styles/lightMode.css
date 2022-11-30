@@ -187,3 +187,10 @@
     -fx-border-color: #47d16c;
     -fx-text-color: #FFFFFF;
 }
+.box-border{
+    -fx-background-radius: 10px;
+    /*-fx-background-color:  #47d16c;
+    -fx-border-radius: 10px;*/
+    -fx-border-color: #8c8c8c;
+    /*-fx-text-color: #FFFFFF;*/
+}

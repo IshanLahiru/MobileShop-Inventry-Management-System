@@ -16,7 +16,7 @@
    <left>
       <VBox fx:id="mainViewSideBar" nodeOrientation="RIGHT_TO_LEFT" prefHeight="649.0" prefWidth="80.0" styleClass="mainSidebar" stylesheets="@../assets/Styles/lightMode.css" BorderPane.alignment="CENTER">
          <children>
-            <Label prefHeight="33.0" prefWidth="53.0" />
+            <Label prefHeight="75.0" prefWidth="53.0" />
             <GridPane fx:id="sideBarBtn01" maxWidth="1.7976931348623157E308" prefHeight="50.0" stylesheets="@../assets/Styles/lightMode.css">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
