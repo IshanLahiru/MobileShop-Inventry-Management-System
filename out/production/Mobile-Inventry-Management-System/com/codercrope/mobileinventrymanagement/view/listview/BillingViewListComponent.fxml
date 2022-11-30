@@ -21,6 +21,7 @@
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="50.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -60,7 +61,7 @@
                               <Font size="12.0" />
                            </font>
                         </Label>
-                        <Button fx:id="btnMinus" mnemonicParsing="false" onAction="#btnMinusClickEvt" prefHeight="30.0" prefWidth="0.0" styleClass="exit-btn" stylesheets="@../../assets/Styles/lightMode.css" GridPane.columnIndex="2">
+                        <Button fx:id="btnMinus" mnemonicParsing="false" onAction="#btnMinusClickEvt" prefHeight="30.0" prefWidth="0.0" styleClass="myButton" stylesheets="@../../assets/Styles/lightMode.css" GridPane.columnIndex="2">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -78,11 +79,15 @@
                   <Font size="12.0" />
                </font>
             </Label>
-            <ImageView fitHeight="20.0" fitWidth="20.0" onMouseClicked="#removeItemLwOnAction" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5">
-               <image>
-                  <Image url="@../../assets/close-b.png" />
-               </image>
-            </ImageView>
+            <Button fx:id="btnRemove" mnemonicParsing="false" onAction="#btnRemoveClickEvent" styleClass="exit-btn" stylesheets="@../../assets/Styles/lightMode.css" GridPane.columnIndex="6">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" onMouseClicked="#removeItemLwOnAction" pickOnBounds="true" preserveRatio="true" styleClass="exit-btn">
+                     <image>
+                        <Image url="@../../assets/close-b.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </GridPane>
    </graphic>

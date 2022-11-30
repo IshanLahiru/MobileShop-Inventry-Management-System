@@ -28,6 +28,11 @@ import java.util.ArrayList;
 
 public class BillingViewController {
 
+    public TableColumn tblItemPrice1;
+    public Label lblTotalPB;
+    public Label lblTotal;
+    public Label lblTotal1;
+    public Label lblDiscount;
     @FXML
     private GridPane pane1;
 
@@ -376,11 +381,13 @@ public class BillingViewController {
             int locationOnItemAr = lwItemControllerDb.get(index).indexInArraylistItem;
             int qtyInLw = Integer.parseInt(lwItemControllerDb.get(index).lblQty.getText());
             item.get(locationOnItemAr).setStock(item.get(locationOnItemAr).getStock()- Integer.parseInt(txtQty.getText()));
+            initTotals();
             setData();
             listViewBilling.getItems().removeAll(items);
             listViewBilling.getItems().addAll(items);
             txtQty.setText("");
             txtSearch.requestFocus();
+            initPayBtn();
             /*item.set(locationOnItemAr,item.get(locationOnItemAr).getStock());
             item.get(lwItemControllerDb.get(index).indexInArraylistItem).setStock(
                     (
@@ -391,17 +398,30 @@ public class BillingViewController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/listview/BillingViewListComponent.fxml"));
             Button root1 = (Button) fxmlLoader.load();
             BillingViewListComponentController controller = (BillingViewListComponentController) fxmlLoader.getController();
-            controller.addItem(lwItemControllerDb.size() + 1, this.selectedItem, this);
+            controller.addItem(root1,lwItemControllerDb.size() + 1, this.selectedItem, this);
             lwItemControllerDb.add(controller);
             listViewBilling.getItems().removeAll(items);
             items.add(root1);
             listViewBilling.getItems().addAll(items);
             int qtyInLw = Integer.parseInt(lwItemControllerDb.get(lwItemControllerDb.size()-1).lblQty.getText());
             item.get(lwItemControllerDb.size() - 1).setStock(item.get(lwItemControllerDb.size() - 1).getStock()- (Integer.parseInt(txtQty.getText())));
+            initTotals();
             setData();
             txtQty.setText("");
             txtSearch.requestFocus();
+            initPayBtn();
         }
+    }
+    public void initLv(){
+        listViewBilling.getItems().removeAll(items);
+        listViewBilling.getItems().clear();
+        listViewBilling.getItems().addAll(items);
+    }
+
+    public void initTotals() {
+        int total = 0;
+
+        lblTotal1.setText(String.valueOf(total));
     }
 
     public void btnAddOnAction(ActionEvent actionEvent) throws IOException, SQLException, ClassNotFoundException {
@@ -411,11 +431,35 @@ public class BillingViewController {
         new MainBillingListViewTm(this.selectedItem.getOb(),this.selectedItem.getItemId(),
                 this.selectedItem.getItemName(),this.selectedItem.getItemQty(),
                 this.selectedItem.getItemPriceStock(),items.size());
-        ((BillingViewListComponentController) fxmlLoader.getController()).addItem(lwItemControllerDb.size(), this.selectedItem,this);
+        ((BillingViewListComponentController) fxmlLoader.getController()).addItem(root1, lwItemControllerDb.size(), this.selectedItem,this);
         setData();
         items.add(root1);
         listViewBilling.getItems().removeAll(items);
         listViewBilling.getItems().addAll(items);
         txtSearch.requestFocus();
+    }
+
+    public void initPayBtn() {
+        /*lblTotal1.setText(String.valueOf(Double.parseDouble(lblTotal1.getText())+(price)));
+        lblTotal1.setText(String.valueOf(Double.parseDouble(lblTotal1.getText())+(price)));
+        lblTotal1.setText(String.valueOf(Double.parseDouble(lblTotal1.getText())+(price)));*/
+        /*lblTotalPB.setText(String.valueOf(
+                (Double.parseDouble
+                        (lblTotalPB.getText()))+(price)));
+        lblTotal.setText(String.valueOf(
+                (Double.parseDouble
+                        (lblTotal.getText()))+(price)));
+        lblTotal1.setText(String.valueOf(
+                (Double.parseDouble
+                        (lblTotal1.getText()))+(price)));*/
+        double total = 0;
+        for (BillingViewListComponentController c : lwItemControllerDb) {
+            total += c.getPrice();
+        }
+        System.out.println("the total is going to be : " + total);
+
+        lblTotalPB.setText(String.valueOf(String.format("%.2f",total)));
+        lblTotal.setText(String.valueOf(String.format("%.2f",total)));
+        lblTotal1.setText(String.valueOf(String.format("%.2f",total)));
     }
 }

@@ -356,7 +356,7 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="226.0" text="000000" textFill="WHITE" GridPane.columnIndex="2">
+                              <Label fx:id="lblTotalPB" alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="226.0" text="0.00" textFill="WHITE" GridPane.columnIndex="2">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
@@ -402,6 +402,7 @@
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="130.0" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="40.0" />
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="90.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
                           </columnConstraints>
                           <rowConstraints>
                             <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -409,10 +410,10 @@
                            <children>
                               <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Total">
                                  <font>
-                                    <Font name="System Bold" size="26.0" />
+                                    <Font name="System Bold" size="20.0" />
                                  </font>
                               </Label>
-                              <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="000000" GridPane.columnIndex="2">
+                              <Label fx:id="lblTotal" alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="0.00" GridPane.columnIndex="2">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
@@ -429,6 +430,7 @@
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="130.0" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="40.0" />
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="90.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
                           </columnConstraints>
                           <rowConstraints>
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -437,8 +439,8 @@
                            <children>
                               <Label prefHeight="21.0" prefWidth="44.0" text="Total" />
                               <Label prefHeight="21.0" prefWidth="70.0" text="Discounts" GridPane.rowIndex="1" />
-                              <Label text="000000" GridPane.columnIndex="2" />
-                              <Label text="000000" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <Label fx:id="lblTotal1" alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="21.0" prefWidth="133.0" text="0.00" GridPane.columnIndex="2" />
+                              <Label fx:id="lblDiscount" alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="21.0" prefWidth="168.0" text="0.00" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                               <Label text="Rs . " GridPane.columnIndex="1" />
                               <Label text="Rs . " GridPane.columnIndex="1" GridPane.rowIndex="1" />
                            </children>

@@ -110,52 +110,87 @@
     -fx-background: linear-gradient(to right, #bdc3c7, #2c3e50);
 }
 .btn-pay{
+    -fx-background-radius: 10px;
     -fx-background-color:  #47d16c;
-    -fx-border-color: #47d16c;
+    -fx-border-radius: 10px;
+    -fx-border-color: #1fb141;
+    -fx-border-width: 2px;
     -fx-text-color: #FFFFFF;
 }
 .btn-pay:hover{
+    -fx-background-radius: 10px;
     -fx-background-color:  #1fb141;
-    -fx-border-color: #47d16c;
+    -fx-border-radius: 10px;
+    -fx-border-color: #1fb141;
+    -fx-border-width: 2px;
     -fx-text-color: #FFFFFF;
 }
 .btn-add{
+    -fx-background-radius: 10px;
     -fx-background-color: #4F84EC;
-    -fx-border-color: #4F84EC;
+    -fx-border-radius: 10px;
+    -fx-border-color: #316CF4;
+    -fx-border-width: 2px;
     -fx-text-color: #FFFFFF;
 }
 .btn-add:hover{
+    -fx-background-radius: 10px;
     -fx-background-color:  #316CF4;
+    -fx-border-radius: 10px;
     -fx-border-color: #316CF4;
+    -fx-border-width: 2px;
     -fx-text-color: #FFFFFF;
 }
 .btn-delete{
+    -fx-background-radius: 10px;
     -fx-background-color:  #D3656D;
-    -fx-border-color: #D3656D;
+    -fx-border-radius: 10px;
+    -fx-border-color: #CB444A;
+    -fx-border-width: 2px;
     -fx-text-color: #FFFFFF;
 }
 .btn-delete:hover{
+    -fx-background-radius: 10px;
     -fx-background-color:  #CB444A;
+    -fx-border-radius: 10px;
     -fx-border-color: #CB444A;
+    -fx-border-width: 2px;
     -fx-text-color: #FFFFFF;
 }
 .btn-detail{
+    -fx-background-radius: 10px;
     -fx-background-color:  #6ED2EF;
-    -fx-border-color: #6ED2EF;
+    -fx-border-radius: 10px;
+    -fx-border-color: #5DC7EC;
+    -fx-border-width: 2px;
     -fx-text-color: #FFFFFF;
 }
 .btn-detail:hover{
+    -fx-background-radius: 10px;
     -fx-background-color:  #5DC7EC;
+    -fx-border-radius: 10px;
     -fx-border-color: #5DC7EC;
+    -fx-border-width: 2px;
     -fx-text-color: #FFFFFF;
 }
 .btn-update{
+    -fx-background-radius: 10px;
     -fx-background-color:  #47d16c;
+    -fx-border-radius: 10px;
     -fx-border-color: #47d16c;
     -fx-text-color: #FFFFFF;
 }
 .btn-update:hover{
+    -fx-background-radius: 10px;
     -fx-background-color:  #1fb141;
+    -fx-border-radius: 10px;
     -fx-border-color: #47d16c;
     -fx-text-color: #FFFFFF;
+}
+.box-border{
+    -fx-background-radius: 10px;
+    /*-fx-background-color:  #47d16c;
+    -fx-border-radius: 10px;*/
+    -fx-border-color: #8c8c8c;
+    /*-fx-text-color: #FFFFFF;*/
 }
