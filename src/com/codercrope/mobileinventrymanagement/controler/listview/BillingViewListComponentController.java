@@ -89,7 +89,7 @@ public class BillingViewListComponentController {
 
     public void btnRemoveClickEvent(ActionEvent actionEvent) {
         billItem.setItemQty(Integer.parseInt(this.lblQty.getText()));
-        billingViewController.item.get(billingViewController.lwItemControllerDb.size() - 1).setStock(billingViewController.item.get(billingViewController.lwItemControllerDb.size() - 1).getStock()+ (Integer.parseInt(billingViewController.txtQty.getText())));
+        //billingViewController.item.get(billingViewController.lwItemControllerDb.size() - 1).setStock(billingViewController.item.get(billingViewController.lwItemControllerDb.size() - 1).getStock()+ (Integer.parseInt(billingViewController.txtQty.getText())));
         billingViewController.lwItemControllerDb.remove(this);
         billingViewController.items.remove(root1);
         billingViewController.initLv();
