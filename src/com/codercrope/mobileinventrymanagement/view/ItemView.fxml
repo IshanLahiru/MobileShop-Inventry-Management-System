@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane fx:id="pane1" prefHeight="721.0" prefWidth="1175.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.codercrope.mobileinventrymanagement.controler.ItemViewController">
+<GridPane fx:id="pane1" prefHeight="721.0" prefWidth="1175.0" stylesheets="@../assets/Styles/lightMode.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.codercrope.mobileinventrymanagement.controler.ItemViewController">
   <columnConstraints>
     <ColumnConstraints maxWidth="19.0" minWidth="19.0" prefWidth="19.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />

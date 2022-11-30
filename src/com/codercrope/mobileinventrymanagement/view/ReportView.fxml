@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane fx:id="pane1" prefHeight="2701.0" prefWidth="1920.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.codercrope.mobileinventrymanagement.controler.ReportViewController">
+<GridPane fx:id="pane1" prefHeight="2701.0" prefWidth="1920.0" stylesheets="@../assets/Styles/lightMode.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.codercrope.mobileinventrymanagement.controler.ReportViewController">
   <columnConstraints>
     <ColumnConstraints maxWidth="19.0" minWidth="19.0" prefWidth="19.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -25,7 +25,7 @@
       <RowConstraints maxHeight="19.0" minHeight="19.0" prefHeight="19.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <ScrollPane prefHeight="1699.0" prefWidth="1882.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <ScrollPane prefHeight="1699.0" prefWidth="1882.0" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <content>
             <GridPane prefHeight="2380.0" prefWidth="1865.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css">
                <columnConstraints>

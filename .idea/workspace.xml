@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e91fbc91-78b6-4d3a-8976-9480ef1eaa53" name="Changes" comment="made the add order window functionalities,">
+    <list default="true" id="e91fbc91-78b6-4d3a-8976-9480ef1eaa53" name="Changes" comment="fixed the bugs on the billing view, some more bugs to handle">
+      <change afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/assets/icons8-account-64.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/controler/BillingViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/controler/BillingViewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/controler/listview/BillingViewListComponentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/controler/listview/BillingViewListComponentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/view/listview/BillingViewListComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/view/listview/BillingViewListComponent.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/BillingViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/BillingViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/listview/BillingViewListComponentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/listview/BillingViewListComponentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/assets/Styles/lightMode.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/assets/Styles/lightMode.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/view/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Mobile-Inventry-Management-System/com/codercrope/mobileinventrymanagement/view/MainView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/assets/Styles/lightMode.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/assets/Styles/lightMode.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/controler/MainViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/AddItemsView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/AddItemsView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/BillingView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/BillingView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/ItemView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/ItemView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/LoginView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/LoginView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/MainView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/listview/BillingViewListComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/listview/BillingViewListComponent.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/RepairView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/RepairView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/ReportView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/ReportView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/WorkerView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/WorkerView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/orderView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/orderView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +59,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
     <property name="database.data.extractors.current.id" value="Comma-separated (CSV)_id" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/view/listview" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/codercrope/mobileinventrymanagement/assets" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -67,6 +74,7 @@
       <recent name="com.codercrope.mobileinventrymanagement.controler" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\java\first semester final project\Mobile-Inventry-Management-System\src\com\codercrope\mobileinventrymanagement\assets" />
       <recent name="E:\java\first semester final project\Mobile-Inventry-Management-System\src\com\codercrope\mobileinventrymanagement\view\listview" />
       <recent name="E:\java\first semester final project\Mobile-Inventry-Management-System\src\com\codercrope\mobileinventrymanagement\lib" />
     </key>
@@ -133,7 +141,8 @@
       <workItem from="1669704783594" duration="5605000" />
       <workItem from="1669714164766" duration="2863000" />
       <workItem from="1669721076299" duration="21381000" />
-      <workItem from="1669759574872" duration="5334000" />
+      <workItem from="1669759574872" duration="5513000" />
+      <workItem from="1669774345336" duration="18374000" />
     </task>
     <task id="LOCAL-00001" summary="updates">
       <created>1669344683070</created>
@@ -338,7 +347,21 @@
       <option name="project" value="LOCAL" />
       <updated>1669759622258</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="fixed the bugs on the billing view, some more bugs to handle">
+      <created>1669765097922</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1669765097922</updated>
+    </task>
+    <task id="LOCAL-00031" summary="fixed the bugs on the billing view, some more bugs to handle">
+      <created>1669765117046</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1669765117046</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -371,6 +394,7 @@
     <MESSAGE value="not implemented the database crud functions to the workerView" />
     <MESSAGE value="worker view had been edited, and the crud functions are not working correctly as now. i should shift to the add order table" />
     <MESSAGE value="made the add order window functionalities," />
-    <option name="LAST_COMMIT_MESSAGE" value="made the add order window functionalities," />
+    <MESSAGE value="fixed the bugs on the billing view, some more bugs to handle" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed the bugs on the billing view, some more bugs to handle" />
   </component>
 </project>

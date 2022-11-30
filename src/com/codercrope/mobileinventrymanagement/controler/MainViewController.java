@@ -29,6 +29,7 @@ public class MainViewController {
 
     public Button btnLogOut;
     public Tooltip modChazngerTTD1;
+    public Button btnUser;
     @FXML
     private BorderPane parent;
 
@@ -352,5 +353,8 @@ public class MainViewController {
             stage.setResizable(true);
             stage.setMaximized(true);
         }
+    }
+
+    public void btnUserOnAction(ActionEvent actionEvent) {
     }
 }

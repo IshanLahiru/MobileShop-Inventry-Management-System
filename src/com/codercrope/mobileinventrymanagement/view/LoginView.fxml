@@ -9,8 +9,9 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.codercrope.mobileinventrymanagement.controler.LoginViewController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="primary-bg-colour" stylesheets="@../assets/Styles/lightMode.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.codercrope.mobileinventrymanagement.controler.LoginViewController">
    <children>
       <GridPane layoutX="313.0" layoutY="15.0" prefHeight="370.0" prefWidth="255.0" styleClass="roundTile" stylesheets="@../assets/Styles/lightMode.css">
         <columnConstraints>
@@ -37,7 +38,10 @@
               </rowConstraints>
                <children>
                   <TextField fx:id="btnEmail" onAction="#btnEmailOnAction" promptText="Email...." />
-                  <Button fx:id="btnLogIn" mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="31.0" prefWidth="517.0" text="Log in" GridPane.rowIndex="4" />
+                  <Button fx:id="btnLogIn" mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="31.0" prefWidth="517.0" styleClass="btn-update" stylesheets="@../assets/Styles/lightMode.css" text="Log in" textFill="WHITE" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font></Button>
                   <PasswordField fx:id="btnPwd" onAction="#btnPwdOnAction" promptText="Password...." GridPane.rowIndex="2" />
                   <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="21.0" prefWidth="391.0" text="Forgot password" textFill="#1765d1" GridPane.rowIndex="5" />
                </children>
