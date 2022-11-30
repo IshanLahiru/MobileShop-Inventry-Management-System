@@ -24,4 +24,8 @@ public class CustPAymentTypeModel {
         }
         return type;
     }
+
+    public static String getType() {
+        return "P001";
+    }
 }

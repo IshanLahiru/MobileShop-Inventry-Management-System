@@ -468,7 +468,7 @@ public class BillingViewController {
         lblTotal1.setText(String.valueOf(String.format("%.2f",total)));
     }
 
-    public void btnPayOnAction(ActionEvent actionEvent) {
+    public void btnPayOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         String dateTime = dtf.format(now);
@@ -477,11 +477,11 @@ public class BillingViewController {
         /*for (AddItemViewBSListComponentController b : batchList) {
             hm.put(b.getBatchId(), b.getNoOfItems());
         }*/
-        boolean sta = AddOrderModel.save(item,order,CustPAymentTypeModel.getType(),);
+        boolean sta = AddOrderModel.save(item,order,CustPAymentTypeModel.getType(),dateTime,"payment stats","{}");
         if (sta) {
             setData();
-            lblItemId.setText(ItemModel.getItemId());
-            lblWarrantyId.setText(WarrantyModel.getWarrantyId());
+            //lblItemId.setText(ItemModel.getItemId());
+            //lblWarrantyId.setText(WarrantyModel.getWarrantyId());
             new Alert(Alert.AlertType.INFORMATION, "Item Added successfully").show();
         } else {
             new Alert(Alert.AlertType.ERROR, "Error: not added! try again").show();

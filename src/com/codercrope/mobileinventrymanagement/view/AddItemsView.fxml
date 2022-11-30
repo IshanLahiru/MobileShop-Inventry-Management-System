@@ -192,8 +192,28 @@
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../assets/Styles/lightMode.css" text="Batch ID" />
-                                          <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../assets/Styles/lightMode.css" text="Qty" GridPane.columnIndex="1" />
+                                          <GridPane styleClass="box-border" stylesheets="@../assets/Styles/lightMode.css">
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../assets/Styles/lightMode.css" text="Batch ID" />
+                                             </children>
+                                          </GridPane>
+                                          <GridPane styleClass="box-border" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="1">
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../assets/Styles/lightMode.css" text="Qty" />
+                                             </children>
+                                          </GridPane>
                                        </children>
                                     </GridPane>
                                  </children>
@@ -227,26 +247,40 @@
                               <RowConstraints maxHeight="63.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <HBox prefHeight="100.0" prefWidth="200.0">
+                              <GridPane>
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
                                  <children>
                                     <Label fx:id="lblItemIdPT" prefHeight="30.0" prefWidth="155.0" text="Item ID        : " />
-                                    <Label fx:id="lblItemId" prefHeight="26.0" prefWidth="206.0" text="Label">
+                                    <Label fx:id="lblItemId" prefHeight="26.0" prefWidth="206.0" text="Label" GridPane.columnIndex="1">
                                        <font>
                                           <Font name="System Bold" size="20.0" />
                                        </font>
                                     </Label>
                                  </children>
-                              </HBox>
-                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                              </GridPane>
+                              <GridPane GridPane.rowIndex="1">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
                                  <children>
                                     <Label fx:id="lblWarrantyIdPt" prefHeight="30.0" prefWidth="104.0" text="Warranty ID : " />
-                                    <Label fx:id="lblWarrantyId" prefHeight="30.0" prefWidth="156.0" text="Label">
+                                    <Label fx:id="lblWarrantyId" prefHeight="30.0" prefWidth="156.0" text="Label" GridPane.columnIndex="1">
                                        <font>
                                           <Font name="System Bold" size="20.0" />
                                        </font>
                                     </Label>
                                  </children>
-                              </HBox>
+                              </GridPane>
                            </children>
                         </GridPane>
                         <GridPane prefHeight="47.0" prefWidth="261.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
@@ -326,14 +360,12 @@
                               <RowConstraints maxHeight="63.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Label fx:id="lblBatchDtls" text="Online order" GridPane.columnIndex="2" />
                               <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                  <children>
                                     <Button fx:id="btnAddOnlineOrder" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnAddOnlineOrderOnAction" onMouseClicked="#btnAddOnlineOrderOnMouseClickEvent" prefHeight="31.0" prefWidth="335.0" styleClass="btn-add" stylesheets="@../assets/Styles/lightMode.css" text="Add online order" textFill="WHITE" />
                                  </children>
                               </HBox>
                               <Button fx:id="AddBatchId" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnAddBatchIdOnAction" onMouseClicked="#btnAddBatchIdMouseClickEvent" prefHeight="31.0" prefWidth="335.0" styleClass="btn-add" stylesheets="@../assets/Styles/lightMode.css" text="Add a batch" textFill="WHITE" GridPane.rowIndex="1" />
-                              <Label fx:id="lblBatchDtls1" text="Batch" />
                            </children>
                         </GridPane>
                      </children>
