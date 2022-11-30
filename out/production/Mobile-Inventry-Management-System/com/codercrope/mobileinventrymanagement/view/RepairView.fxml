@@ -13,7 +13,7 @@
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="19.0" minWidth="19.0" prefWidth="19.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES" />
     <RowConstraints maxHeight="19.0" minHeight="19.0" prefHeight="19.0" vgrow="SOMETIMES" />
     <RowConstraints minHeight="10.0" prefHeight="483.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="19.0" minHeight="19.0" prefHeight="19.0" vgrow="SOMETIMES" />
@@ -30,16 +30,8 @@
         </rowConstraints>
          <children>
             <AnchorPane prefHeight="483.0" prefWidth="169.0" GridPane.columnIndex="2" />
-            <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="1" />
          </children>
       </GridPane>
-      <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" />
-      <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="2" />
-      <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="1" />
-      <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="2" />
-      <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-      <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="2" GridPane.rowIndex="1" />
       <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
       <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.rowIndex="3" />
       <AnchorPane styleClass="secondary-color" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="2" GridPane.rowIndex="3" />

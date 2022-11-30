@@ -71,9 +71,9 @@
                             <children>
                                 <TextField fx:id="txtSearch" prefHeight="62.0" prefWidth="306.0" promptText="Search...." />
                                 <Button fx:id="btnSearch" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSearchOnAction" prefHeight="31.0" prefWidth="136.0" text="Search" GridPane.columnIndex="1" />
-                                <Button fx:id="btnAdd" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnAddOrderOnAction" prefHeight="31.0" prefWidth="155.0" text="Add" GridPane.columnIndex="3" />
-                                <Button fx:id="btnDelete" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnDeleteOrderOnAction" text="Delete" GridPane.columnIndex="5" />
-                                <Button fx:id="btnUpdate" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnUpdateOrderOnAction" prefHeight="31.0" prefWidth="143.0" text="Update" GridPane.columnIndex="7" />
+                                <Button fx:id="btnAdd" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnAddOrderOnAction" prefHeight="31.0" prefWidth="155.0" styleClass="btn-add" stylesheets="@../assets/Styles/lightMode.css" text="Add" GridPane.columnIndex="3" />
+                                <Button fx:id="btnDelete" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnDeleteOrderOnAction" styleClass="btn-delete" stylesheets="@../assets/Styles/lightMode.css" text="Delete" GridPane.columnIndex="5" />
+                                <Button fx:id="btnUpdate" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnUpdateOrderOnAction" prefHeight="31.0" prefWidth="143.0" styleClass="btn-update" stylesheets="@../assets/Styles/lightMode.css" text="Update" GridPane.columnIndex="7" />
                             </children>
                         </GridPane>
                     </children>
@@ -296,7 +296,7 @@
                                       </rowConstraints>
                                        <children>
                                           <PasswordField fx:id="txtPwdField" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#txtPwdFoeldOnAction" promptText="Enter password....." />
-                                          <Button fx:id="btnShowPwd" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#btnShowPwdOnMouseClick" text="Show" GridPane.columnIndex="2" />
+                                          <Button fx:id="btnShowPwd" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#btnShowPwdOnMouseClick" styleClass="btn-detail" stylesheets="@../assets/Styles/lightMode.css" text="Show" GridPane.columnIndex="2" />
                                        </children>
                                     </GridPane>
                                  </children>
@@ -343,9 +343,9 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                                  <Button fx:id="btnAddDtl" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnAddDtlOnAction" text=" Add " GridPane.rowIndex="1" />
-                                                  <Button fx:id="btnUpdateDtl" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnUpdateDtlOnAction" onMouseClicked="#btnUpdateDtlOnClickEvt" text="Update" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                    <Button fx:id="btnDeleteDtl" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnDeleteDtlOnAction" text="Delete" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                                  <Button fx:id="btnAddDtl" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnAddDtlOnAction" styleClass="btn-add" stylesheets="@../assets/Styles/lightMode.css" text=" Add " GridPane.rowIndex="1" />
+                                                  <Button fx:id="btnUpdateDtl" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnUpdateDtlOnAction" onMouseClicked="#btnUpdateDtlOnClickEvt" styleClass="btn-update" stylesheets="@../assets/Styles/lightMode.css" text="Update" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                    <Button fx:id="btnDeleteDtl" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnDeleteDtlOnAction" styleClass="btn-delete" stylesheets="@../assets/Styles/lightMode.css" text="Delete" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                                  </children>
                               </GridPane>
                                       </children>
