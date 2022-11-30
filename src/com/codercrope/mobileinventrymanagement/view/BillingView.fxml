@@ -341,7 +341,7 @@
                   <RowConstraints maxHeight="5.0" minHeight="5.0" prefHeight="5.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="btnPay" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="46.0" prefWidth="116.0" styleClass="btn-pay" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Button fx:id="btnPay" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnPayOnAction" prefHeight="46.0" prefWidth="116.0" styleClass="btn-pay" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>

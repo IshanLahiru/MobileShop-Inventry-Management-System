@@ -35,10 +35,10 @@ public class BillingViewListComponentController {
         for (int i = 0; i < billingViewController.item.size(); i++) {
             if (itemtm.getItemId().equals(billingViewController.item.get(i).getItemId())) {
                 indexInArraylistItem = i;
-
             }
         }
         initLblPrice();
+        billingViewController.order.put(this.billItem.getOb(), Integer.valueOf(lblQty.getText()));
         //billingViewController.initPayBtn(getPrice());
     }
 
@@ -52,10 +52,12 @@ public class BillingViewListComponentController {
             initLblPrice();
             //billingViewController.initPayBtn(getPrice());
             billingViewController.initPayBtn();
+            billingViewController.order.put(this.billItem.getOb(), Integer.valueOf(lblQty.getText()));
         } else {
             billingViewController.lwItemControllerDb.remove(this);
             billingViewController.items.remove(root1);
             billingViewController.initLv();
+            billingViewController.order.put(this.billItem.getOb(), Integer.valueOf(lblQty.getText()));
         }
     }
 
@@ -68,10 +70,12 @@ public class BillingViewListComponentController {
             initLblPrice();
             // billingViewController.initPayBtn(getPrice());
             billingViewController.initPayBtn();
+            billingViewController.order.put(this.billItem.getOb(), Integer.valueOf(lblQty.getText()));
         } else {
             billingViewController.lwItemControllerDb.remove(this);
             billingViewController.items.remove(root1);
             billingViewController.initLv();
+            billingViewController.order.put(this.billItem.getOb(), Integer.valueOf(lblQty.getText()));
         }
     }
 
@@ -93,5 +97,6 @@ public class BillingViewListComponentController {
         billingViewController.lwItemControllerDb.remove(this);
         billingViewController.items.remove(root1);
         billingViewController.initLv();
+        billingViewController.order.remove(this.billItem.getOb(), Integer.valueOf(lblQty.getText()));
     }
 }

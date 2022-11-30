@@ -4,9 +4,10 @@ import com.codercrope.mobileinventrymanagement.controler.listview.BillingViewLis
 import com.codercrope.mobileinventrymanagement.controler.subwindows.ItemMoreDetailViewController;
 import com.codercrope.mobileinventrymanagement.controler.tmlist.MainBillingItemTM;
 import com.codercrope.mobileinventrymanagement.controler.tmlist.MainBillingListViewTm;
-import com.codercrope.mobileinventrymanagement.model.ItemModel;
-import com.codercrope.mobileinventrymanagement.model.PriceModel;
+import com.codercrope.mobileinventrymanagement.model.*;
+import com.codercrope.mobileinventrymanagement.to.AddItem;
 import com.codercrope.mobileinventrymanagement.to.Item;
+import com.codercrope.mobileinventrymanagement.view.listview.AddItemViewBSListComponentController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,7 +25,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class BillingViewController {
 
@@ -90,6 +94,7 @@ public class BillingViewController {
     public ArrayList<BillingViewListComponentController> lwItemControllerDb =new ArrayList<>();
     public ArrayList<Item> item = new ArrayList();
     public MainBillingItemTM selectedItem;
+    public HashMap<Item,Integer> order = new HashMap<>();
 
     public void initLabels(){
         lblItemId.setText(item.get(0).getItemId());
@@ -461,5 +466,25 @@ public class BillingViewController {
         lblTotalPB.setText(String.valueOf(String.format("%.2f",total)));
         lblTotal.setText(String.valueOf(String.format("%.2f",total)));
         lblTotal1.setText(String.valueOf(String.format("%.2f",total)));
+    }
+
+    public void btnPayOnAction(ActionEvent actionEvent) {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String dateTime = dtf.format(now);
+        //System.out.println(dateTime);
+        //System.out.println(warrantyTypeSelector.getText());
+        /*for (AddItemViewBSListComponentController b : batchList) {
+            hm.put(b.getBatchId(), b.getNoOfItems());
+        }*/
+        boolean sta = AddOrderModel.save(item,order,CustPAymentTypeModel.getType(),);
+        if (sta) {
+            setData();
+            lblItemId.setText(ItemModel.getItemId());
+            lblWarrantyId.setText(WarrantyModel.getWarrantyId());
+            new Alert(Alert.AlertType.INFORMATION, "Item Added successfully").show();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Error: not added! try again").show();
+        }
     }
 }
