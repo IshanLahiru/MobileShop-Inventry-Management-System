@@ -1,15 +1,9 @@
-package com.codercrope.mobileinventrymanagement.view.subwindows;
+package com.codercrope.mobileinventrymanagement.controler.subwindows;
 
 import com.codercrope.mobileinventrymanagement.controler.tmlist.BatchTM;
-import com.codercrope.mobileinventrymanagement.controler.tmlist.OnlineOrderTM;
 import com.codercrope.mobileinventrymanagement.model.AddBatchModel;
-import com.codercrope.mobileinventrymanagement.model.AddOnlineOrderModel;
 import com.codercrope.mobileinventrymanagement.model.BatchModel;
-import com.codercrope.mobileinventrymanagement.model.PaymentModel;
 import com.codercrope.mobileinventrymanagement.to.Batch;
-import com.codercrope.mobileinventrymanagement.to.OnlineOrder;
-import com.codercrope.mobileinventrymanagement.to.OnlineOrderStr;
-import com.codercrope.mobileinventrymanagement.view.listview.OnlineOrderLinksListViewComponentController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

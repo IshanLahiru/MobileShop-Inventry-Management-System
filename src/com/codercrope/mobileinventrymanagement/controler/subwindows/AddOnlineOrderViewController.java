@@ -1,14 +1,10 @@
 package com.codercrope.mobileinventrymanagement.controler.subwindows;
 
 import com.codercrope.mobileinventrymanagement.controler.tmlist.OnlineOrderTM;
-import com.codercrope.mobileinventrymanagement.controler.tmlist.WarrantyTM;
 import com.codercrope.mobileinventrymanagement.model.*;
-import com.codercrope.mobileinventrymanagement.to.AddWarrantyType;
 import com.codercrope.mobileinventrymanagement.to.OnlineOrder;
 import com.codercrope.mobileinventrymanagement.to.OnlineOrderStr;
-import com.codercrope.mobileinventrymanagement.to.WarrantyType;
-import com.codercrope.mobileinventrymanagement.view.listview.OnlineOrderLinksListViewComponentController;
-import com.codercrope.mobileinventrymanagement.view.listview.WarrantyDtlListViewComponentController;
+import com.codercrope.mobileinventrymanagement.controler.listview.OnlineOrderLinksListViewComponentController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

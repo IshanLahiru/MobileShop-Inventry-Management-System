@@ -1,4 +1,4 @@
-package com.codercrope.mobileinventrymanagement.view.listview;
+package com.codercrope.mobileinventrymanagement.controler.listview;
 
 import com.codercrope.mobileinventrymanagement.model.BatchHasItemModel;
 import com.codercrope.mobileinventrymanagement.model.BatchModel;

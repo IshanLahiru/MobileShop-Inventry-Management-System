@@ -1,5 +1,6 @@
-package com.codercrope.mobileinventrymanagement.view.listview;
+package com.codercrope.mobileinventrymanagement.controler.listview;
 
+import com.codercrope.mobileinventrymanagement.controler.subwindows.AddOnlineOrderViewController;
 import com.codercrope.mobileinventrymanagement.controler.subwindows.AddWarrantyTypeViewController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,8 +9,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-public class WarrantyDtlListViewComponentController {
-
+public class OnlineOrderLinksListViewComponentController {
     @FXML
     private Button btn;
 
@@ -22,25 +22,26 @@ public class WarrantyDtlListViewComponentController {
     private TextField txtEnterWarrantyDtlTopic;
     private TextArea txtEnterWarrantyDtl;
 
-    private AddWarrantyTypeViewController addWarrantyTypeViewController;
+    private
+    AddOnlineOrderViewController addOnlineOrderViewController;
 
     @FXML
     void btnClickEvent(MouseEvent event) {
         txtEnterWarrantyDtlTopic.setText(lblId.getText());
         txtEnterWarrantyDtl.setText(lblContent.getText());
-        addWarrantyTypeViewController.btnAddDtl.setDisable(true);
-        addWarrantyTypeViewController.btnUpdateDtl.setDisable(false);
-        addWarrantyTypeViewController.btnDeleteDtl.setDisable(false);
+        addOnlineOrderViewController.btnAddLink.setDisable(true);
+        addOnlineOrderViewController.btnUpdateLink.setDisable(false);
+        addOnlineOrderViewController.btnDeleteLink.setDisable(false);
     }
 
-    public void setData(AddWarrantyTypeViewController addWarrantyTypeViewController,
+    public void setData(AddOnlineOrderViewController addOnlineOrderViewController,
                         String key,
                         String value,
                         TextField txtEnterWarrantyDtlTopic,
                         TextArea txtEnterWarrantyDtl) {
         this.lblId.setText(key);
         this.lblContent.setText(value);
-        this.addWarrantyTypeViewController = addWarrantyTypeViewController;
+        this.addOnlineOrderViewController = addOnlineOrderViewController;
         this.txtEnterWarrantyDtlTopic = txtEnterWarrantyDtlTopic;
         this.txtEnterWarrantyDtl = txtEnterWarrantyDtl;
         this.txtEnterWarrantyDtl.setWrapText(true);
