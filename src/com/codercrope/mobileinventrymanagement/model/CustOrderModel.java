@@ -51,7 +51,15 @@ public class CustOrderModel {
         return "CO0001";
     }
 
-    public static boolean save(CustOrder p001){
-        return true;
+    public static boolean save(CustOrder order) throws SQLException, ClassNotFoundException {
+        String sql = "INSERT INTO cust_order VALUES(? ,? ,? ,? ,? ,?)";
+        return CrudUtil.execute(sql,
+                order.getOrderId(),
+                order.getPaymentTypeId(),
+                order.getEmployeeId(),
+                order.getDateTime(),
+                order.getCustPaymentStats(),
+                order.getCustOrderDtl()
+        );
     }
 }

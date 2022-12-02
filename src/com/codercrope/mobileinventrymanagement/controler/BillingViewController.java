@@ -492,7 +492,7 @@ public class BillingViewController {
         for (Map.Entry<Item,Integer> entry : order.entrySet()) {
             paymentAmount+= PriceModel.getItemPrice(entry.getKey().getItemId(),entry.getKey().getItemPriceStock(),entry.getKey().getProfitPercentage())*(entry.getValue());
         }
-        boolean sta = AddOrderModel.save(item,order,CustPAymentTypeModel.getType(),dateTime,"100","{}",String.valueOf(paymentAmount));
+        boolean sta = AddOrderModel.save(item,order,CustPAymentTypeModel.getType(),dateTime,dateTime,"{}",String.valueOf(paymentAmount));
         if (sta) {
             setData();
             /*String id, String name, String qty, String pricePerUnit, String price*/

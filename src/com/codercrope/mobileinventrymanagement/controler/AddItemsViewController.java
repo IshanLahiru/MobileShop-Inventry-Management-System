@@ -123,7 +123,7 @@ public class AddItemsViewController {
 
         setData();
         lblItemId.setText(ItemModel.getItemId());
-        lblWarrantyId.setText(WarrantyModel.getWarrantyId());
+        lblWarrantyId.setText(WarrantyModel.getNextWarrantyId());
         ArrayList<WarrantyType> ar = WarrantyTypeModel.getWarrantyTypes();
         warrantyTypeSelector.getItems().clear();
         for (WarrantyType w : ar) {
@@ -166,7 +166,7 @@ public class AddItemsViewController {
         if (sta) {
             setData();
             lblItemId.setText(ItemModel.getItemId());
-            lblWarrantyId.setText(WarrantyModel.getWarrantyId());
+            lblWarrantyId.setText(WarrantyModel.getNextWarrantyId());
             new Alert(Alert.AlertType.INFORMATION, "Item Added successfully").show();
         } else {
             new Alert(Alert.AlertType.ERROR, "Error: not added! try again").show();
@@ -202,7 +202,7 @@ public class AddItemsViewController {
         if (sta) {
             setData();
             lblItemId.setText(ItemModel.getItemId());
-            lblWarrantyId.setText(WarrantyModel.getWarrantyId());
+            lblWarrantyId.setText(WarrantyModel.getNextWarrantyId());
             new Alert(Alert.AlertType.INFORMATION, "Item deleted successfully").show();
         } else {
             new Alert(Alert.AlertType.ERROR, "Error: not deleted! try again").show();
@@ -229,7 +229,7 @@ public class AddItemsViewController {
         if (sta) {
             setData();
             lblItemId.setText(ItemModel.getItemId());
-            lblWarrantyId.setText(WarrantyModel.getWarrantyId());
+            lblWarrantyId.setText(WarrantyModel.getNextWarrantyId());
             new Alert(Alert.AlertType.INFORMATION, "Item updated successfully").show();
         } else {
             new Alert(Alert.AlertType.ERROR, "Error: not updated! try again").show();

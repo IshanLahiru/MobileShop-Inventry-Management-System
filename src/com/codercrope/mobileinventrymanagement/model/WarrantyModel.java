@@ -24,7 +24,7 @@ public class WarrantyModel {
         return warranty;
     }
 
-    public static String getWarrantyId() throws SQLException, ClassNotFoundException {
+    public static String getNextWarrantyId() throws SQLException, ClassNotFoundException {
         String sql = "SELECT warranty_id FROM warranty ORDER BY warranty_id DESC LIMIT 1";
         ResultSet result = CrudUtil.execute(sql);
 

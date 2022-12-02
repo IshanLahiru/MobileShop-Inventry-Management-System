@@ -1,12 +1,14 @@
 package com.codercrope.mobileinventrymanagement.to;
 
+import java.util.HashMap;
+
 public class CustOrderHasItem {
     private String orderId;
-    private String itemId;
+    private HashMap<Item, Integer> itemId;
     private double qty;
     private double itemPrice;
 
-    public CustOrderHasItem(String orderId, String itemId, double qty, double itemPrice) {
+    public CustOrderHasItem(String orderId, HashMap<Item, Integer> itemId) {
         this.orderId = orderId;
         this.itemId = itemId;
         this.qty = qty;
@@ -21,11 +23,11 @@ public class CustOrderHasItem {
         this.orderId = orderId;
     }
 
-    public String getItemId() {
+    public HashMap<Item, Integer> getItemId() {
         return itemId;
     }
 
-    public void setItemId(String itemId) {
+    public void setItemId(HashMap<Item, Integer> itemId) {
         this.itemId = itemId;
     }
 

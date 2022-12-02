@@ -13,14 +13,19 @@ public class AddOrderModel {
     public static boolean save(ArrayList<Item> item, HashMap<Item, Integer> order, String type1, String type, String dateTime, String payment_stats, String s) throws SQLException, ClassNotFoundException {
         try {
             String orderId = CustOrderModel.getNewOrderId();
+            String employeeId = User.emp.getEmployeeId();
+            String warranty = WarrantyModel.getNextWarrantyId();
+            String paymentId = CustPaymentModel.getNextPaymentId();
+
+
             DBConnection.getInstance().getConnection().setAutoCommit(false);
-            boolean custOrder = CustOrderModel.save(new CustOrder(orderId, "P001", (User.emp.getEmployeeId()), dateTime, "100", "{}"));
+            boolean custOrder = CustOrderModel.save(new CustOrder(orderId, "P001", employeeId, dateTime, "100", "{}"));
             if (custOrder) {
-                boolean custOrderHasItem = CustOrderHasItemModel.save(new CustOrderHasItem("","",12,12));
+                boolean custOrderHasItem = CustOrderHasItemModel.save(orderId,order);
                 if (custOrderHasItem) {
-                    boolean custOrderHasWarranty = CustOrderHasWarrantyModel.save(new CustOrderHasWarranty(CustOrderHasWarrantyModel.getNextWarranty(), User.emp.getEmployeeId(), "", " "));
+                    boolean custOrderHasWarranty = CustOrderHasWarrantyModel.save(new CustOrderHasWarranty(orderId,employeeId, warranty, dateTime));
                     if (custOrderHasWarranty) {
-                        boolean custPayment = CustPaymentModel.save(new CustPayment(CustPaymentModel.getNewCustomerPayment(), String orderId, User.emp.getEmployeeId(), Double.parseDouble(s)));
+                        boolean custPayment = CustPaymentModel.save(new CustPayment(paymentId,orderId, employeeId, Double.parseDouble(s)));
                         if (custPayment) {
                             DBConnection.getInstance().getConnection().commit();
                             return true;
