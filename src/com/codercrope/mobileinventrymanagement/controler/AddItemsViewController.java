@@ -2,6 +2,7 @@ package com.codercrope.mobileinventrymanagement.controler;
 
 import com.codercrope.mobileinventrymanagement.controler.subwindows.ItemMoreDetailViewController;
 import com.codercrope.mobileinventrymanagement.controler.tmlist.MainItemTM;
+import com.codercrope.mobileinventrymanagement.db.DBConnection;
 import com.codercrope.mobileinventrymanagement.model.*;
 import com.codercrope.mobileinventrymanagement.to.*;
 import com.codercrope.mobileinventrymanagement.util.ItemPriceGenerator;
@@ -21,10 +22,18 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,6 +60,7 @@ public class AddItemsViewController {
     public ArrayList<AddItemViewBSListComponentController> batchList = new ArrayList<AddItemViewBSListComponentController>();
     public ArrayList<Button> batchListView = new ArrayList<>();
     public ArrayList<AddItemViewDtlTileListViewCompController> batchListDtl = new ArrayList<AddItemViewDtlTileListViewCompController>();
+    public Button PrintReport;
     HashMap<String, String> hm = new HashMap<>();
     HashMap<String, String> tempArrayForlist = new HashMap<>();
     @FXML
@@ -495,5 +505,23 @@ public class AddItemsViewController {
         Stage stage = new Stage();
         stage.setScene(new Scene(root1));
         stage.show();
+    }
+
+    public void printReportOnAction(ActionEvent actionEvent) {
+        //HashMap<String, Object> hm = new HashMap<>();
+        //hm.put("cashierName",txtName.getText());
+        //hm.put("email",lblEmail.getText());
+        InputStream inputStream = this.getClass().getResourceAsStream
+                ("/com/codercrope/mobileinventrymanagement/report/itemReport.jrxml");
+        try {
+            JasperReport compileReport = JasperCompileManager.compileReport(inputStream);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport, null, DBConnection.getInstance().getConnection());
+//          JasperPrintManager.printReport(jasperPrint,true);
+            JasperViewer.viewReport(jasperPrint);
+        } catch (JRException | SQLException | ClassNotFoundException e) {
+
+            System.out.println(e);
+            e.printStackTrace();
+        }
     }
 }

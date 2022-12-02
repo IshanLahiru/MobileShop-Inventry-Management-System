@@ -34,7 +34,9 @@ import net.sf.jasperreports.view.JasperViewer;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -510,7 +512,7 @@ public class BillingViewController {
                                 entry.getKey().getProfitPercentage())*(entry.getValue())));
                 billDtl.add(item);
             }
-            printReport(billDtl);
+            printReport(billDtl,paymentAmount);
             //lblItemId.setText(ItemModel.getItemId());
             //lblWarrantyId.setText(WarrantyModel.getWarrantyId());
             new Alert(Alert.AlertType.INFORMATION, "Item Added successfully").show();
@@ -519,13 +521,18 @@ public class BillingViewController {
         }
     }
 
-    private void printReport(List<PayReportTo> billDtl) throws JRException {
+    private void printReport(List<PayReportTo> billDtl, double paymentAmount) throws JRException, SQLException, ClassNotFoundException {
         JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(billDtl);
         InputStream inputStream = this.getClass().getResourceAsStream
                 ("/com/codercrope/mobileinventrymanagement/report/mainBill.jrxml");
         JasperDesign jr = JRXmlLoader.load(inputStream);
+        String orderId = CustOrderModel.getLastOrder();
         HashMap<String,Object> hm = new HashMap();
         hm.put("CollectionBeanParam",dataSource);
+        hm.put("BillNo",orderId);
+        hm.put("Date", String.valueOf(LocalDate.now()));
+        hm.put("Time", String.valueOf(LocalTime.now()));
+        hm.put("TotalPrice",String.valueOf(paymentAmount));
             JasperReport compileReport = JasperCompileManager.compileReport(jr);
             JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport,hm, new JREmptyDataSource());
 //            JasperPrintManager.printReport(jasperPrint,true);

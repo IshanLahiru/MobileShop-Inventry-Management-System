@@ -40,6 +40,10 @@
 		<field name="price" class="java.lang.String"/>
 	</subDataset>
 	<parameter name="CollectionBeanParam" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="BillNo" class="java.lang.String"/>
+	<parameter name="Date" class="java.lang.String"/>
+	<parameter name="Time" class="java.lang.String"/>
+	<parameter name="TotalPrice" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -47,13 +51,136 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="90" splitType="Stretch">
+			<staticText>
+				<reportElement x="157" y="19" width="240" height="41" uuid="4ce71ead-ba73-4a6a-aadf-0482edb1d536"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Codercrope Mobile]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="60" width="240" height="20" uuid="da9f36d3-90d1-4c83-b5f2-998be41c305e"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[We only keep the trending ones]]></text>
+			</staticText>
+		</band>
 	</title>
 	<columnHeader>
-		<band height="41" splitType="Stretch"/>
+		<band height="81" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="50" height="21" uuid="63b4db61-6c50-4fb2-9a8e-bcb6983a53b9"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Bill no  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="23" width="50" height="21" uuid="80d06844-6c61-46d3-98d7-18064d2548d7"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Date  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="2" width="20" height="21" uuid="247c1fc4-d086-4001-9c45-a58ac96f4007"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[:-  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="22" width="20" height="21" uuid="70fda770-e5a3-43d2-98b5-4fe34208ce47"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[:-  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="44" width="20" height="21" uuid="069109b9-d6ef-438a-a4db-3a269bf5ee49"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[:-  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="2" width="60" height="21" uuid="af48857b-5d88-46b8-b496-4a17259b3ecc"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Address ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="59" width="40" height="21" uuid="f898fa97-80d4-4e25-a05c-fb1c46f424b7"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[tel]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="1" width="20" height="21" uuid="52c2fab2-e371-4db4-9a87-29f95087d483"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[:-  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="59" width="20" height="21" uuid="93d1a204-13a4-4674-ac62-b1c3f6fb26d9"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[:-  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="352" y="1" width="151" height="59" uuid="62e7fa97-86d3-492b-b0b5-2ddd6e11d5cf"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Codercrope Mobile
+Baduraliya road,
+Agalawaththa.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="350" y="60" width="200" height="21" uuid="66a6aea0-bbfc-4b13-9716-92aae359c036"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[076-8774386 , 076-8774385]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="0" width="110" height="23" uuid="98bf5116-d6f7-4420-a9de-0790c2966a33"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{BillNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="23" width="100" height="21" uuid="2daaf33e-7714-46b5-b4bb-5b13cc57a8d5"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="44" width="100" height="21" uuid="11499cf3-f080-4e94-8822-2289ab2f3792"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Time}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="44" width="50" height="21" uuid="92d00ed4-c1a4-488a-9c2b-0ba4bbdfbdbf"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Time  ]]></text>
+			</staticText>
+		</band>
 	</columnHeader>
 	<detail>
-		<band height="249" splitType="Stretch">
+		<band height="81" splitType="Stretch">
 			<componentElement>
 				<reportElement x="32" y="7" width="490" height="60" uuid="5af5f47f-7cbc-4a4e-9781-e2e1e7bb0286">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
@@ -165,12 +292,33 @@
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band height="40">
+			<staticText>
+				<reportElement x="240" y="4" width="171" height="31" uuid="1c5eaf81-a734-4617-a516-4c6fa75b14f8"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total price  :  ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="418" y="4" width="100" height="30" uuid="be6005c0-b1ba-4e7d-8081-5b0721e9b567"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TotalPrice}]]></textFieldExpression>
+			</textField>
+		</band>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="232" y="0" width="90" height="40" uuid="bf0e63ee-7607-4dad-abae-3a80fe07dc70"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Thank you !
+Come again.]]></text>
+			</staticText>
+		</band>
 	</pageFooter>
-	<summary>
-		<band height="42" splitType="Stretch"/>
-	</summary>
 </jasperReport>

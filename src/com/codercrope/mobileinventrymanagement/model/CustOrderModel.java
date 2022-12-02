@@ -62,4 +62,14 @@ public class CustOrderModel {
                 order.getCustOrderDtl()
         );
     }
+
+    public static String getLastOrder() throws SQLException, ClassNotFoundException {
+        String sql = "SELECT order_id FROM cust_order ORDER BY order_id DESC LIMIT 1";
+        ResultSet result = CrudUtil.execute(sql);
+
+        if (result.next()) {
+            return result.getString(1);
+        }
+        return "CO0001";
+    }
 }
