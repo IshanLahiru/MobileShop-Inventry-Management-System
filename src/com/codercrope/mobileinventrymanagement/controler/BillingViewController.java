@@ -26,6 +26,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
@@ -476,7 +479,7 @@ public class BillingViewController {
         lblTotal1.setText(String.valueOf(String.format("%.2f",total)));
     }
 
-    public void btnPayOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+    public void btnPayOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException, IOException, JRException {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         String dateTime = dtf.format(now);
@@ -485,25 +488,29 @@ public class BillingViewController {
         /*for (AddItemViewBSListComponentController b : batchList) {
             hm.put(b.getBatchId(), b.getNoOfItems());
         }*/
-        boolean sta = AddOrderModel.save(item,order,CustPAymentTypeModel.getType(),dateTime,"payment stats","{}");
+        double paymentAmount = 0;
+        for (Map.Entry<Item,Integer> entry : order.entrySet()) {
+            paymentAmount+= PriceModel.getItemPrice(entry.getKey().getItemId(),entry.getKey().getItemPriceStock(),entry.getKey().getProfitPercentage())*(entry.getValue());
+        }
+        boolean sta = AddOrderModel.save(item,order,CustPAymentTypeModel.getType(),dateTime,"100","{}",String.valueOf(paymentAmount));
         if (sta) {
             setData();
-            //String id, String name, String qty, String pricePerUnit, String price
+            /*String id, String name, String qty, String pricePerUnit, String price*/
             List<PayReportTo> billDtl = new ArrayList<PayReportTo>();
             int i = 0;
             for (Map.Entry<Item,Integer> entry : order.entrySet()) {
                 i++;
-                PayReportTo item = new PayReportTo(String.valueOf(i),entry.getKey().getItemName(),String.valueOf(entry.getValue()),"11","11");
+                PayReportTo item = new PayReportTo(String.valueOf(i),
+                        entry.getKey().getItemName(),
+                        String.valueOf(entry.getValue()),
+                        String.valueOf(PriceModel.getItemPrice(entry.getKey().getItemId(),entry.getKey().getItemPriceStock(),entry.getKey().getProfitPercentage())),
+                        String.valueOf(PriceModel.getItemPrice(
+                                entry.getKey().getItemId(),
+                                entry.getKey().getItemPriceStock(),
+                                entry.getKey().getProfitPercentage())*(entry.getValue())));
                 billDtl.add(item);
             }
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/listview/WarrantyDtlListViewComponent.fxml"));
-                Button root1 = (Button) fxmlLoader.load();
-                WarrantyDtlListViewComponentController batch = ((WarrantyDtlListViewComponentController) fxmlLoader.getController());
-                batch.setData(this, entry.getKey(), entry.getValue(), txtEnterWarrantyDtlTopic, txtEnterWarrantyDtl);
-                warrantyDtlList.add(root1);
-                warrantyListControllers.add(batch);
-            }
-            printReport();
+            printReport(billDtl);
             //lblItemId.setText(ItemModel.getItemId());
             //lblWarrantyId.setText(WarrantyModel.getWarrantyId());
             new Alert(Alert.AlertType.INFORMATION, "Item Added successfully").show();
@@ -512,17 +519,16 @@ public class BillingViewController {
         }
     }
 
-    private void printReport() {
+    private void printReport(List<PayReportTo> billDtl) throws JRException {
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(billDtl);
         InputStream inputStream = this.getClass().getResourceAsStream
                 ("/com/codercrope/mobileinventrymanagement/report/mainBill.jrxml");
-        try {
-            JasperReport compileReport = JasperCompileManager.compileReport(inputStream);
-            JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport, null, DBConnection.getInstance().getConnection());
+        JasperDesign jr = JRXmlLoader.load(inputStream);
+        HashMap<String,Object> hm = new HashMap();
+        hm.put("CollectionBeanParam",dataSource);
+            JasperReport compileReport = JasperCompileManager.compileReport(jr);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport,hm, new JREmptyDataSource());
 //            JasperPrintManager.printReport(jasperPrint,true);
             JasperViewer.viewReport(jasperPrint);
-        } catch (JRException | SQLException | ClassNotFoundException e) {
-
-            System.out.println(e);
-            e.printStackTrace();
     }
 }
