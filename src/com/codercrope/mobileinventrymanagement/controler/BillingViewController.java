@@ -4,10 +4,13 @@ import com.codercrope.mobileinventrymanagement.controler.listview.BillingViewLis
 import com.codercrope.mobileinventrymanagement.controler.subwindows.ItemMoreDetailViewController;
 import com.codercrope.mobileinventrymanagement.controler.tmlist.MainBillingItemTM;
 import com.codercrope.mobileinventrymanagement.controler.tmlist.MainBillingListViewTm;
+import com.codercrope.mobileinventrymanagement.db.DBConnection;
 import com.codercrope.mobileinventrymanagement.model.*;
 import com.codercrope.mobileinventrymanagement.to.AddItem;
 import com.codercrope.mobileinventrymanagement.to.Item;
+import com.codercrope.mobileinventrymanagement.to.PayReportTo;
 import com.codercrope.mobileinventrymanagement.view.listview.AddItemViewBSListComponentController;
+import com.codercrope.mobileinventrymanagement.view.listview.WarrantyDtlListViewComponentController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,13 +25,18 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class BillingViewController {
 
@@ -480,11 +488,41 @@ public class BillingViewController {
         boolean sta = AddOrderModel.save(item,order,CustPAymentTypeModel.getType(),dateTime,"payment stats","{}");
         if (sta) {
             setData();
+            //String id, String name, String qty, String pricePerUnit, String price
+            List<PayReportTo> billDtl = new ArrayList<PayReportTo>();
+            int i = 0;
+            for (Map.Entry<Item,Integer> entry : order.entrySet()) {
+                i++;
+                PayReportTo item = new PayReportTo(String.valueOf(i),entry.getKey().getItemName(),String.valueOf(entry.getValue()),"11","11");
+                billDtl.add(item);
+            }
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/codercrope/mobileinventrymanagement/view/listview/WarrantyDtlListViewComponent.fxml"));
+                Button root1 = (Button) fxmlLoader.load();
+                WarrantyDtlListViewComponentController batch = ((WarrantyDtlListViewComponentController) fxmlLoader.getController());
+                batch.setData(this, entry.getKey(), entry.getValue(), txtEnterWarrantyDtlTopic, txtEnterWarrantyDtl);
+                warrantyDtlList.add(root1);
+                warrantyListControllers.add(batch);
+            }
+            printReport();
             //lblItemId.setText(ItemModel.getItemId());
             //lblWarrantyId.setText(WarrantyModel.getWarrantyId());
             new Alert(Alert.AlertType.INFORMATION, "Item Added successfully").show();
         } else {
             new Alert(Alert.AlertType.ERROR, "Error: not added! try again").show();
         }
+    }
+
+    private void printReport() {
+        InputStream inputStream = this.getClass().getResourceAsStream
+                ("/com/codercrope/mobileinventrymanagement/report/mainBill.jrxml");
+        try {
+            JasperReport compileReport = JasperCompileManager.compileReport(inputStream);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport, null, DBConnection.getInstance().getConnection());
+//            JasperPrintManager.printReport(jasperPrint,true);
+            JasperViewer.viewReport(jasperPrint);
+        } catch (JRException | SQLException | ClassNotFoundException e) {
+
+            System.out.println(e);
+            e.printStackTrace();
     }
 }

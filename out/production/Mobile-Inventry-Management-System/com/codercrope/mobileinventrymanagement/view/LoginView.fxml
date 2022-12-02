@@ -38,12 +38,12 @@
               </rowConstraints>
                <children>
                   <TextField fx:id="btnEmail" onAction="#btnEmailOnAction" promptText="Email...." />
-                  <Button fx:id="btnLogIn" mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="31.0" prefWidth="517.0" styleClass="btn-update" stylesheets="@../assets/Styles/lightMode.css" text="Log in" textFill="WHITE" GridPane.rowIndex="4">
+                  <Button fx:id="btnLogIn" mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="31.0" prefWidth="517.0" styleClass="btn-login" stylesheets="@../assets/Styles/lightMode.css" text="Log in" textFill="WHITE" GridPane.rowIndex="4">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font></Button>
                   <PasswordField fx:id="btnPwd" onAction="#btnPwdOnAction" promptText="Password...." GridPane.rowIndex="2" />
-                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="21.0" prefWidth="391.0" text="Forgot password" textFill="#1765d1" GridPane.rowIndex="5" />
+                  <Label fx:id="lblForgetPassword" alignment="CENTER_RIGHT" contentDisplay="CENTER" onMouseClicked="#lblForgetPasswordOnMouseClick" prefHeight="21.0" prefWidth="391.0" text="Forgot password" textFill="#1765d1" GridPane.rowIndex="5" />
                </children>
             </GridPane>
          </children>

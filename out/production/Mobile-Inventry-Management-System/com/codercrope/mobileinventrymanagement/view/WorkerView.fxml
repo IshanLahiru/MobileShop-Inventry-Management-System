@@ -319,7 +319,7 @@
                               </GridPane>
                            </children>
                         </GridPane>
-                                  <GridPane prefHeight="161.0" prefWidth="464.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                  <GridPane prefHeight="161.0" prefWidth="464.0" stylesheets="@../assets/Styles/lightMode.css" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                       <columnConstraints>
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                       </columnConstraints>
@@ -328,12 +328,13 @@
                                           <RowConstraints maxHeight="106.0" minHeight="0.0" prefHeight="33.0" vgrow="SOMETIMES" />
                                           <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
                                           <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="5.0" minHeight="5.0" prefHeight="5.0" vgrow="SOMETIMES" />
                                           <RowConstraints maxHeight="131.0" minHeight="1.0" prefHeight="32.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                       <children>
                                           <TextField fx:id="txtEnterItemDtlTopic" onAction="#txtEnterItemDtlTopicOnAction" onMouseClicked="#txtEnterItemDtlTopicOnMouseClick" promptText="Enter the employee detail topic..." GridPane.rowIndex="1" />
                                           <TextArea fx:id="txtEnterItemDtl" onKeyPressed="#txtEnterItemDtlOnKeyPressed" prefHeight="42.0" prefWidth="269.0" promptText="Enter the employee dtl...." GridPane.rowIndex="3" />
-                              <GridPane GridPane.rowIndex="4">
+                              <GridPane GridPane.rowIndex="5">
                                 <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="5.0" minWidth="5.0" prefWidth="5.0" />

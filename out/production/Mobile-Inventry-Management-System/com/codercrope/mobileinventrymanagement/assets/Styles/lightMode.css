@@ -109,6 +109,22 @@
 .background-gradient{
     -fx-background: linear-gradient(to right, #bdc3c7, #2c3e50);
 }
+.btn-login{
+    -fx-background-radius: 10px;
+    -fx-background-color:  #366DDA;
+    -fx-border-radius: 10px;
+    -fx-border-color: #366DDA;
+    -fx-border-width: 2px;
+    -fx-text-color: #FFFFFF;
+}
+.btn-login:hover{
+    -fx-background-radius: 10px;
+    -fx-background-color:  #4F84EC;
+    -fx-border-radius: 10px;
+    -fx-border-color: #4F84EC;
+    -fx-border-width: 2px;
+    -fx-text-color: #FFFFFF;
+}
 .btn-pay{
     -fx-background-radius: 10px;
     -fx-background-color:  #47d16c;
@@ -193,4 +209,23 @@
     -fx-border-radius: 10px;*/
     -fx-border-color: #8c8c8c;
     /*-fx-text-color: #FFFFFF;*/
+}
+.text-field {
+    -fx-background-color: -fx-text-box-border, -fx-background ;
+    -fx-background-insets: 0, 0 0 1 0 ;
+    -fx-background-radius: 5px ;
+}
+.text-field:focused {
+    -fx-background-color: -fx-focus-color, -fx-background ;
+}
+.text-field:hover {
+    -fx-background-color: -fx-focus-color, -fx-background ;
+}
+.text-field-grid {
+    -fx-background-color: -fx-text-box-border, -fx-background ;
+    -fx-background-insets: 0, 0 0 1 0 ;
+    -fx-background-radius: 5px ;
+}
+.addItemViewBs-Lw-Comp{
+    -fx-background-color: -fx-text-box-border, -fx-background ;
 }
